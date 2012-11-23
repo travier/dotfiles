@@ -1,19 +1,14 @@
 #!/bin/bash
 
-# Use any argument to bypass this check
-E_BADARGS=65
-if [ $# -ne 1 ]; then
-	echo "READ ME before blindly launching me!!"
-	exit $E_BADARGS
-fi
+ORIGIN_WD=$PWD
 
-cd ~/.vim/
-
-for b in `ls bundle`; do 
+cd ~/.vim/bundle
+for b in `ls`; do 
 	cd $b
 	git pull origin
 	cd ..
 done
 
-./export.sh null
+cd "${ORIGIN_WD}"
+./diff.sh
 

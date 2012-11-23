@@ -114,13 +114,12 @@ set smartcase
 " r         Automatically insert the current comment leader after hitting
 "           <Enter> in Insert mode.
 " t         Auto-wrap text using textwidth (does not apply to comments)
+set formatoptions=c,q,r,t
 
 " Show matching bracets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink
 set mat=2
-
-set formatoptions=c,q,r,t
 
 " Enable mouse support
 set mouse-=a

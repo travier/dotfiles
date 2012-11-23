@@ -1,0 +1,24 @@
+[user]
+	name =
+	email =
+[color]
+	ui = true
+[core]
+	editor = vim
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "git@git.kde.org:"]
+	pushInsteadOf = kde:
+[alias]
+	a = add
+	s = status
+	l = log
+	c = commit
+	ca = commit --amend
+	d = diff
+	dc = diff --cached
+	b = branch
+	br = branch -a
+	pr = pull --rebase
+[push]
+	default = simple
