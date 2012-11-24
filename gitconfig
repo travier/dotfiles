@@ -20,5 +20,9 @@
 	b = branch
 	br = branch -a
 	pr = pull --rebase
+[advice]
+	statusHints = false
+[merge]
+	tool = vimdiff
 [push]
 	default = simple
