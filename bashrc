@@ -36,34 +36,42 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 # PS1='[\u@\h \W]\$ '
 # User in green color: \[\e[1;32m\]\u\[\e[m\]
 # Working directory: \[\e[1;34m\]\w\[\e[m\] or \W
-# PS1='$(__git_ps1 " (%s)") '
-
-RED='\[\e[1;31m\]'
-GREEN='\[\e[1;32m\]'
-OFF='\[\e[0m\]'
-
-# Ci dessous, un PS1 qui marche :
 #PS1="\w${GREEN}$(__git_ps1 "@%s")${OFF}$ "
-PS1="\`RC=\$?; echo -n '\w${GREEN}$(__git_ps1 "@%s")'; if [ \$RC != 0 ]; then echo -n '${RED}\$${OFF} '; else echo -n '${OFF}\$ '; fi\`"
-
+#PS1="\`RC=\$?; echo -n '\w${GREEN}$(__git_ps1 "@%s")'; if [ \$RC != 0 ]; then echo -n '${RED}\$${OFF} '; else echo -n '${OFF}\$ '; fi\`"
 #PS1="[\`RC=\$?; if [ \$RC = 0 ]; then echo ${GREEN}${PASS_SMILEY}${WHITE}; elif [ \$RC = 139 ]; then echo ${RED}${SEGV_SMILEY}${WHITE}; else echo ${RED}${FAIL_SMILEY}${WHITE}; fi\`]$OLDPS1"
 #PS1='\w\[\e[1;32m\]\[\e[0m\]$ '
 
-#function exitstatus {                                                           
-#        EXITSTATUS="$?"                                                         
-#        RED="\[\e[1;31m\]"                                                      
-#        GREEN="\[\e[1;32m\]"                                                    
-#        OFF="\[\e[m\]"                                                          
-#                                                                                
-#        if [ "$EXITSTATUS" -eq "0" ]                                            
-#        then                                                                    
-#                PS1="\w${GREEN}$(__git_ps1 "@%s")${OFF}$ "                      
-#        else                                                                    
-#                PS1="\w${GREEN}$(__git_ps1 "@%s")${RED}\$${OFF} " 
-#        fi                                                                         
-#}                                                                               
-#                                                                                
-#PROMPT_COMMAND=exitstatus
+function parse_git_dirty {
+	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "⚡"
+}
+
+function parse_git_branch {
+	local b="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/^* //')"
+	if [ -n "$b" ] && [ "$b" = "(no branch)" ]; then
+		local b="$(git name-rev --name-only HEAD 2> /dev/null)"
+	fi
+
+	if [ -n "$b" ]; then
+		printf "@$b$(parse_git_dirty)"
+	fi
+}
+
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+OFF="\[\e[0m\]"
+
+function exitstatus {
+        EXITSTATUS="$?"
+
+        if [ "$EXITSTATUS" -eq "0" ]
+        then
+                PS1="\w${GREEN}$(parse_git_branch)${OFF}$ "
+        else
+                PS1="\w${GREEN}$(parse_git_branch)${RED}\$${OFF} "
+        fi
+}
+
+PROMPT_COMMAND=exitstatus
 
 # Add some environment variables
 export GREP_COLOR="1;33"

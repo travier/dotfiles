@@ -65,6 +65,9 @@ set novisualbell
 set textwidth=79
 hi ColorColumn ctermbg=DarkGrey guibg=DarkGrey
 set colorcolumn=80
+" Highlight trailing whitespace
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
 
 " Linenumber options
 set cursorline

@@ -21,7 +21,9 @@
 	br = branch -a
 	pr = pull --rebase
 [advice]
+	pushNonFastForward = false
 	statusHints = false
+	commitBeforeMerge = false
 [merge]
 	tool = vimdiff
 [push]
