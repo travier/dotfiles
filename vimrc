@@ -26,7 +26,7 @@ set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
 
-" Do not use modelines
+" Do not use modelines, use the securemodelines plugin instead
 set nomodeline
 
 " Do not use <file>~ or .swap as backup
@@ -62,7 +62,7 @@ set ttyfast
 set noerrorbells
 set novisualbell
 " Textwidth options
-set textwidth=79
+"set textwidth=79
 hi ColorColumn ctermbg=235 guibg=#262626
 set colorcolumn=80
 " Highlight trailing whitespace
