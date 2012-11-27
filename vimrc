@@ -63,10 +63,10 @@ set noerrorbells
 set novisualbell
 " Textwidth options
 set textwidth=79
-hi ColorColumn ctermbg=DarkGrey guibg=DarkGrey
+hi ColorColumn ctermbg=235 guibg=#262626
 set colorcolumn=80
 " Highlight trailing whitespace
-:highlight ExtraWhitespace ctermbg=red guibg=red
+:highlight ExtraWhitespace ctermbg=240 guibg=#585858
 :match ExtraWhitespace /\s\+$/
 
 " Linenumber options
