@@ -11,7 +11,11 @@
 	pushInsteadOf = kde:
 [alias]
 	a = add
+	ap = add -p
+	r = reset
+	rp = reset -p
 	s = status
+	sh = show
 	l = log
 	c = commit
 	ca = commit --amend
