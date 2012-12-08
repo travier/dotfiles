@@ -45,7 +45,7 @@ setlocal spell spelllang=en_us
 set autoread
 
 " General configuration:
-set hidden
+"set hidden
 set more
 set title
 set showcmd
