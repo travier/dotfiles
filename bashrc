@@ -98,3 +98,5 @@ man() {
 					man "$@"
 	}
 
+export PATH="/home/timothee/.gem/ruby/1.9.1/bin:$PATH"
+
