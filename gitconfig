@@ -11,11 +11,11 @@
 	pushInsteadOf = kde:
 [alias]
 	a = add
-	ap = add -p
+	ap = add --patch
 	r = reset
-	rp = reset -p
+	rp = reset --patch
 	rb = rebase
-	ri = rebase -i
+	ri = rebase --interactive
 	s = status
 	sh = show
 	l = log
@@ -25,7 +25,7 @@
 	d = diff
 	dc = diff --cached
 	b = branch
-	br = branch -a
+	br = branch --all
 	f = fetch
 	co = checkout
 	cb = checkout -b

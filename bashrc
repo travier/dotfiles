@@ -12,15 +12,15 @@ HISTCONTROL=ignoreboth:erasedups
 # Basic aliases
 alias l='ls --color=auto'
 alias ls='ls --color=auto'
-alias ll='ls --color=auto -alh'
+alias ll='ls --color=auto --all -l --human-readable'
 #alias ldir='ls -l| egrep "^d"'
 alias c='cd'
 alias ..='cd ..'
-alias du='du -h'
-alias df='df -h'
+alias du='du --human-readable'
+alias df='df --human-readable'
 alias grep='grep --color=auto'
 alias rg='grep -Rn --color=auto'
-alias gdb='gdb -q'
+alias gdb='gdb --quiet'
 
 #function example_func {
 #	grep --color=auto -Rn $@ *.[ch]
@@ -46,7 +46,7 @@ function parse_git_dirty {
 }
 
 function parse_git_branch {
-	local b="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/^* //')"
+	local b="$(git branch --no-color 2> /dev/null | sed --expression='/^[^*]/d' --expression='s/^* //')"
 	if [ -n "$b" ] && [ "$b" = "(no branch)" ]; then
 		local b="$(git name-rev --name-only HEAD 2> /dev/null)"
 	fi

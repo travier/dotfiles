@@ -56,18 +56,18 @@ set wildignore=*.o,*~,*.pyc,*.swp,*.bak
 set history=1000
 set undolevels=1000
 set lazyredraw
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 set ttyfast
 " No bells
 set noerrorbells
 set novisualbell
 " Textwidth options
 "set textwidth=79
-hi ColorColumn ctermbg=235 guibg=#262626
+highlight ColorColumn ctermbg=235 guibg=#262626
 set colorcolumn=80
 " Highlight trailing whitespace
-:highlight ExtraWhitespace ctermbg=240 guibg=#585858
-:match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=240 guibg=#585858
+match ExtraWhitespace /\s\+$/
 
 " Linenumber options
 set cursorline
@@ -94,7 +94,7 @@ set smartindent
 
 " Search related options:
 " Use <CR> to stop search highlight
-nnoremap <CR> :noh<CR><CR>
+nnoremap <CR> :nohlsearch<CR><CR>
 " When there is a previous search pattern, highlight all its matches.
 set hlsearch
 " While typing a search command, show immediately where the so far typed
@@ -122,7 +122,7 @@ set formatoptions=c,q,r,t
 " Show matching bracets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink
-set mat=2
+set matchtime=2
 
 " Enable mouse support
 set mouse-=a
@@ -135,7 +135,7 @@ set pastetoggle=<F2>
 cmap w!! w !sudo tee % >/dev/null
 
 " Python PEP 8 support
-au FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " LaTeX support
 let g:tex_flavor='latex'
