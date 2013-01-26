@@ -19,7 +19,7 @@
 	s = status
 	sh = show
 	l = log
-	lo = log --online --max-count=10
+	lo = log --oneline --max-count=10
 	c = commit
 	ca = commit --amend
 	d = diff
