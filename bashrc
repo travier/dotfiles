@@ -56,6 +56,13 @@ function parse_git_branch {
 	fi
 }
 
+__git_ps1 () {
+       local b="$(git symbolic-ref HEAD 2>/dev/null)";
+       if [ -n "$b" ]; then
+               printf "@%s" "${b##refs/heads/}";
+       fi
+}
+
 RED="\[\e[1;31m\]"
 GREEN="\[\e[1;32m\]"
 OFF="\[\e[0m\]"
@@ -65,9 +72,9 @@ function exitstatus {
 
         if [ "$EXITSTATUS" -eq "0" ]
         then
-                PS1="\w${GREEN}$(parse_git_branch)${OFF}$ "
+                PS1="\w${GREEN}$(__git_ps1)${OFF}$ "
         else
-                PS1="\w${GREEN}$(parse_git_branch)${RED}\$${OFF} "
+                PS1="\w${GREEN}$(__git_ps1)|${RED}$EXITSTATUS${OFF}\$ "
         fi
 }
 
