@@ -74,7 +74,7 @@ function exitstatus {
         then
                 PS1="\w${GREEN}$(__git_ps1)${OFF}$ "
         else
-                PS1="\w${GREEN}$(__git_ps1)|${RED}$EXITSTATUS${OFF}\$ "
+                PS1="\w${GREEN}$(__git_ps1)${OFF}|${RED}$EXITSTATUS${OFF}\$ "
         fi
 }
 
@@ -105,5 +105,7 @@ man() {
 					man "$@"
 	}
 
-export PATH="/home/timothee/.gem/ruby/1.9.1/bin:$PATH"
+function set_ruby {
+	export PATH="/home/timothee/.gem/ruby/1.9.1/bin:$PATH"
+}
 
