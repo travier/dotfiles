@@ -106,6 +106,11 @@ set ignorecase
 " characters.
 set smartcase
 
+" Folding related options:
+set foldmethod=syntax
+set foldnestmax=1
+set foldlevel=0
+
 " This is a sequence of letters which describes how automatic formatting is to
 " be done.
 "
