@@ -19,8 +19,10 @@ alias ..='cd ..'
 alias du='du --human-readable'
 alias df='df --human-readable'
 alias grep='grep --color=auto'
-alias rg='grep -Rn --color=auto'
+alias gr='grep -Rn --color=auto'
 alias gdb='gdb --quiet'
+alias v='vim'
+alias vi='vim'
 
 #function example_func {
 #	grep --color=auto -Rn $@ *.[ch]
