@@ -24,8 +24,8 @@
 	ca = commit --amend
 	d = diff
 	dc = diff --cached
-	b = branch
-	br = branch --all
+	b = branch --verbose
+	br = branch --all --verbose
 	f = fetch
 	co = checkout
 	cb = checkout -b
