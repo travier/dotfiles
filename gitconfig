@@ -16,10 +16,14 @@
 	rp = reset --patch
 	rb = rebase
 	ri = rebase --interactive
+	rc = rebase --continue
+	ra = rebase --abort
 	s = status
 	sh = show
+	g = grep -ni
 	l = log
 	lo = log --oneline --max-count=10
+	ll = log --oneline
 	c = commit
 	ca = commit --amend
 	d = diff
