@@ -18,7 +18,7 @@ curl -Sso ~/.vim/autoload/pathogen.vim \
 
 cd ~/.vim/bundle/
 
-# Plugin for vim to enabling opening a file in a given line
+# Open a file and go to specified line using <filename>:<line>
 git clone https://github.com/bogado/file-line.git
 
 # fugitive.vim: a Git wrapper so awesome, it should be illegal
@@ -38,7 +38,7 @@ git clone https://github.com/tpope/vim-markdown.git
 # The ultimate vim statusline utility
 git clone https://github.com/Lokaltog/vim-powerline
 
-# Vim Git runtime files 
+# Vim Git runtime files
 git clone https://github.com/tpope/vim-git.git
 
 # precision colorscheme for the vim text editor
