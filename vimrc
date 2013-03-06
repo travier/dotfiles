@@ -29,6 +29,13 @@ colorscheme solarized
 " Do not use modelines, use the securemodelines plugin instead
 set nomodeline
 
+" Set options for nerdcomments
+let mapleader = ","
+" Add a space after the left delimiter and before the right delimiter
+let NERDSpaceDelims=1
+" Comment the whole line if has no multipart delimiters
+let NERDCommentWholeLinesInVMode=2
+
 " Do not use <file>~ or .swap as backup
 set directory=~/.vim/backup,/tmp,/var/tmp
 " Or just remove backups
