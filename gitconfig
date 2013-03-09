@@ -12,28 +12,29 @@
 [alias]
 	a = add
 	ap = add --patch
-	r = reset
-	rp = reset --patch
-	rb = rebase
-	ri = rebase --interactive
-	rc = rebase --continue
-	ra = rebase --abort
-	s = status
-	sh = show
-	g = grep -ni
-	l = log
-	lo = log --oneline --max-count=10
-	ll = log --oneline
-	c = commit
-	ca = commit --amend
-	d = diff
-	dc = diff --cached
 	b = branch --verbose
 	br = branch --all --verbose
-	f = fetch
-	co = checkout
+	c = commit
+	ca = commit --amend
 	cb = checkout -b
+	co = checkout
+	d = diff
+	dc = diff --cached
+	f = fetch
+	g = grep -ni
+	l = log
+	ll = log --oneline
+	lo = log --oneline --max-count=10
+	pgm = push github master
 	pr = pull --rebase
+	r = reset
+	ra = rebase --abort
+	rb = rebase
+	rc = rebase --continue
+	ri = rebase --interactive
+	rp = reset --patch
+	s = status
+	sh = show
 [advice]
 	pushNonFastForward = false
 	statusHints = false
