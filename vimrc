@@ -42,6 +42,12 @@ set directory=~/.vim/backup,/tmp,/var/tmp
 "set nobackup
 "set noswapfile
 
+" Set undodir
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=100 "maximum number of changes that can be undone
+set undoreload=100 "maximum number lines to save for undo on a buffer reload
+
 " Ignore files with specific extensions
 set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo
 
