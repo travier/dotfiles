@@ -23,6 +23,8 @@ alias gr='grep -Rn --color=auto'
 alias gdb='gdb --quiet'
 alias v='vim'
 alias vi='vim'
+alias vimrc='vim ~/.vimrc'
+alias bashrc='vim ~/.bashrc'
 
 #function example_func {
 #	grep --color=auto -Rn $@ *.[ch]
