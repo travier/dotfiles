@@ -1,5 +1,5 @@
 " Drop vi compatibility
-set  nocompatible
+set nocompatible
 
 " Use pathogen
 call pathogen#infect()
