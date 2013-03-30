@@ -76,6 +76,11 @@ set colorcolumn=80
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=240 guibg=#585858
 match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$\| \+\ze\t/
+match ExtraWhitespace /[^\t]\zs\t\+/
+
+" Show tabs and trailing spaces
+set list listchars=tab:»\ ,trail:·
 
 " Linenumber options
 set cursorline
