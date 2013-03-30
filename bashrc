@@ -114,6 +114,6 @@ man() {
 	}
 
 function set_ruby {
-	export PATH="/home/timothee/.gem/ruby/1.9.1/bin:$PATH"
+	export PATH="/home/tim/.gem/ruby/1.9.1/bin:$PATH"
 }
 
