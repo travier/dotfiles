@@ -9,6 +9,9 @@ HISTSIZE=20000
 HISTFILESIZE=20000
 HISTCONTROL=ignoreboth:erasedups
 
+# Set solarized colors for ls
+eval `dircolors ~/.dircolors.256dark`
+
 # Basic aliases
 alias l='ls --color=auto'
 alias ls='ls --color=auto'
