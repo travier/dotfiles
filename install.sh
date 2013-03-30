@@ -47,8 +47,8 @@ git clone https://github.com/altercation/vim-colors-solarized.git
 # A secure alternative to Vim modelines
 git clone https://github.com/ciaranm/securemodelines.git
 
-# Vim plugin for intensely orgasmic commenting
-git clone https://github.com/scrooloose/nerdcommenter.git
+# commentary.vim: comment stuff out
+git clone https://github.com/tpope/vim-commentary.git
 
 # Clone special font for Powerline, don't forget to use it in your terminal
 # https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
