@@ -52,7 +52,6 @@ setlocal spell spelllang=en_us
 " Autoreload files
 set autoread
 
-" General configuration:
 "set hidden
 set more
 set title
@@ -66,13 +65,20 @@ set undolevels=1000
 set lazyredraw
 set fileformats=unix,dos,mac
 set ttyfast
+
 " No bells
 set noerrorbells
 set novisualbell
+
 " Textwidth options
 "set textwidth=79
+
+" Do not wrap lines.
+"set nowrap
+
 highlight ColorColumn ctermbg=235 guibg=#262626
 set colorcolumn=80
+
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=240 guibg=#585858
 match ExtraWhitespace /\s\+$/
