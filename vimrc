@@ -31,6 +31,9 @@ set nomodeline
 
 "let mapleader = ","
 
+" Use 'jk' instead of <Esc> to leave insert mode
+inoremap jk <Esc>
+
 " Do not use <file>~ or .swap as backup
 set directory=~/.vim/backup,/tmp,/var/tmp
 " Or just remove backups
