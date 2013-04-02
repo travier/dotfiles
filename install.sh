@@ -53,6 +53,12 @@ git clone https://github.com/tpope/vim-commentary.git
 # eunuch.vim: helpers for UNIX
 git clone https://github.com/tpope/vim-eunuch.git
 
+# Extended search commands and maps for Vim
+git clone https://github.com/dahu/SearchParty.git
+
+# Find a char across lines
+git clone https://github.com/dahu/vim-fanfingtastic.git
+
 # Clone special font for Powerline, don't forget to use it in your terminal
 # https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
