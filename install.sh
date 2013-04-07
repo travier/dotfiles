@@ -30,7 +30,7 @@ git clone https://github.com/garbas/vim-snipmate.git
 # snipMate dependencies
 git clone https://github.com/tomtom/tlib_vim.git
 git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
-git clone https://github.com/honza/snipmate-snippets.git
+git clone https://github.com/honza/vim-snippets.git
 
 # Vim Markdown runtime files
 git clone https://github.com/tpope/vim-markdown.git
