@@ -50,6 +50,9 @@ git clone https://github.com/ciaranm/securemodelines.git
 # commentary.vim: comment stuff out
 git clone https://github.com/tpope/vim-commentary.git
 
+# dispatch.vim: asynchronous build and test dispatcher
+git clone https://github.com/tpope/vim-dispatch.git
+
 # eunuch.vim: helpers for UNIX
 git clone https://github.com/tpope/vim-eunuch.git
 
