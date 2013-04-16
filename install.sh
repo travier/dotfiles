@@ -62,6 +62,9 @@ git clone https://github.com/dahu/SearchParty.git
 # Find a char across lines
 git clone https://github.com/dahu/vim-fanfingtastic.git
 
+# Mark quickfix & location list items with signs
+#git clone https://github.com/tomtom/quickfixsigns_vim.git
+
 # Clone special font for Powerline, don't forget to use it in your terminal
 # https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline

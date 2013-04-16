@@ -82,6 +82,9 @@ set novisualbell
 highlight ColorColumn ctermbg=235 guibg=#262626
 set colorcolumn=80
 
+" Disabled as I'm not using quickfixsigns plugin yet.
+"highlight SignColumn ctermbg=234 guibg=#262626
+
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=240 guibg=#585858
 match ExtraWhitespace /\s\+$/
