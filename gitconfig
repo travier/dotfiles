@@ -44,3 +44,5 @@
 	tool = vimdiff
 [push]
 	default = simple
+[column]
+	ui = auto
