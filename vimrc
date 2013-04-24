@@ -11,7 +11,6 @@ set t_Co=256
 filetype plugin on
 filetype indent on
 syntax on
-"syntax enable
 
 " Use PowerLine plugin
 let g:Powerline_symbols='fancy'
@@ -99,7 +98,7 @@ set list listchars=tab:»\ ,trail:·
 
 " Linenumber options
 set cursorline
-set number
+set number " or relativenumber
 set ruler
 
 " Indent/space options:
