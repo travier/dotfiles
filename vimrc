@@ -28,7 +28,8 @@ colorscheme solarized
 " Do not use modelines, use the securemodelines plugin instead
 set nomodeline
 
-"let mapleader = ","
+let mapleader = ","
+let g:mapleader = ","
 
 " Use 'jk' instead of <Esc> to leave insert mode
 inoremap jk <Esc>
