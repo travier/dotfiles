@@ -40,6 +40,9 @@ set directory=~/.vim/backup,/tmp,/var/tmp
 "set nobackup
 "set noswapfile
 
+" Set .viminfo file location
+set viminfo+=n~/.vim/viminfo
+
 " Set undodir
 set undodir=~/.vim/undodir
 set undofile
