@@ -12,6 +12,9 @@ ORIGIN_WD=${PWD}
 rm -rf ~/.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 
+rm -rf ~/.shell
+mkdir ~/.shell/history
+
 # Install pathogen plugin
 curl -Sso ~/.vim/autoload/pathogen.vim \
 	https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
@@ -71,6 +74,9 @@ git clone https://github.com/tpope/vim-repeat.git
 # Clone special font for Powerline, don't forget to use it in your terminal
 # https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
+
+curl -Sso ~/.shell/dircolors.256dark \
+	https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark
 
 cd "${ORIGIN_WD}"
 ./diff.sh

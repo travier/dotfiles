@@ -1,8 +1,15 @@
 #!/bin/bash
 
-vimdiff ~/.vimrc vimrc
 vimdiff ~/.bashrc bashrc
-vimdiff ~/.gitconfig gitconfig
+vimdiff ~/.zshrc zshrc
+for conf in `ls ~/.shell/ | grep "\.sh"`; do
+	vimdiff ~/.shell/${conf} shell/${conf}
+done
+for conf in `ls ~/.shell/ | grep "\.zsh"`; do
+	vimdiff ~/.shell/${conf} shell/${conf}
+done
 vimdiff ~/.ackrc ackrc
+vimdiff ~/.gitconfig gitconfig
 vimdiff ~/.tmux.conf tmux.conf
+vimdiff ~/.vimrc vimrc
 
