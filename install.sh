@@ -2,12 +2,12 @@
 
 # Use any argument to bypass this check
 E_BADARGS=65
-if [ $# -ne 1 ]; then
+if [ ${#} -ne 1 ]; then
 	echo "READ ME before blindly launching me!!"
-	exit $E_BADARGS
+	exit ${E_BADARGS}
 fi
 
-ORIGIN_WD=$PWD
+ORIGIN_WD=${PWD}
 
 rm -rf ~/.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle
