@@ -33,6 +33,10 @@ let g:mapleader = ","
 
 " Use 'jk' instead of <Esc> to leave insert mode
 inoremap jk <Esc>
+"inoremap <Esc> <Nop>
+
+" Use U for undo instead of C-r
+noremap U <C-r>
 
 " Do not use <file>~ or .swap as backup
 set directory=~/.vim/backup,/tmp,/var/tmp
