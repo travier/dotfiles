@@ -43,11 +43,13 @@ set directory=~/.vim/backup,/tmp,/var/tmp
 " Set .viminfo file location
 set viminfo+=n~/.vim/viminfo
 
-" Set undodir
+" Set undodir options
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=100 "maximum number of changes that can be undone
 set undoreload=100 "maximum number lines to save for undo on a buffer reload
+
+set history=200
 
 " Ignore files with specific extensions
 set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo
@@ -66,8 +68,6 @@ set scrolloff=10
 set sidescrolloff=5
 set wildmenu
 set wildignore=*.o,*~,*.pyc,*.swp,*.bak
-set history=1000
-set undolevels=1000
 set lazyredraw
 set fileformats=unix,dos,mac
 set ttyfast
