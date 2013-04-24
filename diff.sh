@@ -5,6 +5,9 @@ vimdiff ~/.zshrc zshrc
 for conf in `ls ~/.shell/ | grep "\.sh"`; do
 	vimdiff ~/.shell/${conf} shell/${conf}
 done
+for conf in `ls ~/.shell/ | grep "\.bash"`; do
+	vimdiff ~/.shell/${conf} shell/${conf}
+done
 for conf in `ls ~/.shell/ | grep "\.zsh"`; do
 	vimdiff ~/.shell/${conf} shell/${conf}
 done
