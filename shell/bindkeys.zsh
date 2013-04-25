@@ -9,7 +9,7 @@ bindkey -e
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
-typeset -A key
+#typeset -A key
 
 #key[Insert]=${terminfo[kich1]}
 #key[Delete]=${terminfo[kdch1]}
@@ -39,31 +39,35 @@ case $TERM in
 		bindkey '^[[8~' end-of-line
 		bindkey '^[[2~' overwrite-mode
 		bindkey '^[[3~' delete-char
-		bindkey '^[[d'  emacs-backward-word
-		bindkey '^[[c'  emacs-forward-word
+		bindkey '^[[5~' up-line-or-history
+		bindkey '^[[6~' down-line-or-history
+		bindkey '^[Od'  emacs-backward-word
+		bindkey '^[Oc'  emacs-forward-word
 	;;
 	xterm-256color)
-		bindkey '^[[1~' beginning-of-line
-		bindkey '^[[4~' end-of-line
+		bindkey '^[[H' beginning-of-line
+		bindkey '^[[F' end-of-line
 		bindkey '^[[2~' overwrite-mode
 		bindkey '^[[3~' delete-char
-		bindkey '^[OD'  emacs-backward-word
-		bindkey '^[OC'  emacs-forward-word
+		bindkey '^[[5~' up-line-or-history
+		bindkey '^[[6~' down-line-or-history
+		bindkey '^[[1;5D'  emacs-backward-word
+		bindkey '^[[1;5C'  emacs-forward-word
     ;;
 esac
 
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
+## Finally, make sure the terminal is in application mode, when zle is
+## active. Only then are the values from $terminfo valid.
+#if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+#    function zle-line-init () {
+#        printf '%s' "${terminfo[smkx]}"
+#    }
+#    function zle-line-finish () {
+#        printf '%s' "${terminfo[rmkx]}"
+#    }
+#    zle -N zle-line-init
+#    zle -N zle-line-finish
+#fi
 
 # http://zshwiki.org/home/examples/zlewordchar
 my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
@@ -86,13 +90,13 @@ basename-previous-word () {
     modify-current-argument '${ARG:t}'
 }
 
-# Bind dirname-previous-word Ctrl+Up
+# Bind dirname-previous-word to Ctrl+Up
 zle -N dirname-previous-word
-bindkey '^[OA' dirname-previous-word
+bindkey '^[[1;5A' dirname-previous-word
 
-# Bind basename-previous-word Ctrl+Down
+# Bind basename-previous-word to Ctrl+Down
 zle -N basename-previous-word
-bindkey '^[OB' basename-previous-word
+bindkey '^[[1;5B' basename-previous-word
 
 ## Rewrite multiple dots in a path (... -> ../..)
 #rationalise-dot() {
