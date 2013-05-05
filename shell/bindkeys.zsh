@@ -7,6 +7,39 @@ zmodload zsh/zle
 setopt emacs
 bindkey -e
 
+# http://zshwiki.org/home/examples/zlewordchar
+my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
+my_extended_wordchars_space="${my_extended_wordchars} "
+my_extended_wordchars_slash="${my_extended_wordchars}/"
+
+backward-to-/ () {
+    local WORDCHARS=${my_extended_wordchars}
+    zle .backward-word
+    unquote-backward-word
+}
+
+dirname-previous-word () {
+    autoload -U modify-current-argument
+    modify-current-argument '${ARG:h}$(test "$ARG:h" = "/" || echo "/")'
+}
+zle -N dirname-previous-word
+
+basename-previous-word () {
+    autoload -U modify-current-argument
+    modify-current-argument '${ARG:t}'
+}
+zle -N basename-previous-word
+
+# # Rewrite multiple dots in a path (... -> ../..)
+# rationalise-dot() {
+# 	if [[ $LBUFFER = *.. ]]; then
+# 		LBUFFER+=/..
+# 	else
+# 		LBUFFER+=.
+# 		fi
+# }
+# zle -N rationalise-dot
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 #typeset -A key
@@ -43,7 +76,10 @@ case $TERM in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[Od'  emacs-backward-word
 		bindkey '^[Oc'  emacs-forward-word
+		bindkey '^[Oa' dirname-previous-word
+		bindkey '^[Ob' basename-previous-word
 	;;
+	# Konsole bindings
 	xterm-256color)
 		bindkey '^[[H' beginning-of-line
 		bindkey '^[[F' end-of-line
@@ -53,8 +89,13 @@ case $TERM in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[[1;5D'  emacs-backward-word
 		bindkey '^[[1;5C'  emacs-forward-word
+		bindkey '^[[1;5A' dirname-previous-word
+		bindkey '^[[1;5B' basename-previous-word
     ;;
 esac
+
+# Common bindings
+#bindkey '.' rationalise-dot
 
 ## Finally, make sure the terminal is in application mode, when zle is
 ## active. Only then are the values from $terminfo valid.
@@ -68,44 +109,4 @@ esac
 #    zle -N zle-line-init
 #    zle -N zle-line-finish
 #fi
-
-# http://zshwiki.org/home/examples/zlewordchar
-my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
-my_extended_wordchars_space="${my_extended_wordchars} "
-my_extended_wordchars_slash="${my_extended_wordchars}/"
-
-backward-to-/ () {
-    local WORDCHARS=${my_extended_wordchars}
-    zle .backward-word
-    unquote-backward-word
-}
-
-dirname-previous-word () {
-    autoload -U modify-current-argument
-    modify-current-argument '${ARG:h}$(test "$ARG:h" = "/" || echo "/")'
-}
-
-basename-previous-word () {
-    autoload -U modify-current-argument
-    modify-current-argument '${ARG:t}'
-}
-
-# Bind dirname-previous-word to Ctrl+Up
-zle -N dirname-previous-word
-bindkey '^[[1;5A' dirname-previous-word
-
-# Bind basename-previous-word to Ctrl+Down
-zle -N basename-previous-word
-bindkey '^[[1;5B' basename-previous-word
-
-## Rewrite multiple dots in a path (... -> ../..)
-#rationalise-dot() {
-#	if [[ $LBUFFER = *.. ]]; then
-#		LBUFFER+=/..
-#	else
-#		LBUFFER+=.
-#		fi
-#}
-#zle -N rationalise-dot
-#bindkey . rationalise-dot
 
