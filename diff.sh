@@ -1,18 +1,25 @@
 #!/bin/bash
 
-vimdiff ~/.bashrc bashrc
-vimdiff ~/.zshrc zshrc
-for conf in `ls ~/.shell/ | grep "\.sh"`; do
-	vimdiff ~/.shell/${conf} shell/${conf}
+function update_file() {
+	local prefix=""
+	if [ ${#} -ne 1 ]; then
+		if [ ${#} -ne 2 ]; then
+			exit 1
+		fi
+		prefix="${2}/"
+	fi
+	local filename="${1}"
+
+	if [ -n "`diff ~/.${prefix}${filename} ${prefix}${filename}`" ]; then
+		vimdiff ~/.${prefix}${filename} ${prefix}${filename}
+	fi
+}
+
+for f in 'bashrc' 'zshrc' 'ackrc' 'gitconfig' 'tmux.conf' 'vimrc'; do
+	update_file ${f}
 done
-for conf in `ls ~/.shell/ | grep "\.bash"`; do
-	vimdiff ~/.shell/${conf} shell/${conf}
+
+for f in `ls shell | grep "\.sh"; ls shell | grep "\.bash"; ls shell | grep "\.zsh"`; do
+	update_file ${f} "shell"
 done
-for conf in `ls ~/.shell/ | grep "\.zsh"`; do
-	vimdiff ~/.shell/${conf} shell/${conf}
-done
-vimdiff ~/.ackrc ackrc
-vimdiff ~/.gitconfig gitconfig
-vimdiff ~/.tmux.conf tmux.conf
-vimdiff ~/.vimrc vimrc
 
