@@ -100,6 +100,8 @@ case $TERM in
 esac
 
 # Common bindings
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^E' history-incremental-pattern-search-forward
 bindkey '^Z' foreground-vim
 #bindkey '.' rationalise-dot
 
