@@ -33,6 +33,7 @@ alias zshrc='vim ~/.zshrc'
 alias ..='cd ..'
 alias c='cd'
 alias df='df --human-readable'
+alias dmesg="dmesg --human"
 alias du='du --human-readable'
 alias gdb='gdb --quiet'
 alias gg='git g'
