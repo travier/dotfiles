@@ -35,7 +35,8 @@
 	rp = reset --patch
 	s = status
 	sh = show
-	su = submodule foreach git pull origin master
+	smi = submodule update --init
+	smu = submodule foreach git pull origin master
 [advice]
 	pushNonFastForward = false
 	statusHints = false
