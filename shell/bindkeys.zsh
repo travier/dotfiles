@@ -40,6 +40,11 @@ zle -N basename-previous-word
 # }
 # zle -N rationalise-dot
 
+foreground-vim() {
+	fg %vim &> /dev/null
+}
+zle -N foreground-vim
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 #typeset -A key
@@ -95,6 +100,7 @@ case $TERM in
 esac
 
 # Common bindings
+bindkey '^Z' foreground-vim
 #bindkey '.' rationalise-dot
 
 ## Finally, make sure the terminal is in application mode, when zle is
