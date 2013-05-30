@@ -10,6 +10,11 @@ function update_file() {
 	fi
 	local filename="${1}"
 
+	if [ ! -e ~/.${prefix}${filename} ]; then
+		cp -i ${prefix}${filename} ~/.${prefix}${filename}
+		return
+	fi
+
 	if [ -n "`diff ~/.${prefix}${filename} ${prefix}${filename}`" ]; then
 		vimdiff ~/.${prefix}${filename} ${prefix}${filename}
 	fi
