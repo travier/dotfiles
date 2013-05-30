@@ -13,7 +13,7 @@ rm -rf ~/.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 
 rm -rf ~/.shell
-mkdir ~/.shell/history
+mkdir -p ~/.shell/history
 
 # Install pathogen plugin
 curl -Sso ~/.vim/autoload/pathogen.vim \
