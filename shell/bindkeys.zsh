@@ -96,7 +96,20 @@ case $TERM in
 		bindkey '^[[1;5C'  emacs-forward-word
 		bindkey '^[[1;5A' dirname-previous-word
 		bindkey '^[[1;5B' basename-previous-word
-    ;;
+	;;
+	# tmux bindings
+	screen-256color)
+		bindkey '^[[1~' beginning-of-line
+		bindkey '^[[4~' end-of-line
+		bindkey '^[[2~' overwrite-mode
+		bindkey '^[[3~' delete-char
+		bindkey '^[[5~' up-line-or-history
+		bindkey '^[[6~' down-line-or-history
+		bindkey '^[OD'  emacs-backward-word
+		bindkey '^[OC'  emacs-forward-word
+		bindkey '^[OA' dirname-previous-word
+		bindkey '^[OB' basename-previous-word
+	;;
 esac
 
 # Common bindings
