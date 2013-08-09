@@ -10,7 +10,7 @@ fi
 ORIGIN_WD=${PWD}
 
 rm -rf ~/.vim
-mkdir -p ~/.vim/autoload ~/.vim/bundle
+mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/backup ~/.vim/undodir
 
 rm -rf ~/.shell
 mkdir -p ~/.shell/history
