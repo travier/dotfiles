@@ -60,7 +60,7 @@ export PATH="/home/tim/.gem/ruby/2.0.0/bin:$PATH"
 # Disable beep in graphical mode
 #test -z "$DISPLAY" || xset b off
 
-# Functions common to both zsh abd bash
+# Functions common to both zsh and bash
 
 # This is cool, but this is slow on first run. Disabling it
 #function parse_git_dirty {
@@ -100,7 +100,7 @@ man() {
 }
 
 # Create a backup file (.bak)
-bak() {
+backup() {
     if [ $# -ne 1 ]; then
         echo "Usage : $0 <filename>"
         return
