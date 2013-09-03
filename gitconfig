@@ -47,3 +47,13 @@
 	default = simple
 [column]
 	ui = auto
+[sendemail]
+	envelopesender =
+	smtpserver = smtp.gmail.com
+	smtpuser =
+	smtpencryption = tls
+	smtpserverport = 587
+	chainreplyto = false
+[format]
+	signoff = true
+	coverletter = auto
