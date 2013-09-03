@@ -110,6 +110,14 @@ case $TERM in
 		bindkey '^[OA' dirname-previous-word
 		bindkey '^[OB' basename-previous-word
 	;;
+	# Linux VT bindings
+	linux)
+		bindkey '^[[1~' beginning-of-line
+		bindkey '^[[4~' end-of-line
+		bindkey '^[[2~' overwrite-mode
+		bindkey '^[[3~' delete-char
+		bindkey '^[[5~' up-line-or-history
+		bindkey '^[[6~' down-line-or-history
 esac
 
 # Common bindings
