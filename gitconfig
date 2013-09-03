@@ -5,10 +5,6 @@
 	ui = true
 [core]
 	editor = vim
-[url "git://anongit.kde.org/"]
-	insteadOf = kde:
-[url "git@git.kde.org:"]
-	pushInsteadOf = kde:
 [alias]
 	a = add
 	ap = add --patch
@@ -57,3 +53,7 @@
 [format]
 	signoff = true
 	coverletter = auto
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "git@git.kde.org:"]
+	pushInsteadOf = kde:
