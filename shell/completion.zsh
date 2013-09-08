@@ -91,4 +91,4 @@ zstyle ':completion:::::' completer _force_rehash _complete _match _approximate
 zstyle ':completion:*:(cd|ls|mv|cp|rsync|rm):*' ignore-parents parent pwd
 
 # Ignore some patterns
-zstyle ':completion:*:complete:-command-::commands' ignored-patterns 'chmorph|mkdiskimage|mkdosfs|iptab|iptables-*|ip6tables-*'
+#zstyle ':completion:*:complete:-command-::commands' ignored-patterns 'chmorph|mkdiskimage|mkdosfs|iptab'
