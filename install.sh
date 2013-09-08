@@ -71,6 +71,9 @@ git clone https://github.com/dahu/vim-fanfingtastic.git
 # repeat.vim: enable repeating supported plugin maps with "."
 git clone https://github.com/tpope/vim-repeat.git
 
+# Syntax checking hacks for vim
+git clone https://github.com/scrooloose/syntastic.git
+
 # Clone special font for Powerline, don't forget to use it in your terminal
 # https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
