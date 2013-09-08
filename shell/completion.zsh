@@ -10,7 +10,7 @@ zstyle ':completion:*' completer _expand _complete _ignored _correct _approximat
 zstyle ':completion:*' accept-exact yes
 
 setopt completealiases
-zstyle :compinstall filename '/home/tim/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 
 # Schéma de complétion :
 # 1ère tabulation : complète jusqu'au bout de la partie commune et propose une liste de choix
@@ -34,7 +34,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 
 # Crée un cache des complétions possibles
 zstyle ':completion:*' use-cache true
-zstyle ':completion:*' cache-path "$HOME/.zcompcache"
+zstyle ':completion:*' cache-path "${HOME}/.zcompcache"
 
 # On ajoute la couleur à la complétion (utilise les LS_COLORS)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
