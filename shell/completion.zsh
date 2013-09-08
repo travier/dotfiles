@@ -5,6 +5,10 @@ autoload -Uz compinit
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 #zstyle ':completion:*' menu select
+
+# Avoid overzealous correction when a matching completion suggestion is found
+zstyle ':completion:*' accept-exact yes
+
 setopt completealiases
 zstyle :compinstall filename '/home/tim/.zshrc'
 
