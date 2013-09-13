@@ -27,9 +27,9 @@ function git_status {
 }
 
 if [ `whoami` = "root" ]; then
-	PROMPT="${RED}# "
+	PROMPT="${RED}#${OFF} "
 else
-	PROMPT="$ "
+	PROMPT="${GREEN}\$${OFF} "
 fi
 
 #RPROMPT='$(exitstatus)$(git_status)%n@%m:%~|%T'
