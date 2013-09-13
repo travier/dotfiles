@@ -51,8 +51,8 @@ export GIT_EDITOR='/usr/bin/vim'
 # Firefox hack, should be checked
 export MOZ_DISABLE_PANGO=1
 
-export FULLNAME="Timothée Ravier"
-export EMAIL="timothee.romain.ravier@gmail.com"
+export FULLNAME=""
+export EMAIL=""
 
 # Add local ruby path
 export PATH="/home/tim/.gem/ruby/2.0.0/bin:$PATH"
