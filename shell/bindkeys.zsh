@@ -8,27 +8,27 @@ setopt emacs
 bindkey -e
 
 # http://zshwiki.org/home/examples/zlewordchar
-my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
-my_extended_wordchars_space="${my_extended_wordchars} "
-my_extended_wordchars_slash="${my_extended_wordchars}/"
+__my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
+__my_extended_wordchars_space="${__my_extended_wordchars} "
+__my_extended_wordchars_slash="${__my_extended_wordchars}/"
 
-backward-to-/ () {
-    local WORDCHARS=${my_extended_wordchars}
+__backward-to-/ () {
+    local WORDCHARS=${__my_extended_wordchars}
     zle .backward-word
     unquote-backward-word
 }
 
-dirname-previous-word () {
+__dirname-previous-word () {
     autoload -U modify-current-argument
     modify-current-argument '${ARG:h}$(test "$ARG:h" = "/" || echo "/")'
 }
-zle -N dirname-previous-word
+zle -N __dirname-previous-word
 
-basename-previous-word () {
+__basename-previous-word () {
     autoload -U modify-current-argument
     modify-current-argument '${ARG:t}'
 }
-zle -N basename-previous-word
+zle -N __basename-previous-word
 
 # # Rewrite multiple dots in a path (... -> ../..)
 # rationalise-dot() {
@@ -40,10 +40,10 @@ zle -N basename-previous-word
 # }
 # zle -N rationalise-dot
 
-foreground-vim() {
+__foreground-vim() {
 	fg %vim &> /dev/null
 }
-zle -N foreground-vim
+zle -N __foreground-vim
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -81,8 +81,8 @@ case $TERM in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[Od'  emacs-backward-word
 		bindkey '^[Oc'  emacs-forward-word
-		bindkey '^[Oa' dirname-previous-word
-		bindkey '^[Ob' basename-previous-word
+		bindkey '^[Oa' __dirname-previous-word
+		bindkey '^[Ob' __basename-previous-word
 	;;
 	# Konsole bindings
 	xterm-256color)
@@ -94,8 +94,8 @@ case $TERM in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[[1;5D'  emacs-backward-word
 		bindkey '^[[1;5C'  emacs-forward-word
-		bindkey '^[[1;5A' dirname-previous-word
-		bindkey '^[[1;5B' basename-previous-word
+		bindkey '^[[1;5A' __dirname-previous-word
+		bindkey '^[[1;5B' __basename-previous-word
 	;;
 	# tmux bindings
 	screen-256color)
@@ -107,8 +107,8 @@ case $TERM in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[OD'  emacs-backward-word
 		bindkey '^[OC'  emacs-forward-word
-		bindkey '^[OA' dirname-previous-word
-		bindkey '^[OB' basename-previous-word
+		bindkey '^[OA' __dirname-previous-word
+		bindkey '^[OB' __basename-previous-word
 	;;
 	# Linux VT bindings
 	linux)
@@ -123,7 +123,7 @@ esac
 # Common bindings
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^E' history-incremental-pattern-search-forward
-bindkey '^Z' foreground-vim
+bindkey '^Z' __foreground-vim
 #bindkey '.' rationalise-dot
 
 ## Finally, make sure the terminal is in application mode, when zle is
