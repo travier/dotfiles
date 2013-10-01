@@ -176,11 +176,12 @@ autocmd FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " LaTeX support
 let g:tex_flavor='latex'
-au FileType tex set shiftwidth=2 tabstop=2
-" Set spellcheck locally
-"set au FileType tex setlocal spell spelllang=en_US
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='dvi,pdf'
+autocmd FileType tex set shiftwidth=2 tabstop=2
+" Set spellcheck locally
+"autocmd FileType tex setlocal spell spelllang=fr
+"autocmd FileType tex setlocal spell spelllang=en_US
 
 set complete=.,w,b,u,U,t,i,d
 
