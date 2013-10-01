@@ -79,8 +79,8 @@ case $TERM in
 		bindkey '^[[3~' delete-char
 		bindkey '^[[5~' up-line-or-history
 		bindkey '^[[6~' down-line-or-history
-		bindkey '^[Od'  emacs-backward-word
-		bindkey '^[Oc'  emacs-forward-word
+		bindkey '^[Od' emacs-backward-word
+		bindkey '^[Oc' emacs-forward-word
 		bindkey '^[Oa' __dirname-previous-word
 		bindkey '^[Ob' __basename-previous-word
 	;;
@@ -92,8 +92,8 @@ case $TERM in
 		bindkey '^[[3~' delete-char
 		bindkey '^[[5~' up-line-or-history
 		bindkey '^[[6~' down-line-or-history
-		bindkey '^[[1;5D'  emacs-backward-word
-		bindkey '^[[1;5C'  emacs-forward-word
+		bindkey '^[[1;5D' emacs-backward-word
+		bindkey '^[[1;5C' emacs-forward-word
 		bindkey '^[[1;5A' __dirname-previous-word
 		bindkey '^[[1;5B' __basename-previous-word
 	;;
@@ -105,8 +105,8 @@ case $TERM in
 		bindkey '^[[3~' delete-char
 		bindkey '^[[5~' up-line-or-history
 		bindkey '^[[6~' down-line-or-history
-		bindkey '^[OD'  emacs-backward-word
-		bindkey '^[OC'  emacs-forward-word
+		bindkey '^[OD' emacs-backward-word
+		bindkey '^[OC' emacs-forward-word
 		bindkey '^[OA' __dirname-previous-word
 		bindkey '^[OB' __basename-previous-word
 	;;
