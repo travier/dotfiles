@@ -129,7 +129,9 @@ pkginstall() {
 
 # Clean a PKGBUILD folder
 pkgclean() {
-    rm -rf src pkg *.pkg.tar.xz *.pkg.tar.xz.sig
+    rm -rf src pkg
+    rm *.pkg.tar.xz
+    rm *.pkg.tar.xz.sig
 }
 
 #set_proxy() {
