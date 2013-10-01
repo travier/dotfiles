@@ -25,4 +25,3 @@ setopt extended_history
 
 # Share history between zsh sessions
 #setopt share_history
-

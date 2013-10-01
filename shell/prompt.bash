@@ -25,4 +25,3 @@ if [ `whoami` = "root" ]; then
 else
 	PS1='\w$(git_status)$(exit_status)\$ '
 fi
-

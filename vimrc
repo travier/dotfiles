@@ -189,4 +189,3 @@ autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
 set complete=.,w,b,u,U,t,i,d
-

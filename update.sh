@@ -12,4 +12,3 @@ done
 
 cd "${ORIGIN_WD}"
 ./diff.sh
-

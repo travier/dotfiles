@@ -40,4 +40,3 @@ unsetopt nullglob
 
 # It seems like this as to be done at the end
 compinit
-

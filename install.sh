@@ -88,4 +88,3 @@ echo "Don't forget to install the following packages (Arch Linux):"
 echo " * vim-spell-en"
 echo " * vim-doxygentoolkit"
 echo "And to remap Caps lock to Control!"
-

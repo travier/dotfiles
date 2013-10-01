@@ -27,4 +27,3 @@ done
 for f in `ls shell | grep "\.sh"; ls shell | grep "\.bash"; ls shell | grep "\.zsh"`; do
 	update_file ${f} "shell"
 done
-

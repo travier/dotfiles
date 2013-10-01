@@ -34,4 +34,3 @@ fi
 
 #RPROMPT='$(exitstatus)$(git_status)%n@%m:%~|%T'
 RPROMPT='$(exit_status)$(git_status)%~'
-

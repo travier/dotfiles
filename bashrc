@@ -14,4 +14,3 @@ shopt -s autocd
 shopt -s cdspell
 
 set show-all-if-ambiguous on
-
