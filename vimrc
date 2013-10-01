@@ -183,5 +183,10 @@ autocmd FileType tex set shiftwidth=2 tabstop=2
 "autocmd FileType tex setlocal spell spelllang=fr
 "autocmd FileType tex setlocal spell spelllang=en_US
 
+" Web related options
+autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+
 set complete=.,w,b,u,U,t,i,d
 
