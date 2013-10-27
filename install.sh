@@ -7,8 +7,6 @@ if [ ${#} -ne 1 ]; then
 	exit ${E_BADARGS}
 fi
 
-ORIGIN_WD=${PWD}
-
 rm -rf ~/.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/backup ~/.vim/undodir
 
@@ -19,7 +17,7 @@ mkdir -p ~/.shell/history
 curl -Sso ~/.vim/autoload/pathogen.vim \
 	https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
-cd ~/.vim/bundle/
+pushd ~/.vim/bundle/
 
 # Open a file and go to specified line using <filename>:<line>
 git clone https://github.com/bogado/file-line.git
@@ -81,7 +79,8 @@ git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
 curl -Sso ~/.shell/dircolors.256dark \
 	https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark
 
-cd "${ORIGIN_WD}"
+popd
+
 ./diff.sh
 
 echo "Don't forget to install the following packages (Arch Linux):"

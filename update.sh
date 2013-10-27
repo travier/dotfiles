@@ -1,8 +1,7 @@
 #!/bin/bash
 
-ORIGIN_WD=$PWD
+pushd ~/.vim/bundle
 
-cd ~/.vim/bundle
 for b in `ls`; do 
 	cd $b
 	echo "[+] Updating $b"
@@ -10,5 +9,6 @@ for b in `ls`; do
 	cd ..
 done
 
-cd "${ORIGIN_WD}"
+popd
+
 ./diff.sh
