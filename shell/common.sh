@@ -114,23 +114,6 @@ restore() {
     cp $1{.bak,}
 }
 
-# Remove all *-debug packages installed
-pkgremovedebug() {
-    sudo pacman -Rns $(pacman -Qq | grep debug)
-}
-
-# Install only non-debug packages
-pkginstall() {
-    sudo pacman -U $(ls *.pkg.tar.xz | grep -v "\-debug")
-}
-
-# Clean a PKGBUILD folder
-pkgclean() {
-    rm -rf src pkg
-    rm *.pkg.tar.xz
-    rm *.pkg.tar.xz.sig
-}
-
 #set_proxy() {
 #	export http_proxy=http://0.0.0.0:5187/
 #	export https_proxy=$http_proxy
