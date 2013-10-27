@@ -1,6 +1,8 @@
 # Force SHELL to be zsh
 SHELL=/bin/zsh
 
+source /etc/zsh/zprofile
+
 # Source all generic and zsh specific config from ~/.shell
 for conf in `ls ~/.shell/*.sh ~/.shell/*.zsh`; do
 	source ${conf}

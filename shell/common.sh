@@ -1,8 +1,5 @@
 # All commands shared by both zsh and bash
 
-# Source /etc/profile to get all /etc/profile.d/*
-source /etc/profile
-
 # Source Git functions
 #source /usr/share/git/completion/git-prompt.sh
 #export GIT_PS1_SHOWDIRTYSTATE=true
