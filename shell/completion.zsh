@@ -61,10 +61,10 @@ zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
 
 # Ignore some system users in zsh users pattern
 zstyle ':completion:*:*:*:users' ignored-patterns \
-    adm apache bin daemon games gdm halt ident junkbust lp mail mailnull \
-    named news nfsnobody nobody nscd ntp operator pcap postgres radvd \
-    rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs backup  bind  \
-    dictd  gnats  identd  irc  man  messagebus  postfix  proxy  sys  www-data
+	adm apache bin daemon games gdm halt ident junkbust lp mail mailnull \
+	named news nfsnobody nobody nscd ntp operator pcap postgres radvd \
+	rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs backup  bind  \
+	dictd gnats identd irc man messagebus postfix proxy sys www-data
 
 # Ignore completion function (_<program>) used by zsh when completing functions
 zstyle ':completion:*:functions' ignored-patterns '_*'
@@ -78,8 +78,8 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 # Force path update during completion
 _force_rehash()
 {
-    (( CURRENT == 1 )) && rehash
-    return 1
+	(( CURRENT == 1 )) && rehash
+	return 1
 }
 
 # Try to find approximations
