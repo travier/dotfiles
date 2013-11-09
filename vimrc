@@ -58,8 +58,11 @@ set history=200
 " Ignore files with specific extensions
 set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo
 
-" Enable en_US spellcheck
+" Enable en_US spellcheck and use function keys to change spelllang
 setlocal spell spelllang=en_us
+noremap <F3> :setlocal spell spelllang=en_us<CR>
+noremap <F4> :setlocal spell spelllang=fr<CR>
+noremap <F5> :setlocal nospell<CR>
 
 " Autoreload files
 set autoread
@@ -179,9 +182,6 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='dvi,pdf'
 autocmd FileType tex set shiftwidth=2 tabstop=2
-" Set spellcheck locally
-"autocmd FileType tex setlocal spell spelllang=fr
-"autocmd FileType tex setlocal spell spelllang=en_US
 
 " Web related options
 autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2
