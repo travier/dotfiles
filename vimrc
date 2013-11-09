@@ -56,7 +56,7 @@ set undoreload=100 "maximum number lines to save for undo on a buffer reload
 set history=200
 
 " Ignore files with specific extensions
-set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo
+set suffixes=.aux,.bak,.bbl,.blg,.brf,.cb,.dvi,.gif,.idx,.ilg,.ind,.info,.inx,.jpeg,.jpg,.o,.out,.pdf,.png,.pyc,.pyo,.swo,.swp,.toc,~
 
 " Enable en_US spellcheck and use function keys to change spelllang
 setlocal spell spelllang=en_us
