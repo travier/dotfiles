@@ -55,8 +55,8 @@ zstyle ':completion:*' use-ip true
 
 # Custom completion for some tools
 zstyle ':completion:*:*:zless:*' file-patterns '*(-/):directories *.gz:all-files'
-zstyle ':completion:*:*:vim:*' ignored-patterns '*.(o|pyc)'
-zstyle ':completion:*:*:less*:*' ignored-patterns '*.(o|pyc)'
+zstyle ':completion:*:*:vim:*' ignored-patterns '*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
+zstyle ':completion:*:*:less*:*' ignored-patterns '*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
 
 # Ignore some system users in zsh users pattern
