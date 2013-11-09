@@ -69,8 +69,8 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 # Ignore completion function (_<program>) used by zsh when completing functions
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-# Ignore files already mentioned on a line
-zstyle ':completion:*:(rm|kill|diff|pacman):*' ignore-line yes
+# Ignore completion option already mentioned on a line
+zstyle ':completion:*:(diff|kill|ln|ls|pacman|rm):*' ignore-line yes
 
 # Set the maximum errors allowed to be corrected during completion
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
