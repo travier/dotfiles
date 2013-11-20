@@ -48,6 +48,9 @@ export GIT_EDITOR='/usr/bin/vim'
 # Firefox hack, should be checked
 export MOZ_DISABLE_PANGO=1
 
+# Longer lines for pdflatex output
+export max_print_line=1000
+
 export FULLNAME=""
 export EMAIL=""
 
