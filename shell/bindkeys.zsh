@@ -45,6 +45,12 @@ __foreground-vim() {
 }
 zle -N __foreground-vim
 
+__insert-sudo-at-beginning-of-line() {
+	zle beginning-of-line
+	zle -U "sudo "
+}
+zle -N __insert-sudo-at-beginning-of-line
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 #typeset -A key
@@ -124,6 +130,7 @@ esac
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^E' history-incremental-pattern-search-forward
 bindkey '^Z' __foreground-vim
+bindkey '^[s' __insert-sudo-at-beginning-of-line
 #bindkey '.' rationalise-dot
 
 ## Finally, make sure the terminal is in application mode, when zle is
