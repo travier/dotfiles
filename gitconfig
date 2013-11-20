@@ -22,6 +22,7 @@
 	l = log
 	ll = log --oneline
 	lo = log --oneline --max-count=10
+	up = remote update
 	pgm = push github master
 	pr = pull --rebase
 	r = reset
