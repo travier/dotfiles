@@ -2,7 +2,7 @@ RED="\e[1;31m"
 GREEN="\e[1;32m"
 OFF="\e[0m"
 
-function exit_status {
+function __exit_status {
 	local EXITSTATUS="$?"
 
 	if [ "${EXITSTATUS}" -ne "0" ]
@@ -11,7 +11,7 @@ function exit_status {
 	fi
 }
 
-function git_status {
+function __git_status {
 	local GIT_STATUS="$(__git_ps1 %s)"
 
 	if [ -n "${GIT_STATUS}" ]
@@ -20,8 +20,10 @@ function git_status {
 	fi
 }
 
-if [ `whoami` = "root" ]; then
-	PS1='\w$(git_status)$(exit_status)${RED}# '
-else
-	PS1='\w$(git_status)$(exit_status)\$ '
+unset PS1
+
+if [ -n "${SSH_CLIENT}" ]; then
+	PS1='\u@\H:'
 fi
+
+PS1=${PS1}'\w$(__git_status)$(__exit_status)\$ '

@@ -8,7 +8,7 @@ RED="%{$fg[red]%}"
 GREEN="%{$fg[green]%}"
 OFF="%{$reset_color%}"
 
-function exit_status {
+function __exit_status {
 	local EXITSTATUS="$?"
 
 	if [ "${EXITSTATUS}" -ne "0" ]
@@ -17,7 +17,7 @@ function exit_status {
 	fi
 }
 
-function git_status {
+function __git_status {
 	local GITSTATUS="$(__git_ps1 %s)"
 
 	if [ -n "${GITSTATUS}" ]
@@ -26,11 +26,11 @@ function git_status {
 	fi
 }
 
-if [ `whoami` = "root" ]; then
-	PROMPT="${RED}#${OFF} "
-else
-	PROMPT="${GREEN}\$${OFF} "
+unset PROMPT
+
+if [ -n "${SSH_CLIENT}" ]; then
+	PROMPT='%n@%M:'
 fi
 
-#RPROMPT='$(exitstatus)$(git_status)%n@%m:%~|%T'
-RPROMPT='$(exit_status)$(git_status)%~'
+PROMPT=${PROMPT}"${GREEN}\$${OFF} "
+RPROMPT='$(__exit_status)$(__git_status)%~|%T'
