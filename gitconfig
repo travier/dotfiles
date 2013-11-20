@@ -46,11 +46,17 @@
 	ui = auto
 [sendemail]
 	envelopesender =
-	smtpserver = smtp.gmail.com
-	smtpuser =
-	smtpencryption = tls
-	smtpserverport = 587
 	chainreplyto = false
+	smtpserver =
+	smtpdomain =
+	smtpuser =
+	smtpserverport = 465
+	smtpencryption = ssl
+#	envelopesender = @gmail.com
+#	smtpserver = smtp.gmail.com
+#	smtpuser =
+#	smtpserverport = 587
+#	smtpencryption = tls
 [format]
 	signoff = true
 	coverletter = auto
