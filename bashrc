@@ -14,5 +14,6 @@ done
 
 shopt -s autocd
 shopt -s cdspell
+shopt -s nocaseglob
 
 set show-all-if-ambiguous on
