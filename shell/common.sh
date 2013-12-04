@@ -57,6 +57,13 @@ export EMAIL=""
 # Add local ruby path
 export PATH="/home/tim/.gem/ruby/2.0.0/bin:$PATH"
 
+# Use gpg-agent if available
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+	source "${HOME}/.gpg-agent-info"
+	export GPG_AGENT_INFO
+	export SSH_AUTH_SOCK
+fi
+
 # Disable beep in graphical mode
 #test -z "$DISPLAY" || xset b off
 
