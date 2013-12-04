@@ -46,7 +46,7 @@
 [column]
 	ui = auto
 [sendemail]
-	envelopesender =
+	from =
 	chainreplyto = false
 	smtpserver =
 	smtpdomain =
