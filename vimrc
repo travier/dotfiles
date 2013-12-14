@@ -38,6 +38,34 @@ inoremap jk <Esc>
 " Use U for undo instead of C-r
 noremap U <C-r>
 
+" Use ranger as vim file manager
+function! RangeChooser()
+	" Get a temporary filename without creating it
+	let temp = tempname()
+	" Launch ranger, passing it the temp file name
+	exec 'silent !ranger --choosefiles=' . shellescape(temp)
+	" If the temp file has not been written by ranger
+	if !filereadable(temp)
+		" Nothing to read.
+		return
+	endif
+	let names = readfile(temp)
+	if empty(names)
+		" Nothing to open.
+		return
+	endif
+	" Edit the first item.
+	exec 'edit ' . fnameescape(names[0])
+	" Add any remaning items to the arg list/buffer list.
+	for name in names[1:]
+		exec 'argadd ' . fnameescape(name)
+	endfor
+	redraw!
+endfunction
+
+command! -bar RangerChooser call RangeChooser()
+nnoremap <leader>r :<C-U>RangerChooser<CR>
+
 " Do not use <file>~ or .swap as backup
 set directory=~/.vim/backup,/tmp,/var/tmp
 " Or just remove backups
