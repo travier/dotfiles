@@ -31,9 +31,8 @@ set nomodeline
 let mapleader = ","
 let g:mapleader = ","
 
-" Use 'jk' instead of <Esc> to leave insert mode
+" Use 'jk' in addition of <Esc> to leave insert mode
 inoremap jk <Esc>
-"inoremap <Esc> <Nop>
 
 " Use U for undo instead of C-r
 noremap U <C-r>
