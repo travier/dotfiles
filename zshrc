@@ -21,10 +21,10 @@ unsetopt beep
 # Allow to comment lines in interactive shell
 setopt interactive_comments
 
-# Correction des commandes
+# Auto correct commands
 setopt correct
 
-# Ask for confirmation we removing files with '*'
+# Ask for confirmation when removing files with '*'
 unsetopt rm_star_silent
 
 # Handle symbolic links in paths
@@ -33,12 +33,12 @@ setopt chase_dots
 # Resolve symbolic links
 setopt chase_links
 
-# On active les jokers étendus
+# Enable extended globing
 setopt extendedglob
 
-# Si on utilise des jokers dans une liste d'arguments, retire les jokers qui ne correspondent à rien au lieu de donner une erreur
-# Désactivé pour éviter les effets de bords non voulu avec ls (si contient * liste tous dans le répertoire actuel au lieu de faire une erreur si elle devrait se produire)
+# When globing is used in an argument list, remove unmatched elements instead
+# of outputting an error. Disabled to avoid unwanted side effects with 'ls'.
 unsetopt nullglob
 
-# It seems like this as to be done at the end
+# It seems like this one as to be done at the end
 compinit
