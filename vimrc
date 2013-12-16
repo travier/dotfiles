@@ -36,6 +36,10 @@ inoremap jk <Esc>
 
 " Use U for undo instead of C-r
 noremap U <C-r>
+" Use <leader>c to close quickfix window
+noremap <leader>c :ccl<CR>
+" Use <leader>m to use tpope dispatch Make
+noremap <leader>m :Make<CR>
 
 " Use ranger as vim file manager
 function! RangeChooser()
