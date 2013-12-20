@@ -70,7 +70,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # Ignore completion option already mentioned on a line
-zstyle ':completion:*:(diff|kill|ln|ls|pacman|rm):*' ignore-line yes
+zstyle ':completion:*:(diff|kill|ln|ls|pacman|rm):*' ignore-line other
 
 # Set the maximum errors allowed to be corrected during completion
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
