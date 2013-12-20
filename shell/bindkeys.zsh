@@ -1,8 +1,6 @@
 # Key bindings related to zsh
 
-# Default to emacs-like bindings
-bindkey -e
-
+# Custom variables and functions for bindings
 # http://zshwiki.org/home/examples/zlewordchar
 __my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
 __my_extended_wordchars_space="${__my_extended_wordchars} "
@@ -26,16 +24,6 @@ __basename-previous-word () {
 }
 zle -N __basename-previous-word
 
-# # Rewrite multiple dots in a path (... -> ../..)
-# rationalise-dot() {
-# 	if [[ $LBUFFER = *.. ]]; then
-# 		LBUFFER+=/..
-# 	else
-# 		LBUFFER+=.
-# 		fi
-# }
-# zle -N rationalise-dot
-
 __foreground-vim() {
 	fg %vim &> /dev/null
 }
@@ -46,6 +34,16 @@ __insert-sudo-at-beginning-of-line() {
 	zle -U "sudo "
 }
 zle -N __insert-sudo-at-beginning-of-line
+
+# # Rewrite multiple dots in a path (... -> ../..)
+# __rationalise-dot() {
+# 	if [[ $LBUFFER = *.. ]]; then
+# 		LBUFFER+=/..
+# 	else
+# 		LBUFFER+=.
+# 		fi
+# }
+# zle -N __rationalise-dot
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -71,6 +69,25 @@ zle -N __insert-sudo-at-beginning-of-line
 #[[ -n "${key[Right]}"  ]] && bindkey "${key[Right]}"  forward-char
 #[[ -n "${key[Home]}"   ]] && bindkey "${key[Home]}"   beginning-of-line
 #[[ -n "${key[End]}"    ]] && bindkey "${key[End]}"    end-of-line
+
+# Default to vim-like bindings
+bindkey -v
+
+# Common bindings
+bindkey -M viins 'jk' vi-cmd-mode
+
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^E' history-incremental-pattern-search-forward
+
+bindkey '^H' emacs-backward-word
+bindkey '^L' emacs-forward-word
+bindkey '^K' __dirname-previous-word
+bindkey '^J' __basename-previous-word
+
+bindkey '^Z' __foreground-vim
+bindkey '^[s' __insert-sudo-at-beginning-of-line
+
+#bindkey '.' rationalise-dot
 
 # Force some bindings
 case $TERM in
@@ -121,10 +138,3 @@ case $TERM in
 		bindkey '^[[5~' up-line-or-history
 		bindkey '^[[6~' down-line-or-history
 esac
-
-# Common bindings
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey '^E' history-incremental-pattern-search-forward
-bindkey '^Z' __foreground-vim
-bindkey '^[s' __insert-sudo-at-beginning-of-line
-#bindkey '.' rationalise-dot
