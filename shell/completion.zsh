@@ -55,17 +55,20 @@ zstyle ':completion:*:complete:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' use-ip true
 
 # Custom completion for some tools
-zstyle ':completion:*:*:zless:*' file-patterns '*(-/):directories *.gz:all-files'
-zstyle ':completion:*:*:vim:*' ignored-patterns '*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
-zstyle ':completion:*:*:less*:*' ignored-patterns '*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
+zstyle ':completion:*:*:zless:*' file-patterns \
+	'*(-/):directories *.gz:all-files'
+zstyle ':completion:*:*:vim:*' ignored-patterns \
+	'*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
+zstyle ':completion:*:*:less*:*' ignored-patterns \
+	'*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
 
 # Ignore some system users in zsh users pattern
 zstyle ':completion:*:*:*:users' ignored-patterns \
 	adm apache bin daemon games gdm halt ident junkbust lp mail mailnull \
-	named news nfsnobody nobody nscd ntp operator pcap postgres radvd \
-	rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs backup  bind  \
-	dictd gnats identd irc man messagebus postfix proxy sys www-data
+	named news nfsnobody nobody nscd ntp operator pcap postgres radvd rpc \
+	rpcuser rpm shutdown squid sshd sync uucp vcsa xfs backup bind dictd \
+	gnats identd irc man messagebus postfix proxy sys www-data
 
 # Ignore completion function (_<program>) used by zsh when completing functions
 zstyle ':completion:*:functions' ignored-patterns '_*'
