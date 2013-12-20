@@ -1,10 +1,6 @@
 # Key bindings related to zsh
 
-# Load Zsh Line Editor
-zmodload zsh/zle
-
 # Default to emacs-like bindings
-setopt emacs
 bindkey -e
 
 # http://zshwiki.org/home/examples/zlewordchar
@@ -132,16 +128,3 @@ bindkey '^E' history-incremental-pattern-search-forward
 bindkey '^Z' __foreground-vim
 bindkey '^[s' __insert-sudo-at-beginning-of-line
 #bindkey '.' rationalise-dot
-
-## Finally, make sure the terminal is in application mode, when zle is
-## active. Only then are the values from $terminfo valid.
-#if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-#    function zle-line-init () {
-#        printf '%s' "${terminfo[smkx]}"
-#    }
-#    function zle-line-finish () {
-#        printf '%s' "${terminfo[rmkx]}"
-#    }
-#    zle -N zle-line-init
-#    zle -N zle-line-finish
-#fi
