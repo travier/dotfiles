@@ -7,6 +7,7 @@ setopt PROMPT_SUBST
 __RED="%{$fg[red]%}"
 __GREEN="%{$fg[green]%}"
 __OFF="%{$reset_color%}"
+__VIMMODE="\$"
 
 function __exit_status {
 	local EXITSTATUS="$?"
@@ -32,5 +33,13 @@ if [ -n "${SSH_CLIENT}" ]; then
 	PROMPT='%n@%M:'
 fi
 
-PROMPT=${PROMPT}"${__GREEN}\$${__OFF} "
+# Set VIMMODE variable to $ in insert mode and § in command mode
+function zle-line-init zle-keymap-select {
+	__VIMMODE="${${KEYMAP/vicmd/§}/(main|viins)/\$}"
+	zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+PROMPT=${PROMPT}${__GREEN}'${__VIMMODE}'${__OFF}" "
 RPROMPT='$(__exit_status)$(__git_status)%~|%T'
