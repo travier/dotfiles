@@ -4,7 +4,8 @@ autoload -Uz compinit
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 
 # Avoid overzealous correction when a matching completion suggestion is found
-zstyle ':completion:*' accept-exact yes
+# zstyle ':completion:*:expand:*' accept-exact true
+# zstyle ':completion:*' accept-exact-dirs true
 
 setopt completealiases
 zstyle :compinstall filename "${HOME}/.zshrc"
@@ -83,7 +84,8 @@ _force_rehash()
 }
 
 # Try to find approximations
-zstyle ':completion:*:match:*' original only
+# zstyle ':completion:*:match:*' original true
+# zstyle ':completion:*:match:*' match-original true
 zstyle ':completion:::::' completer _force_rehash _complete _match _approximate
 
 # Do not include current path when completing '../' style paths: if pwd = foo,
