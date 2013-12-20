@@ -22,6 +22,8 @@
 	l = log
 	ll = log --oneline
 	lo = log --oneline --max-count=10
+	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
+	lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen((%cr) %C(bold blue)%Creset' --abbrev-commit
 	up = remote update
 	pgm = push github master
 	pr = pull --rebase
