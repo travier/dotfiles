@@ -4,16 +4,16 @@ autoload -U colors && colors
 # Allow functions in prompt
 setopt PROMPT_SUBST
 
-RED="%{$fg[red]%}"
-GREEN="%{$fg[green]%}"
-OFF="%{$reset_color%}"
+__RED="%{$fg[red]%}"
+__GREEN="%{$fg[green]%}"
+__OFF="%{$reset_color%}"
 
 function __exit_status {
 	local EXITSTATUS="$?"
 
 	if [ "${EXITSTATUS}" -ne "0" ]
 	then
-		echo "${RED}%?${OFF}|"
+		echo "${__RED}%?${__OFF}|"
 	fi
 }
 
@@ -22,7 +22,7 @@ function __git_status {
 
 	if [ -n "${GITSTATUS}" ]
 	then
-		echo "${GREEN}${GITSTATUS}${OFF}|"
+		echo "${__GREEN}${GITSTATUS}${__OFF}|"
 	fi
 }
 
@@ -32,5 +32,5 @@ if [ -n "${SSH_CLIENT}" ]; then
 	PROMPT='%n@%M:'
 fi
 
-PROMPT=${PROMPT}"${GREEN}\$${OFF} "
+PROMPT=${PROMPT}"${__GREEN}\$${__OFF} "
 RPROMPT='$(__exit_status)$(__git_status)%~|%T'
