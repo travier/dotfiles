@@ -35,7 +35,7 @@ fi
 
 # Set VIMMODE variable to $ in insert mode and § in command mode
 function zle-line-init zle-keymap-select {
-	__VIMMODE="${${KEYMAP/vicmd/§}/(main|viins)/\$}"
+	__VIMMODE="${${KEYMAP/vicmd/⚡}/(main|viins)/\$}"
 	zle reset-prompt
 }
 zle -N zle-line-init
