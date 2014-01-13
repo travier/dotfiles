@@ -84,6 +84,9 @@ bindkey '^L' emacs-forward-word
 bindkey '^K' __dirname-previous-word
 bindkey '^J' __basename-previous-word
 
+bindkey '^?' backward-delete-char
+bindkey '^L' clear-screen
+
 bindkey '^Z' __foreground-vim
 bindkey '^[s' __insert-sudo-at-beginning-of-line
 
