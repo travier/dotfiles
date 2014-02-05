@@ -34,13 +34,16 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' cache-path "${HOME}/.zcompcache"
 
-# Add 'LS_COLORS' colors
+# Add colors for completion using 'LS_COLORS'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+# Color already completed parts
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=33}:${(s.:.)LS_COLORS}")';
+
 # Add colors and kill command menu completion
-zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
+zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*'   force-list always
+zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 
 # Sort available completion suggestions in groups
 zstyle ':completion:*' group-name ''
