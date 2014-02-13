@@ -41,6 +41,29 @@ noremap <leader>c :ccl<CR>
 " Use <leader>m to use tpope dispatch Make
 noremap <leader>m :Make<CR>
 
+" Map <Plug>SearchPartyHighlightClear to avoid conflict
+nmap <leader>l <Plug>SearchPartyHighlightClear
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
+
+" Remove arrow keys mapping
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" More natural movement with long line
+nnoremap j gj
+nnoremap k gk
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Use ranger as vim file manager
 function! RangeChooser()
 	" Get a temporary filename without creating it
@@ -68,6 +91,8 @@ endfunction
 
 command! -bar RangerChooser call RangeChooser()
 nnoremap <leader>r :<C-U>RangerChooser<CR>
+
+nnoremap <leader>v :vs<CR>:<C-U>RangerChooser<CR><C-w>L
 
 " Do not use <file>~ or .swap as backup
 set directory=~/.vim/backup,/tmp,/var/tmp
