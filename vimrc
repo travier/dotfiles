@@ -230,6 +230,9 @@ set pastetoggle=<F2>
 " Save a file you forgot to open with sudo
 cmap w!! w !sudo tee % >/dev/null
 
+" Jump back to the last edit position when opening a file
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 " Python PEP 8 support
 autocmd FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
