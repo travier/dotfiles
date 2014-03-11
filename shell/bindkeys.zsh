@@ -90,6 +90,8 @@ bindkey '^L' clear-screen
 bindkey '^Z' __foreground-vim
 bindkey '^[s' __insert-sudo-at-beginning-of-line
 
+bindkey '^[OM' accept-line
+
 #bindkey '.' rationalise-dot
 
 # Force some bindings
