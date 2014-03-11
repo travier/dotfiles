@@ -243,7 +243,7 @@ let g:Tex_MultipleCompileFormats='dvi,pdf'
 autocmd FileType tex set shiftwidth=2 tabstop=2
 
 " Web related options
-autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=indent
+autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=manual
 autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
