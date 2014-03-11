@@ -20,7 +20,7 @@ function update_file() {
 	fi
 }
 
-for f in 'bashrc' 'zshrc' 'ackrc' 'gitconfig' 'tmux.conf' 'vimrc'; do
+for f in 'bashrc' 'zshrc' 'ackrc' 'gitconfig' 'tmux.conf' 'vimrc' 'tigrc'; do
 	update_file ${f}
 done
 
