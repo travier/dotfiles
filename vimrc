@@ -46,7 +46,7 @@ nmap <leader>l <Plug>SearchPartyHighlightClear
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
-nmap Q gqap
+nmap Q vipgq
 
 " Remove arrow keys mapping
 map <up> <nop>
