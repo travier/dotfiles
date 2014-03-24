@@ -28,21 +28,27 @@ colorscheme solarized
 " Do not use modelines, use the securemodelines plugin instead
 set nomodeline
 
-let mapleader = ","
-let g:mapleader = ","
+"let mapleader = ","
+"let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Use 'jk' in addition of <Esc> to leave insert mode
 inoremap jk <Esc>
 
 " Use U for undo instead of C-r
-noremap U <C-r>
+nnoremap U <C-r>
 " Use <leader>c to close quickfix window
-noremap <leader>c :ccl<CR>
+nnoremap <leader>c :ccl<CR>
 " Use <leader>m to use tpope dispatch Make
-noremap <leader>m :Make<CR>
+nnoremap <leader>m :Make<CR>
+" Use <leader>w to save
+nnoremap <leader>w :w<CR>
+" Use <leader>d to update the view in diff mode
+nnoremap <leader>d :diffupdate<CR>
 
 " Map <Plug>SearchPartyHighlightClear to avoid conflict
-nmap <leader>l <Plug>SearchPartyHighlightClear
+nmap <leader><CR> <Plug>SearchPartyHighlightClear
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
@@ -63,6 +69,10 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 " Use ranger as vim file manager
 function! RangeChooser()
@@ -90,8 +100,9 @@ function! RangeChooser()
 endfunction
 
 command! -bar RangerChooser call RangeChooser()
-nnoremap <leader>r :<C-U>RangerChooser<CR>
 
+" Set ranger bindings
+nnoremap <leader>r :<C-U>RangerChooser<CR>
 nnoremap <leader>v :vs<CR>:<C-U>RangerChooser<CR><C-w>L
 
 " Do not use <file>~ or .swap as backup
