@@ -38,14 +38,17 @@ inoremap jk <Esc>
 
 " Use U for undo instead of C-r
 nnoremap U <C-r>
-" Use <leader>c to close quickfix window
+" Close quickfix window
 nnoremap <leader>c :ccl<CR>
-" Use <leader>m to use tpope dispatch Make
+" Use tpope dispatch Make
 nnoremap <leader>m :Make<CR>
-" Use <leader>w to save
-nnoremap <leader>w :w<CR>
-" Use <leader>d to update the view in diff mode
+" Update the view in diff mode
 nnoremap <leader>d :diffupdate<CR>
+" Various shortcuts
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :x<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>s :SudoWrite<CR>
 
 " Map <Plug>SearchPartyHighlightClear to avoid conflict
 nmap <leader><CR> <Plug>SearchPartyHighlightClear
