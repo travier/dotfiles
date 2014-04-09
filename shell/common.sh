@@ -26,6 +26,10 @@ alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
 alias zshrc='vim ~/.zshrc'
 
+# systemd
+alias sdr='sudo systemctl daemon-reload'
+alias ssr='sudo systemctl restart'
+
 # Overload and others
 alias ..='cd ..'
 alias c='cd'
