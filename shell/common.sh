@@ -60,7 +60,7 @@ export FULLNAME=""
 export EMAIL=""
 
 # Add local ruby path
-export PATH="/home/tim/.gem/ruby/2.0.0/bin:$PATH"
+export PATH="$PATH:${HOME}/.gem/ruby/2.0.0/bin"
 
 # Use gpg-agent if available
 if [ -f "${HOME}/.gpg-agent-info" ]; then
