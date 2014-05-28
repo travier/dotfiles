@@ -86,11 +86,13 @@ function! RangeChooser()
 	" If the temp file has not been written by ranger
 	if !filereadable(temp)
 		" Nothing to read.
+		redraw!
 		return
 	endif
 	let names = readfile(temp)
 	if empty(names)
 		" Nothing to open.
+		redraw!
 		return
 	endif
 	" Edit the first item.
