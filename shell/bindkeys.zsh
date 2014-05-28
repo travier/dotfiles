@@ -25,7 +25,13 @@ __basename-previous-word () {
 zle -N __basename-previous-word
 
 __foreground-vim() {
-	fg %vim &> /dev/null
+	if [[ $#BUFFER -eq 0 ]]; then
+		fg %vim &> /dev/null
+		zle redisplay
+	else
+		zle push-input
+		zle clear-screen
+	fi
 }
 zle -N __foreground-vim
 
