@@ -20,6 +20,10 @@ let g:Powerline_colorscheme = 'solarized256'
 set laststatus=2
 set encoding=utf-8
 
+" Change supertab bindings
+let g:SuperTabMappingForward = '<s-c-@>'
+let g:SuperTabMappingBackward = '<c-@>'
+
 " Use solarized color theme
 set background=dark
 let g:solarized_termcolors=256
