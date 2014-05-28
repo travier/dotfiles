@@ -41,9 +41,12 @@ alias gdb='gdb --quiet'
 alias gg='git g'
 alias gr='grep -Rn'
 alias less='less -m'
+alias mutt='(cd && mutt)'
 alias pyserv='python -m http.server'
+alias syncmail='mbsync -a ; notmuch new'
 alias v='vim'
 alias vi='vim'
+alias xo='xdg-open'
 
 # Environment variables
 export GREP_COLOR="1;33"
