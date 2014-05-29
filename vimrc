@@ -37,6 +37,9 @@ set nomodeline
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
+" Fix inconsistent Y mapping
+nnoremap Y y$
+
 " Use 'jk' in addition of <Esc> to leave insert mode
 inoremap jk <Esc>
 
