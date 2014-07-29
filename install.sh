@@ -73,7 +73,7 @@ git clone https://github.com/tpope/vim-repeat.git
 git clone https://github.com/scrooloose/syntastic.git
 
 # A fancy start screen for Vim
- git clone https://github.com/mhinz/vim-startify
+git clone https://github.com/mhinz/vim-startify
 
 # Clone special font for Powerline, don't forget to use it in your terminal
 # https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
