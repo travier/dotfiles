@@ -12,12 +12,9 @@ filetype plugin on
 filetype indent on
 syntax on
 
-" Use PowerLine plugin
-let g:Powerline_symbols='fancy'
-" Config with no special font, reseted with :PowerlineClearCache
-"let g:Powerline_symbols = 'compatible'
-let g:Powerline_colorscheme = 'solarized256'
+" Config for Powerline plugin
 set laststatus=2
+
 set encoding=utf-8
 
 " Change supertab bindings
