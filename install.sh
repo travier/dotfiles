@@ -36,9 +36,6 @@ git clone https://github.com/honza/vim-snippets.git
 # Vim Markdown runtime files
 git clone https://github.com/tpope/vim-markdown.git
 
-# The ultimate vim statusline utility
-git clone https://github.com/Lokaltog/vim-powerline
-
 # Vim Git runtime files
 git clone https://github.com/tpope/vim-git.git
 
@@ -75,10 +72,6 @@ git clone https://github.com/scrooloose/syntastic.git
 # A fancy start screen for Vim
 git clone https://github.com/mhinz/vim-startify
 
-# Clone special font for Powerline, don't forget to use it in your terminal
-# https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
-
 curl -Sso ~/.shell/dircolors.256dark \
 	https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark
 
@@ -88,3 +81,5 @@ popd
 
 echo "Install the following packages (Arch Linux):"
 echo "vim-spell-en vim-spell-fr vim-doxygentoolkit vim-supertab vim-systemd"
+echo "From the AUR:"
+echo "python2-powerline-git"
