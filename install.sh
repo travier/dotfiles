@@ -15,7 +15,7 @@ mkdir -p ~/.shell/history
 
 # Install pathogen plugin
 curl -Sso ~/.vim/autoload/pathogen.vim \
-	https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+	https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 pushd ~/.vim/bundle/
 
@@ -73,7 +73,7 @@ git clone https://github.com/scrooloose/syntastic.git
 git clone https://github.com/mhinz/vim-startify
 
 curl -Sso ~/.shell/dircolors.256dark \
-	https://raw.github.com/seebi/dircolors-solarized/master/dircolors.256dark
+	https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 
 popd
 
