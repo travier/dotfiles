@@ -15,6 +15,7 @@
 	cb = checkout -b
 	co = checkout
 	cp = checkout --patch
+	ct = checkout --track
 	d = diff
 	dc = diff --cached
 	f = fetch
@@ -37,6 +38,7 @@
 	sh = show
 	smi = submodule update --init
 	smu = submodule foreach git pull origin master
+	tc = tag --contains
 [advice]
 	pushNonFastForward = false
 	statusHints = false
