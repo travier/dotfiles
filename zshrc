@@ -40,5 +40,8 @@ setopt extendedglob
 # of outputting an error. Disabled to avoid unwanted side effects with 'ls'.
 unsetopt nullglob
 
+# Fish shell like syntax highlighting for Zsh
+source ~/.shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # It seems like this one as to be done at the end
 compinit

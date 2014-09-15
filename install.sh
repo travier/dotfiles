@@ -81,6 +81,8 @@ pushd ~/.shell/
 curl -Sso dircolors.256dark \
 	https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+
 popd
 
 ./diff.sh
