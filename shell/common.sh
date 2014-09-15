@@ -66,6 +66,9 @@ export EMAIL=""
 # Add local ruby path
 export PATH="$PATH:${HOME}/.gem/ruby/2.0.0/bin"
 
+# Add path for Go
+export GOPATH="${HOME}/projects/gocode/"
+
 # Use gpg-agent if available
 if [ -f "${HOME}/.gpg-agent-info" ]; then
 	source "${HOME}/.gpg-agent-info"
