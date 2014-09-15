@@ -7,11 +7,9 @@ if [ ${#} -ne 1 ]; then
 	exit ${E_BADARGS}
 fi
 
+# Vim setup
 rm -rf ~/.vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/backup ~/.vim/undodir
-
-rm -rf ~/.shell
-mkdir -p ~/.shell/history
 
 # Install pathogen plugin
 curl -Sso ~/.vim/autoload/pathogen.vim \
@@ -72,7 +70,15 @@ git clone https://github.com/scrooloose/syntastic.git
 # A fancy start screen for Vim
 git clone https://github.com/mhinz/vim-startify
 
-curl -Sso ~/.shell/dircolors.256dark \
+popd
+
+# Shell setup
+rm -rf ~/.shell
+mkdir -p ~/.shell/history
+
+pushd ~/.shell/
+
+curl -Sso dircolors.256dark \
 	https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
 
 popd
