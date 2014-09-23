@@ -1,5 +1,5 @@
 # File where the history is stored
-export HISTFILE="$HOME/.shell/history/zsh"
+export HISTFILE="${HOME}/.shell/history/zsh"
 
 # Entries in hitsory file
 export SAVEHIST=5000

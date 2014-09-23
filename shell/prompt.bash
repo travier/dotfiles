@@ -3,7 +3,7 @@ GREEN="\e[1;32m"
 OFF="\e[0m"
 
 function __exit_status {
-	local EXITSTATUS="$?"
+	local EXITSTATUS="${?}"
 
 	if [ "${EXITSTATUS}" -ne "0" ]
 	then

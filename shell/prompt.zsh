@@ -10,7 +10,7 @@ __OFF="%{$reset_color%}"
 __VIMMODE="\$"
 
 function __exit_status {
-	local EXITSTATUS="$?"
+	local EXITSTATUS="${?}"
 
 	if [ "${EXITSTATUS}" -ne "0" ]
 	then

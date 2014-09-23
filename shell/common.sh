@@ -7,7 +7,7 @@
 #export GIT_PS1_SHOWSTASHSTATE=true
 
 # Set solarized colors for ls
-eval `dircolors -b ~/.shell/dircolors.256dark`
+eval $(dircolors -b ~/.shell/dircolors.256dark)
 
 # Colors related aliases
 alias ls='ls --color=auto'
@@ -64,7 +64,7 @@ export FULLNAME=""
 export EMAIL=""
 
 # Add local ruby path
-export PATH="$PATH:${HOME}/.gem/ruby/2.0.0/bin"
+export PATH="${PATH}:${HOME}/.gem/ruby/2.0.0/bin"
 
 # Add path for Go
 export GOPATH="${HOME}/projects/gocode/"
@@ -76,31 +76,10 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
 	export SSH_AUTH_SOCK
 fi
 
-# Disable beep in graphical mode
-#test -z "$DISPLAY" || xset b off
-
-# Functions common to both zsh and bash
-
-# This is cool, but this is slow on first run. Disabling it
-#function parse_git_dirty {
-#	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "⚡"
-#}
-
-#function parse_git_branch {
-#	local b="$(git branch --no-color 2> /dev/null | sed --expression='/^[^*]/d' --expression='s/^* //')"
-#	if [ -n "$b" ] && [ "$b" = "(no branch)" ]; then
-#		local b="$(git name-rev --name-only HEAD 2> /dev/null)"
-#	fi
-#
-#	if [ -n "$b" ]; then
-#		printf "@$b$(parse_git_dirty)"
-#	fi
-#}
-
 # Custom __git_ps1 function
 __git_ps1 () {
 	local b="$(git symbolic-ref HEAD 2>/dev/null)";
-	if [ -n "$b" ]; then
+	if [ -n "${b}" ]; then
 		printf "%s" "${b##refs/heads/}";
 	fi
 }
@@ -115,25 +94,25 @@ man() {
 		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
 		LESS_TERMCAP_ue=$(printf "\e[0m") \
 		LESS_TERMCAP_us=$(printf "\e[1;32m") \
-		man "$@"
+		man "${@}"
 }
 
 # Create a backup file (.bak)
 backup() {
-    if [ $# -ne 1 ]; then
-        echo "Usage : $0 <filename>"
+    if [ ${#} -ne 1 ]; then
+        print "Usage : %s <filename>" "${0}"
         return
     fi
-    cp $1{,.bak}
+    cp -- ${1}{,.bak}
 }
 
 # Restore a backup file (.bak)
 restore() {
-    if [ $# -ne 1 ]; then
-        echo "Usage : $0 <filename>"
+    if [ ${#} -ne 1 ]; then
+        print "Usage : %s <filename>" "${0}"
         return
     fi
-    cp $1{.bak,}
+    cp -- ${1}{.bak,}
 }
 
 #set_proxy() {

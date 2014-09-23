@@ -25,7 +25,7 @@ __basename-previous-word () {
 zle -N __basename-previous-word
 
 __foreground-vim() {
-	if [[ $#BUFFER -eq 0 ]]; then
+	if [[ ${#BUFFER} -eq 0 ]]; then
 		fg %vim &> /dev/null
 		zle redisplay
 	else
@@ -101,7 +101,7 @@ bindkey '^[OM' accept-line
 #bindkey '.' rationalise-dot
 
 # Force some bindings
-case $TERM in
+case ${TERM} in
 	rxvt*)
 		bindkey '^[[7~' beginning-of-line
 		bindkey '^[[8~' end-of-line
