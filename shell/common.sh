@@ -29,6 +29,8 @@ alias zshrc='vim ~/.zshrc'
 # systemd
 alias sdr='sudo systemctl daemon-reload'
 alias ssr='sudo systemctl restart'
+alias sss='sudo systemctl status'
+alias sje='sudo journalctl -e'
 
 # Overload and others
 alias ..='cd ..'
@@ -42,6 +44,7 @@ alias gdb='gdb --quiet'
 alias gg='git g'
 alias gr='grep --dereference-recursive --line-number'
 alias less='less --long-prompt'
+alias m='make'
 alias mutt='(cd && mutt)'
 alias pyserv='python -m http.server'
 alias syncmail='mbsync --all ; notmuch new'
