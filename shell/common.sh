@@ -16,9 +16,9 @@ alias diff='colordiff'
 
 # 'ls' related aliases
 alias l='ls'
-alias la='ls --almost-all --human-readable'
+alias la='ls --human-readable --almost-all'
 alias ll='ls --human-readable -l'
-alias lla='ls --almost-all --human-readable -l'
+alias lla='ls --human-readable -l --all'
 #alias ldir='ls -l| egrep "^d"'
 
 # Misc
@@ -40,11 +40,11 @@ alias g='git'
 alias gt='git'
 alias gdb='gdb --quiet'
 alias gg='git g'
-alias gr='grep -Rn'
-alias less='less -m'
+alias gr='grep --dereference-recursive --line-number'
+alias less='less --long-prompt'
 alias mutt='(cd && mutt)'
 alias pyserv='python -m http.server'
-alias syncmail='mbsync -a ; notmuch new'
+alias syncmail='mbsync --all ; notmuch new'
 alias v='vim'
 alias vi='vim'
 alias xo='xdg-open'
@@ -100,7 +100,7 @@ man() {
 # Create a backup file (.bak)
 backup() {
     if [ ${#} -ne 1 ]; then
-        print "Usage : %s <filename>" "${0}"
+        printf "Usage : %s <filename>\n" "${0}"
         return
     fi
     cp -- ${1}{,.bak}
@@ -109,7 +109,7 @@ backup() {
 # Restore a backup file (.bak)
 restore() {
     if [ ${#} -ne 1 ]; then
-        print "Usage : %s <filename>" "${0}"
+        printf "Usage : %s <filename>\n" "${0}"
         return
     fi
     cp -- ${1}{.bak,}
