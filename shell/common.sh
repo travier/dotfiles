@@ -79,14 +79,6 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
 	export SSH_AUTH_SOCK
 fi
 
-# Custom __git_ps1 function
-__git_ps1 () {
-	local b="$(git symbolic-ref HEAD 2>/dev/null)";
-	if [ -n "${b}" ]; then
-		printf "%s" "${b##refs/heads/}";
-	fi
-}
-
 # Colored man
 man() {
 	env \

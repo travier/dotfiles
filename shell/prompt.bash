@@ -11,6 +11,13 @@ function __exit_status {
 	fi
 }
 
+function __git_ps1 {
+	local b="$(git symbolic-ref HEAD 2>/dev/null)";
+	if [ -n "${b}" ]; then
+		printf "%s" "${b##refs/heads/}";
+	fi
+}
+
 function __git_status {
 	local GIT_STATUS="$(__git_ps1 %s)"
 
