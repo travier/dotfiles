@@ -1,11 +1,5 @@
 # All commands shared by both zsh and bash
 
-# Source Git functions
-#source /usr/share/git/completion/git-prompt.sh
-#export GIT_PS1_SHOWDIRTYSTATE=true
-#export GIT_PS1_SHOWUNTRACKEDFILES=true
-#export GIT_PS1_SHOWSTASHSTATE=true
-
 # Set solarized colors for ls
 eval $(dircolors -b ~/.shell/dircolors.256dark)
 
@@ -52,32 +46,23 @@ alias v='vim'
 alias vi='vim'
 alias xo='xdg-open'
 
+
 # Environment variables
 export GREP_COLOR="1;33"
 export EDITOR="/usr/bin/vim"
 export GIT_EDITOR='/usr/bin/vim'
 
-# Firefox hack, should be checked
-export MOZ_DISABLE_PANGO=1
-
 # Longer lines for pdflatex output
 export max_print_line=1000
 
-export FULLNAME=""
-export EMAIL=""
 
-# Add local ruby path
-export PATH="${PATH}:${HOME}/.gem/ruby/2.0.0/bin"
+# Various functions
 
-# Add path for Go
-export GOPATH="${HOME}/projects/gocode/"
-
-# # Use gpg-agent if available
-# if [ -f "${HOME}/.gpg-agent-info" ]; then
-# 	source "${HOME}/.gpg-agent-info"
-# 	export GPG_AGENT_INFO
-# 	export SSH_AUTH_SOCK
-# fi
+# Source Git functions
+#source /usr/share/git/completion/git-prompt.sh
+#export GIT_PS1_SHOWDIRTYSTATE=true
+#export GIT_PS1_SHOWUNTRACKEDFILES=true
+#export GIT_PS1_SHOWSTASHSTATE=true
 
 # Colored man
 man() {
@@ -109,11 +94,3 @@ restore() {
     fi
     cp -- ${1}{.bak,}
 }
-
-#set_proxy() {
-#	export http_proxy=http://0.0.0.0:5187/
-#	export https_proxy=$http_proxy
-#	export ftp_proxy=$http_proxy
-#	export rsync_proxy=$http_proxy
-#	export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-#}
