@@ -61,12 +61,6 @@ export max_print_line=1000
 
 # Various functions
 
-# Source Git functions
-#source /usr/share/git/completion/git-prompt.sh
-#export GIT_PS1_SHOWDIRTYSTATE=true
-#export GIT_PS1_SHOWUNTRACKEDFILES=true
-#export GIT_PS1_SHOWSTASHSTATE=true
-
 # Colored man
 man() {
 	env \
