@@ -70,6 +70,15 @@ git clone https://github.com/scrooloose/syntastic.git
 # A fancy start screen for Vim
 git clone https://github.com/mhinz/vim-startify
 
+# surround.vim: quoting/parenthesizing made simple
+git clone https://github.com/tpope/vim-surround.git
+
+# Vim plugin for the Perl module / CLI script 'ack'
+git clone https://github.com/mileszs/ack.vim.git
+
+# Rust support
+git clone https://github.com/wting/rust.vim.git
+
 popd
 
 # Shell setup
