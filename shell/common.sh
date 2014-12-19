@@ -33,6 +33,7 @@ alias df='df --human-readable'
 alias dmesg="dmesg --human"
 alias du='du --human-readable'
 alias g='git'
+alias gi='git'
 alias gt='git'
 alias gdb='gdb --quiet'
 alias gg='git g'
