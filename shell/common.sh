@@ -25,6 +25,7 @@ alias sdr='sudo systemctl daemon-reload'
 alias ssr='sudo systemctl restart'
 alias sss='sudo systemctl status'
 alias sje='sudo journalctl -e'
+alias sjf='sudo journalctl -fn 100'
 
 # Overload and others
 alias ..='cd ..'
