@@ -30,9 +30,11 @@ set encoding=utf-8
 let g:SuperTabMappingForward = '<s-c-@>'
 let g:SuperTabMappingBackward = '<c-@>'
 
-" Use solarized color theme
+" Set background for solarized theme
 set background=dark
+" Force degraded 256 colorscheme
 let g:solarized_termcolors=256
+" Use solarized color theme
 colorscheme solarized
 
 " Do not use modelines, use the securemodelines plugin instead
