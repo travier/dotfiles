@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Stop if any command returns a non-zero value including when piping commands
+set -e
+set -o pipefail
 
 # Use any argument to bypass this check
 E_BADARGS=65
 if [ ${#} -ne 1 ]; then
-	echo "READ ME before blindly launching me!!"
+	printf "READ ME before blindly launching me!!\n"
 	exit ${E_BADARGS}
 fi
 
@@ -96,7 +100,7 @@ popd
 
 ./diff.sh
 
-echo "Install the following packages (Arch Linux):"
-echo "vim-spell-en vim-spell-fr vim-doxygentoolkit vim-supertab vim-systemd"
-echo "From the AUR:"
-echo "python2-powerline-git"
+printf "Install the following packages (Arch Linux):\n"
+printf "vim-spell-en vim-spell-fr vim-doxygentoolkit vim-supertab vim-systemd\n"
+printf "From the AUR:\n"
+printf "python2-powerline-git\n"

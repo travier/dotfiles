@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Stop if any command returns a non-zero value including when piping commands
+set -e
+set -o pipefail
 
 function update_file() {
 	local prefix=""
@@ -10,13 +14,13 @@ function update_file() {
 	fi
 	local filename="${1}"
 
-	if [ ! -e ~/.${prefix}${filename} ]; then
-		cp -i ${prefix}${filename} ~/.${prefix}${filename}
+	if [ ! -e "${HOME}/.${prefix}${filename}" ]; then
+		cp -i "${prefix}${filename}" "${HOME}/.${prefix}${filename}"
 		return
 	fi
 
-	if [ -n "`diff ~/.${prefix}${filename} ${prefix}${filename}`" ]; then
-		vimdiff ~/.${prefix}${filename} ${prefix}${filename}
+	if [ -n "$(diff "${HOME}/.${prefix}${filename}" "${prefix}${filename}")" ]; then
+		vimdiff "${HOME}/.${prefix}${filename}" "${prefix}${filename}"
 	fi
 }
 
@@ -24,6 +28,6 @@ for f in 'bashrc' 'zshrc' 'ackrc' 'gitconfig' 'tmux.conf' 'vimrc' 'tigrc' 'color
 	update_file ${f}
 done
 
-for f in `ls shell | grep "\.sh"; ls shell | grep "\.bash"; ls shell | grep "\.zsh"`; do
-	update_file ${f} "shell"
+for f in shell/*.{sh,bash,zsh}; do
+	update_file "$(basename "${f}")" "shell"
 done
