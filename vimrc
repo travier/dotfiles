@@ -276,9 +276,6 @@ cmap w!! w !sudo tee % >/dev/null
 " Python PEP 8 support
 autocmd FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
-" Rust support
-autocmd FileType rust set expandtab softtabstop=4 tabstop=4 shiftwidth=4
-
 " LaTeX support
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
