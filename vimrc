@@ -101,6 +101,14 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
+" Use '<leader><' and '<leader>>' instead of '[' and ']'
+nmap <leader>< [
+nmap <leader>> ]
+omap <leader>< [
+omap <leader>> ]
+xmap <leader>< [
+xmap <leader>> ]
+
 " Use ranger as vim file manager
 function! RangeChooser()
 	" Get a temporary filename without creating it
