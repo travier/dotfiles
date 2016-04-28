@@ -83,6 +83,15 @@ git clone https://github.com/mileszs/ack.vim.git
 # Rust support
 git clone https://github.com/wting/rust.vim.git
 
+# unimpaired.vim: pairs of handy bracket mappings
+git clone https://github.com/tpope/vim-unimpaired.git
+
+# Seamless navigation between tmux panes and vim splits
+git clone https://github.com/christoomey/vim-tmux-navigator.git
+
+# Go development plugin for Vim
+git clone https://github.com/fatih/vim-go.git
+
 popd
 
 # Shell setup
