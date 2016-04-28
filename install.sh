@@ -111,5 +111,4 @@ popd
 
 printf "Install the following packages (Arch Linux):\n"
 printf "vim-spell-en vim-spell-fr vim-doxygentoolkit vim-supertab vim-systemd\n"
-printf "From the AUR:\n"
-printf "python2-powerline-git\n"
+printf "powerline powerline2 powerline-vim\n"
