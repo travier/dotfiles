@@ -1,10 +1,28 @@
-[user]
-	name =
-	email =
+[advice]
+	pushNonFastForward = false
+	statusHints = false
+	commitBeforeMerge = false
 [color]
 	ui = true
+[column]
+	ui = auto
 [core]
 	editor = vim
+[diff]
+	tool = meld
+[format]
+	signoff = true
+	coverletter = auto
+[merge]
+	tool = vimdiff
+[push]
+	default = simple
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[receive]
+	fsckObjects = true
 [alias]
 	a = add
 	ap = add --patch
@@ -18,17 +36,21 @@
 	ct = checkout --track
 	d = diff
 	dc = diff --cached
+	dt = difftool -d
 	f = fetch
 	g = grep -ni
 	l = log
 	ll = log --pretty=oneline
 	lo = log --pretty=oneline --max-count=10
-	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
 	lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen((%cr) %C(bold blue)%Creset' --abbrev-commit
-	up = remote update
+	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
 	pgm = push github master
+	ph = push
+	pl = pull --ff-only
 	pr = pull --rebase
+	pull = pull --ff-only
 	r = reset
+	up = remote update
 	ra = rebase --abort
 	rb = rebase
 	rc = rebase --continue
@@ -38,34 +60,7 @@
 	sh = show
 	smi = submodule update --init
 	smu = submodule foreach git pull origin master
+	sp = stash --patch
 	tc = tag --contains
-[advice]
-	pushNonFastForward = false
-	statusHints = false
-	commitBeforeMerge = false
-[merge]
-	tool = vimdiff
-[push]
-	default = simple
-[column]
-	ui = auto
-[sendemail]
-	from =
-	chainreplyto = false
-	smtpserver =
-	smtpdomain =
-	smtpuser =
-	smtpserverport = 465
-	smtpencryption = ssl
-#	envelopesender = @gmail.com
-#	smtpserver = smtp.gmail.com
-#	smtpuser =
-#	smtpserverport = 587
-#	smtpencryption = tls
-[format]
-	signoff = true
-	coverletter = auto
-[url "git://anongit.kde.org/"]
-	insteadOf = kde:
-[url "git@git.kde.org:"]
-	pushInsteadOf = kde:
+[include]
+	path = ~/.gitconfig.local
