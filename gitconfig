@@ -36,6 +36,7 @@
 	ct = checkout --track
 	d = diff
 	dc = diff --cached
+	ds = diff --stat
 	dt = difftool -d
 	f = fetch
 	g = grep -ni
@@ -46,6 +47,7 @@
 	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
 	pgm = push github master
 	ph = push
+	p = pull --ff-only
 	pl = pull --ff-only
 	pr = pull --rebase
 	pull = pull --ff-only
