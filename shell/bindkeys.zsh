@@ -6,25 +6,25 @@ __my_extended_wordchars='*?_-.[]~=&;!#$%^(){}<>:@,\\'
 __my_extended_wordchars_space="${__my_extended_wordchars} "
 __my_extended_wordchars_slash="${__my_extended_wordchars}/"
 
-__backward-to-/ () {
++_backward-to-/ () {
     local WORDCHARS=${__my_extended_wordchars}
     zle .backward-word
     unquote-backward-word
 }
 
-__dirname-previous-word () {
++_dirname-previous-word () {
     autoload -U modify-current-argument
     modify-current-argument '${ARG:h}$(test "$ARG:h" = "/" || echo "/")'
 }
-zle -N __dirname-previous-word
+zle -N +_dirname-previous-word
 
-__basename-previous-word () {
++_basename-previous-word () {
     autoload -U modify-current-argument
     modify-current-argument '${ARG:t}'
 }
-zle -N __basename-previous-word
+zle -N +_basename-previous-word
 
-__foreground-vim() {
++_foreground-vim() {
 	if [[ ${#BUFFER} -eq 0 ]]; then
 		fg %vim &> /dev/null
 		zle redisplay
@@ -33,23 +33,23 @@ __foreground-vim() {
 		zle clear-screen
 	fi
 }
-zle -N __foreground-vim
+zle -N +_foreground-vim
 
-__insert-sudo-at-beginning-of-line() {
++_insert-sudo-at-beginning-of-line() {
 	zle beginning-of-line
 	zle -U "sudo "
 }
-zle -N __insert-sudo-at-beginning-of-line
+zle -N +_insert-sudo-at-beginning-of-line
 
 # # Rewrite multiple dots in a path (... -> ../..)
-# __rationalise-dot() {
+# +_rationalise-dot() {
 # 	if [[ $LBUFFER = *.. ]]; then
 # 		LBUFFER+=/..
 # 	else
 # 		LBUFFER+=.
 # 		fi
 # }
-# zle -N __rationalise-dot
+# zle -N +_rationalise-dot
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -87,14 +87,14 @@ bindkey '^E' history-incremental-pattern-search-forward
 
 bindkey '^H' emacs-backward-word
 bindkey '^L' emacs-forward-word
-bindkey '^K' __dirname-previous-word
-bindkey '^J' __basename-previous-word
+bindkey '^K' +_dirname-previous-word
+bindkey '^J' +_basename-previous-word
 
 bindkey '^?' backward-delete-char
 bindkey '^L' clear-screen
 
-bindkey '^Z' __foreground-vim
-bindkey '^[s' __insert-sudo-at-beginning-of-line
+bindkey '^Z' +_foreground-vim
+bindkey '^[s' +_insert-sudo-at-beginning-of-line
 
 bindkey '^[OM' accept-line
 
@@ -111,8 +111,8 @@ case ${TERM} in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[Od' emacs-backward-word
 		bindkey '^[Oc' emacs-forward-word
-		bindkey '^[Oa' __dirname-previous-word
-		bindkey '^[Ob' __basename-previous-word
+		bindkey '^[Oa' +_dirname-previous-word
+		bindkey '^[Ob' +_basename-previous-word
 	;;
 	# Konsole bindings
 	xterm-256color)
@@ -124,8 +124,8 @@ case ${TERM} in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[[1;5D' emacs-backward-word
 		bindkey '^[[1;5C' emacs-forward-word
-		bindkey '^[[1;5A' __dirname-previous-word
-		bindkey '^[[1;5B' __basename-previous-word
+		bindkey '^[[1;5A' +_dirname-previous-word
+		bindkey '^[[1;5B' +_basename-previous-word
 	;;
 	# tmux bindings
 	screen-256color)
@@ -137,8 +137,8 @@ case ${TERM} in
 		bindkey '^[[6~' down-line-or-history
 		bindkey '^[OD' emacs-backward-word
 		bindkey '^[OC' emacs-forward-word
-		bindkey '^[OA' __dirname-previous-word
-		bindkey '^[OB' __basename-previous-word
+		bindkey '^[OA' +_dirname-previous-word
+		bindkey '^[OB' +_basename-previous-word
 	;;
 	# Linux VT bindings
 	linux)
