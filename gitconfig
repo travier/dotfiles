@@ -32,6 +32,7 @@
 	a = add
 	ap = add --patch
 	b = branch --verbose
+	bc = branch --contains
 	br = branch --all --verbose
 	c = commit
 	ca = commit --amend
@@ -44,6 +45,7 @@
 	ds = diff --stat
 	dt = difftool -d
 	f = fetch
+	fa = fetch --all
 	g = grep -ni
 	l = log
 	ll = log --pretty=oneline
@@ -69,6 +71,8 @@
 	smi = submodule update --init
 	smu = submodule foreach git pull origin master
 	sp = stash --patch
+	stash-all = stash save --included-untracked
 	tc = tag --contains
+	up = remote update
 [include]
 	path = ~/.gitconfig.local
