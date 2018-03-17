@@ -82,6 +82,7 @@ git clone https://github.com/mileszs/ack.vim.git
 
 # Rust support
 git clone https://github.com/wting/rust.vim.git
+git clone https://github.com/racer-rust/vim-racer.git
 
 # unimpaired.vim: pairs of handy bracket mappings
 git clone https://github.com/tpope/vim-unimpaired.git
