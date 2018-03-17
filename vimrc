@@ -298,6 +298,10 @@ autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
 autocmd FileType go set foldlevelstart=0 foldnestmax=0
 
+" Custom C projects
+"autocmd FileType c set expandtab softtabstop=8 tabstop=8 shiftwidth=8
+autocmd FileType c set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+
 autocmd FileType markdown set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
 set complete=.,w,b,u,U,t,i,d
