@@ -15,8 +15,11 @@
 	coverletter = auto
 [merge]
 	tool = vimdiff
+	ff = only
 [push]
 	default = simple
+[pull]
+	ff = only
 [transfer]
 	fsckobjects = true
 [fetch]
@@ -45,6 +48,7 @@
 	lo = log --pretty=oneline --max-count=10
 	lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen((%cr) %C(bold blue)%Creset' --abbrev-commit
 	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
+	p = pull --ff-only
 	pgm = push github master
 	ph = push
 	p = pull --ff-only
