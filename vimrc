@@ -296,4 +296,8 @@ autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmet
 autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
+autocmd FileType go set foldlevelstart=0 foldnestmax=0
+
+autocmd FileType markdown set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+
 set complete=.,w,b,u,U,t,i,d
