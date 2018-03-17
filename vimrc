@@ -32,6 +32,7 @@ let g:SuperTabMappingBackward = '<c-@>'
 
 " Set background for solarized theme
 set background=dark
+" set background=light
 " Force degraded 256 colorscheme
 let g:solarized_termcolors=256
 " Use solarized color theme
