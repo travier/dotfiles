@@ -45,3 +45,6 @@ source ~/.shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # It seems like this one as to be done at the end
 compinit
+
+# kubectl completion
+# source <(kubectl completion zsh)
