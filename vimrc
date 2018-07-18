@@ -290,6 +290,8 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='dvi,pdf'
 autocmd FileType tex set shiftwidth=2 tabstop=2
+"let g:syntastic_tex_checkers = ["chktex"]
+"let g:syntastic_tex_chktex_args='-g'
 
 " Web related options
 autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=manual
