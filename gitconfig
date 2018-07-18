@@ -66,11 +66,12 @@
 	rc = rebase --continue
 	ri = rebase --interactive
 	rp = reset --patch
-	s = status
+	s = status --short --branch --show-stash
 	sh = show
 	smi = submodule update --init
 	smu = submodule foreach git pull origin master
 	sp = stash --patch
+	st = status --long
 	stash-all = stash save --included-untracked
 	tc = tag --contains
 	up = remote update
