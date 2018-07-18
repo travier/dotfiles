@@ -282,8 +282,22 @@ cmap w!! w !sudo tee % >/dev/null
 " Jump back to the last edit position when opening a file
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Python PEP 8 support
+" Custom configuration for various languages
 autocmd FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=manual
+autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType go set foldlevelstart=0 foldnestmax=0
+autocmd FileType markdown set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType json set expandtab softtabstop=4 tabstop=4 shiftwidth=4 foldlevelstart=0 foldnestmax=0
+autocmd FileType sh set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType c set expandtab softtabstop=8 tabstop=8 shiftwidth=8
+" autocmd FileType c set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+" autocmd BufNewFile,BufRead *.ebuild set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+
+" Rust
+let g:rustfmt_autosave = 1
+autocmd FileType rust set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " LaTeX support
 let g:tex_flavor='latex'
@@ -292,19 +306,5 @@ let g:Tex_MultipleCompileFormats='dvi,pdf'
 autocmd FileType tex set shiftwidth=2 tabstop=2
 "let g:syntastic_tex_checkers = ["chktex"]
 "let g:syntastic_tex_chktex_args='-g'
-
-" Web related options
-autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=manual
-autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
-autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
-
-autocmd FileType go set foldlevelstart=0 foldnestmax=0
-
-" Custom C projects
-"autocmd FileType c set expandtab softtabstop=8 tabstop=8 shiftwidth=8
-autocmd FileType c set expandtab softtabstop=4 tabstop=4 shiftwidth=4
-
-autocmd FileType markdown set expandtab softtabstop=2 tabstop=2 shiftwidth=2
-autocmd FileType json set expandtab softtabstop=4 tabstop=4 shiftwidth=4 foldlevelstart=0 foldnestmax=0
 
 set complete=.,w,b,u,U,t,i,d
