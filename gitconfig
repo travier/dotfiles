@@ -57,12 +57,10 @@
 	p = pull --ff-only
 	pgm = push github master
 	ph = push
-	p = pull --ff-only
 	pl = pull --ff-only
 	pr = pull --rebase
 	pull = pull --ff-only
 	r = reset
-	up = remote update
 	ra = rebase --abort
 	rb = rebase
 	rc = rebase --continue
