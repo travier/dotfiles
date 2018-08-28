@@ -7,6 +7,7 @@ eval $(dircolors -b ~/.shell/dircolors.256dark)
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias diff='colordiff'
+alias ip='ip -color'
 
 # 'ls' related aliases
 alias l='ls'
