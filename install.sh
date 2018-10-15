@@ -111,5 +111,4 @@ popd
 ./diff.sh
 
 printf "Install the following packages (Arch Linux):\n"
-printf "vim-spell-en vim-spell-fr vim-doxygentoolkit vim-supertab vim-systemd\n"
-printf "powerline powerline2 powerline-vim\n"
+printf "vim-spell-en vim-spell-fr vim-supertab\n"
