@@ -283,21 +283,21 @@ cmap w!! w !sudo tee % >/dev/null
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Custom configuration for various languages
-autocmd FileType python set expandtab softtabstop=4 tabstop=4 shiftwidth=4
-autocmd FileType html set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=manual
-autocmd FileType css set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType python     set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType html       set expandtab softtabstop=2 tabstop=2 shiftwidth=2 foldmethod=manual
+autocmd FileType css        set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
-autocmd FileType go set foldlevelstart=0 foldnestmax=0
-autocmd FileType markdown set expandtab softtabstop=2 tabstop=2 shiftwidth=2
-autocmd FileType json set expandtab softtabstop=4 tabstop=4 shiftwidth=4 foldlevelstart=0 foldnestmax=0
-autocmd FileType sh set expandtab softtabstop=4 tabstop=4 shiftwidth=4
-autocmd FileType c set expandtab softtabstop=8 tabstop=8 shiftwidth=8
-" autocmd FileType c set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType markdown   set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType json       set expandtab softtabstop=4 tabstop=4 shiftwidth=4 foldmethod=manual
+autocmd FileType sh         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType c          set expandtab softtabstop=8 tabstop=8 shiftwidth=8
+" autocmd FileType c         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+" autocmd FileType go        set foldlevelstart=0 foldnestmax=0
 " autocmd BufNewFile,BufRead *.ebuild set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType rust       set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
-" Rust
+" Rust: auto format on save
 let g:rustfmt_autosave = 1
-autocmd FileType rust set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " LaTeX support
 let g:tex_flavor='latex'
