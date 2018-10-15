@@ -43,6 +43,8 @@ unsetopt nullglob
 # Fish shell like syntax highlighting for Zsh
 source ~/.shell/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+fpath+=~/.shell/zsh_completions
+
 # It seems like this one as to be done at the end
 compinit
 
