@@ -248,8 +248,8 @@ set smartcase
 
 " Folding related options:
 set foldmethod=syntax
-set foldnestmax=1
-set foldlevelstart=0
+set foldnestmax=2
+set foldlevelstart=1
 
 " This is a sequence of letters which describes how automatic formatting is to
 " be done.
