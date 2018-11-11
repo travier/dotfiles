@@ -32,7 +32,7 @@ alias sjf='sudo journalctl --follow --lines=100'
 alias ..='cd ..'
 alias c='cd'
 alias df='df --human-readable'
-alias dmesg="dmesg --human"
+alias dmesg="sudo dmesg --human"
 alias du='du --human-readable'
 alias g='git'
 alias gi='git'
