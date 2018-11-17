@@ -23,9 +23,9 @@
 [pull]
 	ff = only
 [transfer]
-	fsckobjects = true
+	fsckObjects = true
 [fetch]
-	fsckobjects = true
+	fsckObjects = true
 [receive]
 	fsckObjects = true
 #[commit]
