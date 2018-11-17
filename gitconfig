@@ -2,34 +2,45 @@
 	pushNonFastForward = false
 	statusHints = false
 	commitBeforeMerge = false
+
 [color]
 	ui = true
+
 [column]
 	ui = auto
+
 [core]
 	editor = vim
+
 [diff]
 	tool = meld
+
 [format]
 	signoff = true
 	coverletter = auto
+
 [merge]
 	tool = vimdiff
 	ff = only
 	conflictstyle = diff3
+
 [push]
 	default = simple
 	followTags = true
+
 [pull]
 	ff = only
+
 [transfer]
 	fsckObjects = true
 [fetch]
 	fsckObjects = true
 [receive]
 	fsckObjects = true
+
 [commit]
 	gpgSign = true
+
 [alias]
 	a = add
 	ap = add --patch
@@ -82,10 +93,12 @@
 	up = remote update
 	vc = verify-commit
 	vch = verify-commit HEAD
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [include]
 	path = ~/.gitconfig.local
