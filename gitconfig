@@ -54,6 +54,7 @@
 	llp = log --pretty=oneline --patch
 	lls = log --pretty=oneline --stat
 	lo = log --pretty=oneline --max-count=10
+	lop = log --pretty=oneline --max-count=10 --patch
 	los = log --pretty=oneline --max-count=10 --stat
 	lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen((%cr) %C(bold blue)%Creset' --abbrev-commit
 	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
@@ -79,6 +80,8 @@
 	stash-all = stash save --included-untracked
 	tc = tag --contains
 	up = remote update
+	vc = verify-commit
+	vch = verify-commit HEAD
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
