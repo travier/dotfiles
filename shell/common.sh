@@ -8,6 +8,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias diff='colordiff'
 alias ip='ip -color'
+alias bat='bat --theme TwoDark'
 
 # 'ls' related aliases
 alias l='ls'
