@@ -28,8 +28,8 @@
 	fsckObjects = true
 [receive]
 	fsckObjects = true
-#[commit]
-#	gpgSign = true
+[commit]
+	gpgSign = true
 [alias]
 	a = add
 	ap = add --patch
