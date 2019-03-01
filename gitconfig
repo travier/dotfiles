@@ -1,3 +1,8 @@
+[user]
+	name = ""
+	email = ""
+	signingKey = "0x"
+
 [advice]
 	pushNonFastForward = false
 	statusHints = false
@@ -100,5 +105,5 @@
 	process = git-lfs filter-process
 	required = true
 
-[include]
-	path = ~/.gitconfig.local
+; [include]
+; 	path = ~/.gitconfig.local
