@@ -17,3 +17,5 @@ shopt -s cdspell
 shopt -s nocaseglob
 
 set show-all-if-ambiguous on
+
+complete -C /usr/bin/terraform terraform
