@@ -13,6 +13,7 @@ filetype indent on
 syntax on
 
 " Config for Powerline plugin
+let g:powerline_pycmd = "py3"
 set laststatus=2
 
 " Syntastic config
