@@ -294,7 +294,7 @@ autocmd FileType c          set expandtab softtabstop=8 tabstop=8 shiftwidth=8
 " autocmd FileType c         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 " autocmd FileType go        set foldlevelstart=0 foldnestmax=0
 " autocmd BufNewFile,BufRead *.ebuild set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
-autocmd FileType rust       set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType rust       set expandtab softtabstop=4 tabstop=4 shiftwidth=4 foldmethod=manual
 
 " Rust: auto format on save
 let g:rustfmt_autosave = 1
