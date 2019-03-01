@@ -12,6 +12,7 @@ alias bat='bat --theme TwoDark'
 
 # 'ls' related aliases
 alias l='exa'
+alias la='ls --human-readable --almost-all'
 alias ll='exa --long'
 alias lla='ls --color=auto --human-readable -l --all'
 #alias ldir='ls -l| egrep "^d"'
