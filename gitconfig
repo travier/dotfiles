@@ -20,9 +20,6 @@
 [diff]
 	tool = meld
 
-[format]
-	signoff = true
-	coverletter = auto
 
 [merge]
 	tool = vimdiff
@@ -54,6 +51,7 @@
 	br = branch --all --verbose
 	c = commit
 	ca = commit --amend
+	cas = commit --amend --signoff
 	cb = checkout -b
 	co = checkout
 	cp = checkout --patch
@@ -85,6 +83,7 @@
 	rb = rebase
 	rc = rebase --continue
 	ri = rebase --interactive
+	ris = rebase --interactive --signoff
 	rp = reset --patch
 	s = status --short --branch --show-stash
 	sh = show
@@ -104,6 +103,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+; [format]
+; 	signoff = true
+; 	coverletter = auto
 
 ; [include]
 ; 	path = ~/.gitconfig.local
