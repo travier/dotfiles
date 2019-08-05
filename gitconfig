@@ -42,6 +42,9 @@
 [receive]
 	fsckObjects = true
 
+[rebase]
+	autosquash = true
+
 [commit]
 	gpgSign = true
 
