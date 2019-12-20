@@ -116,5 +116,8 @@
 ; 	signoff = true
 ; 	coverletter = auto
 
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+
 ; [include]
 ; 	path = ~/.gitconfig.local
