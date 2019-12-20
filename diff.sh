@@ -31,3 +31,5 @@ done
 for f in shell/*.{sh,bash,zsh}; do
 	update_file "$(basename "${f}")" "shell"
 done
+
+vimdiff 'gitignore' "${HOME}/.config/git/ignore"

@@ -16,7 +16,6 @@
 
 [core]
 	editor = vim
-	excludesfile = ~/.config/git/gitignore
 
 [diff]
 	tool = meld
