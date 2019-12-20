@@ -58,10 +58,10 @@
 	ca = commit --amend
 	cas = commit --amend --signoff
 	cb = checkout -b
-	cf = commit --squash
+	cf = commit --fixup
 	co = checkout
 	cp = checkout --patch
-	cs = commit --fixup
+	cs = commit --squash
 	ct = checkout --track
 	d = diff
 	dc = diff --cached
