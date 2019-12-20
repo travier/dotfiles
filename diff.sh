@@ -4,7 +4,21 @@
 set -e
 set -o pipefail
 
-function update_file() {
+vimdiff2() {
+	if [ ${#} -ne 2 ]; then
+		exit 1
+	fi
+	if [ ! -e "${1}" ]; then
+		cp -i "${2}" "${1}"
+		return
+	fi
+
+	if [ -n "$(diff "${1}" "${2}")" ]; then
+		vimdiff "${1}" "${2}"
+	fi
+}
+
+update_file() {
 	local prefix=""
 	if [ ${#} -ne 1 ]; then
 		if [ ${#} -ne 2 ]; then
@@ -14,14 +28,7 @@ function update_file() {
 	fi
 	local filename="${1}"
 
-	if [ ! -e "${HOME}/.${prefix}${filename}" ]; then
-		cp -i "${prefix}${filename}" "${HOME}/.${prefix}${filename}"
-		return
-	fi
-
-	if [ -n "$(diff "${HOME}/.${prefix}${filename}" "${prefix}${filename}")" ]; then
-		vimdiff "${HOME}/.${prefix}${filename}" "${prefix}${filename}"
-	fi
+	vimdiff2 "${HOME}/.${prefix}${filename}" "${prefix}${filename}"
 }
 
 for f in 'bashrc' 'zshrc' 'ackrc' 'gitconfig' 'tmux.conf' 'vimrc' 'tigrc' 'colordiffrc' 'latexmkrc'; do
@@ -32,4 +39,4 @@ for f in shell/*.{sh,bash,zsh}; do
 	update_file "$(basename "${f}")" "shell"
 done
 
-vimdiff 'gitignore' "${HOME}/.config/git/ignore"
+vimdiff2 'gitignore' "${HOME}/.config/git/ignore"
