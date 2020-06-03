@@ -39,4 +39,5 @@ for f in shell/*.{sh,bash,zsh}; do
 	update_file "$(basename "${f}")" "shell"
 done
 
+mkdir -p "${HOME}/.config/git"
 vimdiff2 'gitignore' "${HOME}/.config/git/ignore"
