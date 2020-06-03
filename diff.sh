@@ -31,7 +31,7 @@ update_file() {
 	vimdiff2 "${HOME}/.${prefix}${filename}" "${prefix}${filename}"
 }
 
-for f in 'bashrc' 'zshrc' 'ackrc' 'gitconfig' 'tmux.conf' 'vimrc' 'tigrc' 'colordiffrc' 'latexmkrc'; do
+for f in 'bashrc' 'zshrc' 'gitconfig' 'tmux.conf' 'vimrc' 'colordiffrc'; do
 	update_file ${f}
 done
 
