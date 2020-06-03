@@ -1,7 +1,8 @@
 [user]
 	name = ""
-	email = ""
-	signingKey = "0x"
+	useConfigOnly = true
+	# email = ""
+	# signingKey = "0x"
 
 [advice]
 	pushNonFastForward = false
@@ -19,6 +20,7 @@
 
 [diff]
 	tool = meld
+	noprefix = true
 
 [log]
 	date = auto:human
@@ -56,7 +58,7 @@
 	br = branch --all --verbose
 	c = commit
 	ca = commit --amend
-	cas = commit --amend --signoff
+	; cas = commit --amend --signoff
 	cb = checkout -b
 	cf = commit --fixup
 	co = checkout
@@ -91,7 +93,7 @@
 	rb = rebase
 	rc = rebase --continue
 	ri = rebase --interactive
-	ris = rebase --interactive --signoff
+	; ris = rebase --interactive --signoff
 	rp = reset --patch
 	s = status --short --branch --show-stash
 	sh = show
@@ -117,7 +119,8 @@
 ; 	coverletter = auto
 
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+	# helper = /usr/lib/git-core/git-credential-libsecret
+	helper = /usr/libexec/git-core/git-credential-libsecret
 
 ; [include]
 ; 	path = ~/.gitconfig.local
