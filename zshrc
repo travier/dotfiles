@@ -1,7 +1,7 @@
 # Force SHELL to be zsh
 SHELL=/bin/zsh
 
-source /etc/zsh/zprofile
+# source /etc/zsh/zprofile
 
 # Source all generic and zsh specific config from ~/.shell
 for conf in `ls ~/.shell/*.sh ~/.shell/*.zsh`; do
@@ -48,8 +48,12 @@ fpath+=~/.shell/zsh_completions
 # It seems like this one as to be done at the end
 compinit
 
+eval "$(zoxide init zsh)"
+
 # kubectl completion
-# source <(kubectl completion zsh)
+source <(kubectl completion zsh)
+source <(oc completion zsh)
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+
+complete -o nospace -C /home/tim/projects/bin/terraform terraform
