@@ -4,9 +4,9 @@ autoload -U colors && colors
 # Allow functions in prompt
 setopt PROMPT_SUBST
 
-__RED="%{$fg[red]%}"
-__GREEN="%{$fg[green]%}"
-__OFF="%{$reset_color%}"
+__RED="%F{red}"
+__GREEN="%F{green}"
+__OFF="%f"
 __VIMMODE="\$"
 
 function __exit_status {
