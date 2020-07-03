@@ -18,12 +18,10 @@
 [core]
 	editor = vim
 
-[diff]
-	tool = meld
-	noprefix = true
-
 [log]
+	abbrevCommit = true
 	date = auto:human
+	follow = true
 
 [merge]
 	tool = vimdiff
@@ -58,42 +56,43 @@
 	br = branch --all --verbose
 	c = commit
 	ca = commit --amend
-	; cas = commit --amend --signoff
 	cb = checkout -b
 	cf = commit --fixup
 	co = checkout
 	cp = checkout --patch
 	cs = commit --squash
 	ct = checkout --track
-	d = diff
-	dc = diff --cached
-	ds = diff --stat
-	dt = difftool -d
+	d =  diff --no-prefix
+	dc = diff --no-prefix --cached
+	ds = diff --no-prefix --stat
 	f = fetch
-	fa = fetch --all
+	fpush = push --force
+	fa = fetch --all --prune
+	fagc = fetch --all --prune --auto-gc
 	g = grep -ni
-	l = log
-	ll = log --pretty=oneline
+	l =   log
+	lp =  log --patch
+	ls =  log --stat
+	ll =  log --pretty=oneline
 	llp = log --pretty=oneline --patch
 	lls = log --pretty=oneline --stat
-	lo = log --pretty=oneline --max-count=10
-	loo = log --pretty=oneline --max-count=20
+	lo =  log --pretty=oneline --max-count=10
 	lop = log --pretty=oneline --max-count=10 --patch
 	los = log --pretty=oneline --max-count=10 --stat
-	lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen((%cr) %C(bold blue)%Creset' --abbrev-commit
-	ls = log --graph --simplify-by-decoration --pretty=format:'%d' --all
+	lgr = log --graph --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)%Creset'
+	lgrs =  log --graph --simplify-by-decoration --pretty=format:'%d' --all
 	p = pull --ff-only
 	pgm = push github master
 	ph = push
 	pl = pull --ff-only
 	pr = pull --rebase
 	pull = pull --ff-only
+	pushforce = push --force
 	r = reset
 	ra = rebase --abort
 	rb = rebase
 	rc = rebase --continue
 	ri = rebase --interactive
-	; ris = rebase --interactive --signoff
 	rp = reset --patch
 	s = status --short --branch --show-stash
 	sh = show
@@ -114,13 +113,5 @@
 	process = git-lfs filter-process
 	required = true
 
-; [format]
-; 	signoff = true
-; 	coverletter = auto
-
 [credential]
-	# helper = /usr/lib/git-core/git-credential-libsecret
 	helper = /usr/libexec/git-core/git-credential-libsecret
-
-; [include]
-; 	path = ~/.gitconfig.local
