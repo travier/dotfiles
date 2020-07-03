@@ -13,39 +13,35 @@ export GIT_EDITOR='/usr/bin/vim'
 
 # Aliases
 alias ..='cd ..'
-alias bashrc='vim ~/.bashrc'
 alias bat='bat --theme TwoDark'
 alias c='cd'
+alias co='codium'
 alias df='df --human-readable'
 alias dmesg="sudo dmesg --human"
 alias du='du --human-readable'
 alias g='git'
-alias gdb='gdb --quiet'
-alias gg='git g'
 alias gi='git'
+alias gt='git'
+alias gg='git g'
+alias gdb='gdb --quiet'
 alias gr='grep --dereference-recursive --line-number --ignore-case'
 alias grep='grep --color=auto'
-alias gt='git'
 alias ip='ip -color'
 alias la='ls --human-readable --almost-all'
 alias less='less --long-prompt --RAW-CONTROL-CHARS'
 alias lla='ls --color=auto --human-readable -l --all'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --human-readable'
 alias m='make'
-alias ma='make'
-alias mak='make'
 alias sdr='sudo systemctl daemon-reload'
 alias sje='sudo journalctl --pager-end'
 alias sjf='sudo journalctl --follow --lines=100'
 alias ssr='sudo systemctl restart'
 alias sss='sudo systemctl status'
 alias tm='tmux'
-alias tree='tree -pugha'
-alias v='vim'
+alias tree='tree -pugh'
+alias treea='tree -pugha'
 alias vi='vim'
-alias vimrc='vim ~/.vimrc'
 alias xo='xdg-open'
-alias zshrc='vim ~/.zshrc'
 
 # "Function" aliases that can not be expressed as regular aliases
 diff() {
@@ -57,7 +53,7 @@ diff() {
 }
 function l() {
     if [[ -z "$(command -v exa)" ]]; then
-        ls --color=auto "${@}"
+        ls --color=auto --human-readable "${@}"
     else
         exa "${@}"
     fi
