@@ -52,8 +52,9 @@
 	a = add
 	ap = add --patch
 	b = branch --verbose
+	ba = branch --all --verbose
 	bc = branch --contains
-	br = branch --all --verbose
+	br = branch --all
 	c = commit
 	ca = commit --amend
 	cb = checkout -b
