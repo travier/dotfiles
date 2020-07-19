@@ -52,8 +52,8 @@ _ZO_ECHO=1
 eval "$(zoxide init zsh)"
 
 # kubectl completion
-source <(kubectl completion zsh)
-source <(oc completion zsh)
+source <(~/.local/bin/kubectl completion zsh)
+source <(~/.local/bin/oc completion zsh)
 
 autoload -U +X bashcompinit && bashcompinit
 
