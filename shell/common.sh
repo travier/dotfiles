@@ -144,3 +144,11 @@ run_qcow2() {
 		"${@}" \
 		bash
 }
+
+# Flatpak
+fpb() {
+	flatpak-builder --ccache --repo=repo --jobs=12 --subject="wip" --force-clean app *.json
+}
+fpr() {
+	flatpak-builder --run app *.json $(basename $(pwd) | cut -f3 -d.)
+}
