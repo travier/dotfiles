@@ -167,3 +167,21 @@ cosa() {
               ${COREOS_ASSEMBLER_CONTAINER:-quay.io/coreos-assembler/coreos-assembler:latest} "$@"
    rc=$?; set +x; return $rc
 }
+
+# PATH setup
+__path_pre() {
+    if [[ -d "${1}" ]] && [[ ":${PATH}:" != *":${1}:"* ]]; then
+        PATH="${1}${PATH:+":${PATH}"}"
+    fi
+}
+__path_post() {
+    if [[ -d "${1}" ]] && [[ ":${PATH}:" != *":${1}:"* ]]; then
+        PATH="${PATH:+"${PATH}:"}${1}"
+    fi
+}
+
+__path_pre  "${HOME}/.cargo/bin"
+__path_post "${HOME}/go/bin"
+
+unset -f __path_pre
+unset -f __path_post
