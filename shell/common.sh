@@ -169,6 +169,22 @@ cosa() {
    rc=$?; set +x; return $rc
 }
 
+alias coreos-installer='podman run --pull=always                \
+                            --rm --tty --interactive            \
+                            --security-opt label=disable        \
+                            --volume ${PWD}:/pwd --workdir /pwd \
+                            quay.io/coreos/coreos-installer:release'
+
+alias ignition-validate='podman run --rm --tty --interactive     \
+                             --security-opt label=disable        \
+                             --volume ${PWD}:/pwd --workdir /pwd \
+                             quay.io/coreos/ignition-validate:release'
+
+alias fcct='podman run --rm --tty --interactive     \
+                --security-opt label=disable        \
+                --volume ${PWD}:/pwd --workdir /pwd \
+                quay.io/coreos/fcct:release'
+
 # PATH setup
 __path_pre() {
     if [[ -d "${1}" ]] && [[ ":${PATH}:" != *":${1}:"* ]]; then
