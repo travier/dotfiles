@@ -16,6 +16,7 @@ alias ..='cd ..'
 alias bat='bat --theme TwoDark'
 alias c='cd'
 alias co='codium'
+alias cog='codium --goto'
 alias df='df --human-readable'
 alias dmesg="sudo dmesg --human"
 alias du='du --human-readable'
