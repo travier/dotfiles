@@ -106,31 +106,6 @@ shac() {
     sha256sum -c --ignore-missing "${@}"
 }
 
-run_iso() {
-    local -r iso="${1}"
-    qemu-system-x86_64 -accel kvm -m 4096M -smp cores=2 \
-        -net nic,model=virtio -net user,hostfwd=tcp::2222-:22 \
-        -boot d -cdrom "${iso}"
-}
-
-run_isoc() {
-    local -r iso="${1}"
-    echo "[+] Please append 'console=ttyS0' to GRUB boot entry!"
-    read
-    qemu-system-x86_64 -accel kvm -m 4096M -smp cores=2 \
-        -net nic,model=virtio -net user,hostfwd=tcp::2222-:22 \
-        -boot d -cdrom "${iso}" -nographic -serial mon:stdio
-}
-
-run_qcow2() {
-    local -r img="${1}"
-    qemu-system-x86_64 -accel kvm -m 4096M -smp cores=2 \
-        -net nic,model=virtio -net user,hostfwd=tcp::2222-:22 \
-        -fw_cfg name=opt/com.coreos/config,file=metadata/key.ign \
-        -drive file="${img}"
-        # -nographic -serial mon:stdio -append 'console=ttyS0'
-}
-
 +podman_run_cwd() {
 	local cmd=""
 	if [[ ${#} -eq 1 ]]; then
