@@ -49,10 +49,6 @@ set nomodeline
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-" Use Ag instead of Ack in ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
-"let g:ackprg = 'ag --vimgrep'
-
 " Fix inconsistent Y mapping
 nnoremap Y y$
 
@@ -72,8 +68,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :SudoWrite<CR>
-" Use ack.vim
-nnoremap <leader>a :Ack 
 
 " Center cursor after jumping to the next match
 nnoremap n nzz
