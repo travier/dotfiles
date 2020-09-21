@@ -242,9 +242,6 @@ autocmd FileType markdown   set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType python     set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType ruby       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
-" Rust: auto format on save
-let g:rustfmt_autosave = 1
-
 " LaTeX support
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
