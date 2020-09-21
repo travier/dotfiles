@@ -46,8 +46,6 @@ colorscheme solarized
 " Do not use modelines, use the securemodelines plugin instead
 set nomodeline
 
-"let mapleader = ","
-"let g:mapleader = ","
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
