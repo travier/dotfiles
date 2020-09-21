@@ -136,7 +136,6 @@ noremap <F5> :setlocal nospell<CR>
 " Autoreload files
 set autoread
 
-"set hidden
 set more
 set title
 set showcmd
@@ -152,16 +151,10 @@ set ttyfast
 set noerrorbells
 set novisualbell
 
-" Textwidth options
-"set textwidth=79
-
 " Do not wrap lines.
 "set nowrap
 
 set colorcolumn=80
-
-" Disabled as I'm not using quickfixsigns plugin yet.
-"highlight SignColumn ctermbg=234 guibg=#262626
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=240 guibg=#585858
@@ -183,7 +176,7 @@ set tabstop=4
 " Number of spaces to use for each step of (auto)indent
 set shiftwidth=4
 " Use the appropriate number of spaces to insert a <Tab>
-"set expandtab
+" set expandtab
 " Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode. This
 " is a list of items, separated by commas. Each item allows a way to backspace
 " over something.
@@ -248,8 +241,6 @@ autocmd FileType json       set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType markdown   set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType python     set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType ruby       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
-" autocmd FileType rust       set expandtab softtabstop=4 tabstop=4 shiftwidth=4
-" autocmd FileType terraform  set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
 " Rust: auto format on save
 let g:rustfmt_autosave = 1
