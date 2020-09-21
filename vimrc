@@ -30,9 +30,14 @@ set encoding=utf-8
 let g:SuperTabMappingForward = '<s-c-@>'
 let g:SuperTabMappingBackward = '<c-@>'
 
-" Set background for solarized theme
+" Set dark background
 set background=dark
+highlight ColorColumn ctermbg=235 guibg=#262626
+
+" Set light background
 " set background=light
+" highlight ColorColumn ctermbg=LightGray guibg=#FFFFFF
+
 " Force degraded 256 colorscheme
 let g:solarized_termcolors=256
 " Use solarized color theme
@@ -194,7 +199,6 @@ set novisualbell
 " Do not wrap lines.
 "set nowrap
 
-highlight ColorColumn ctermbg=235 guibg=#262626
 set colorcolumn=80
 
 " Disabled as I'm not using quickfixsigns plugin yet.
