@@ -107,39 +107,6 @@ omap <leader>> ]
 xmap <leader>< [
 xmap <leader>> ]
 
-" Use ranger as vim file manager
-function! RangeChooser()
-	" Get a temporary filename without creating it
-	let temp = tempname()
-	" Launch ranger, passing it the temp file name
-	exec 'silent !ranger --choosefiles=' . shellescape(temp)
-	" If the temp file has not been written by ranger
-	if !filereadable(temp)
-		" Nothing to read.
-		redraw!
-		return
-	endif
-	let names = readfile(temp)
-	if empty(names)
-		" Nothing to open.
-		redraw!
-		return
-	endif
-	" Edit the first item.
-	exec 'edit ' . fnameescape(names[0])
-	" Add any remaning items to the arg list/buffer list.
-	for name in names[1:]
-		exec 'argadd ' . fnameescape(name)
-	endfor
-	redraw!
-endfunction
-
-command! -bar RangerChooser call RangeChooser()
-
-" Set ranger bindings
-nnoremap <leader>r :<C-U>RangerChooser<CR>
-nnoremap <leader>v :vs<CR>:<C-U>RangerChooser<CR><C-w>L
-
 " Do not use <file>~ or .swap as backup
 set directory=~/.vim/backup,/tmp,/var/tmp
 " Or just remove backups
