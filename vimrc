@@ -108,7 +108,7 @@ xmap <leader>< [
 xmap <leader>> ]
 
 " Do not use <file>~ or .swap as backup
-set directory=~/.vim/backup,/tmp,/var/tmp
+set directory=~/.vim/backup
 " Or just remove backups
 "set nobackup
 "set noswapfile
