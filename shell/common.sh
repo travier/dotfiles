@@ -166,6 +166,14 @@ alias fcct='podman run --rm --tty --interactive     \
                 --volume ${PWD}:/pwd --workdir /pwd \
                 quay.io/coreos/fcct:release'
 
+urldecode() {
+	python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))" "${@}"
+}
+
+urlencode() {
+	python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))" "${@}"
+}
+
 # PATH setup
 __path_pre() {
     if [[ -d "${1}" ]] && [[ ":${PATH}:" != *":${1}:"* ]]; then
