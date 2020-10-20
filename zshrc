@@ -48,8 +48,10 @@ fpath+=~/.shell/zsh_completions
 # It seems like this one as to be done at the end
 compinit
 
-_ZO_ECHO=1
-eval "$(zoxide init zsh)"
+if [[ -n "$(command -v zoxide)" ]]; then
+  _ZO_ECHO=1
+  eval "$(zoxide init zsh)"
+fi
 
 # kubectl completion
 source <(~/.local/bin/kubectl completion zsh)
