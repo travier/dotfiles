@@ -4,8 +4,6 @@ set -eu
 set -o pipefail
 
 dotctl_vimdiff() {
-	local diff_output
-
 	if [[ "${#}" -ne 2 ]]; then
 		exit 1
 	fi
@@ -15,9 +13,8 @@ dotctl_vimdiff() {
 		return
 	fi
 
-	diff_output="$(diff "${1}" "${2}")"
-	if [[ -z "${diff_output}" ]]; then
-		echo "[+] Skippping ${1} (no diff)"
+	if [[ -z "$(diff "${1}" "${2}")" ]]; then
+		echo "[+] Skippping (empty diff) ${1}"
 	else
 		echo "[+] Updating ${1}..."
 		vimdiff "${1}" "${2}"
