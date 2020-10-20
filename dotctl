@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
+
+dotctl_vimdiff() {
+	local diff_output
+
+	if [[ "${#}" -ne 2 ]]; then
+		exit 1
+	fi
+	if [[ ! -e "${1}" ]]; then
+		echo "[+] Installing ${2} to ${1}..."
+		cp -i "${2}" "${1}"
+		return
+	fi
+
+	diff_output="$(diff "${1}" "${2}")"
+	if [[ -z "${diff_output}" ]]; then
+		echo "[+] Skippping ${1} (no diff)"
+	else
+		echo "[+] Updating ${1}..."
+		vimdiff "${1}" "${2}"
+	fi
+}
+
+dotctl_diff() {
+	for f in 'bashrc' 'zshrc' 'tmux.conf' 'vimrc' 'colordiffrc'; do
+		dotctl_vimdiff "${HOME}/.${f}" "${f}"
+	done
+
+	for f in 'shell/'*.{sh,bash,zsh}; do
+		dotctl_vimdiff "${HOME}/.shell/$(basename "${f}")" "${f}"
+	done
+
+	for f in 'git/'*; do
+		dotctl_vimdiff "${HOME}/.config/git/$(basename "${f}")" "${f}"
+	done
+}
+
+dotctl_install() {
+	# Use any argument to bypass this check
+	if [[ "${#}" -ne 1 ]]; then
+		echo 'READ ME before blindly launching me!!'
+		exit 1
+	fi
+
+	# Git config directory setup
+	mkdir -p "${HOME}/.config/git"
+
+	# Shell setup
+	mkdir -p "${HOME}/.shell/history"
+
+	pushd "${HOME}/.shell/" > /dev/null
+	curl -Sso 'dircolors.256dark' \
+		'https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark'
+	if [[ ! -d 'zsh-syntax-highlighting' ]]; then
+		git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git'
+	fi
+	popd > /dev/null
+
+	# Vim setup
+	for d in 'autoload' 'bundle' 'backup' 'undodir'; do
+		mkdir -p "${HOME}/.vim/${d}"
+	done
+
+	# Install pathogen plugin
+	curl -Sso "${HOME}/.vim/autoload/pathogen.vim" \
+		'https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
+
+	pushd "${HOME}/.vim/bundle/" > /dev/null
+	# bogado/file-line: Open a file and go to specified line using <filename>:<line>
+	# tpope/vim-fugitive: a Git wrapper so awesome, it should be illegal
+	# tpope/vim-markdown: Vim Markdown runtime files
+	# tpope/vim-git: Vim Git runtime files
+	# altercation/vim-colors-solarized: precision colorscheme for the vim text editor
+	# ciaranm/securemodelines: A secure alternative to Vim modelines
+	# tpope/vim-commentary: comment stuff out
+	# dahu/SearchParty: Extended search commands and maps for Vim
+	# dahu/vim-fanfingtastic: Find a char across lines
+	# tpope/vim-repeat: enable repeating supported plugin maps with "."
+	# scrooloose/syntastic: Syntax checking hacks for vim
+	# tpope/vim-surround: quoting/parenthesizing made simple
+	# wting/rust.vim: Rust support
+	# tpope/vim-unimpaired: pairs of handy bracket mappings
+	# fatih/vim-go: Go development plugin for Vim
+	# editorconfig/editorconfig-vim: Editor Config support
+	plugins=(
+		'https://github.com/bogado/file-line.git'
+		'https://github.com/tpope/vim-fugitive.git'
+		'https://github.com/tpope/vim-markdown.git'
+		'https://github.com/tpope/vim-git.git'
+		'https://github.com/altercation/vim-colors-solarized.git'
+		'https://github.com/ciaranm/securemodelines.git'
+		'https://github.com/tpope/vim-commentary.git'
+		'https://github.com/dahu/SearchParty.git'
+		'https://github.com/dahu/vim-fanfingtastic.git'
+		'https://github.com/tpope/vim-repeat.git'
+		'https://github.com/scrooloose/syntastic.git'
+		'https://github.com/tpope/vim-surround.git'
+		'https://github.com/wting/rust.vim.git'
+		'https://github.com/tpope/vim-unimpaired.git'
+		'https://github.com/fatih/vim-go.git'
+		'https://github.com/editorconfig/editorconfig-vim.git'
+	)
+	for p in "${plugins[@]}"; do
+		if [[ ! -d ${p##*/} ]]; then
+			git clone "${p}"
+		fi
+	done
+	popd > /dev/null
+
+	# Update all other dotfiles
+	dotctl_diff
+}
+
+dotctl_update() {
+	pushd "${HOME}/.vim/bundle" > /dev/null
+	for b in *; do
+		pushd "${b}" > /dev/null
+		echo "[+] Updating ${b}..."
+		git pull origin
+		popd > /dev/null
+	done
+	popd > /dev/null
+
+	pushd "${HOME}/.shell" > /dev/null
+	for d in "zsh-syntax-highlighting"; do
+		if [[ -d "${d}" ]]; then
+			pushd "${d}" > /dev/null
+			echo "[+] Updating ${d}..."
+			git pull origin
+			popd > /dev/null
+		fi
+	done
+	popd > /dev/null
+
+	# Update all other dotfiles
+	dotctl_diff
+}
+
+dotctl_help() {
+	>&2 echo "Install and update dotfiles"
+	>&2 echo ""
+	>&2 echo "USAGE:"
+	>&2 echo "    dotctl [SUBCOMMAND]"
+	>&2 echo ""
+	>&2 echo "SUBCOMMANDS:"
+	>&2 echo "    install     Install Bash, Zsh, Vim, Git, etc. configs"
+	>&2 echo "    update      Update Vim plugins and Zsh highligh Git repos"
+	>&2 echo "    diff        Diff and update dotfiles"
+}
+
+main() {
+	if [[ "${#}" -eq 0 ]]; then
+		dotctl_help
+		return
+	fi
+
+	case "${1}" in
+		"d" | "diff")
+			dotctl_diff ;;
+		"u" | "update")
+			dotctl_update ;;
+		"i" | "install")
+			dotctl_install "${@}";;
+		*)
+			>&2 echo "Uknown command!"
+			dotctl_help
+			exit 1 ;;
+	esac
+
+	echo "[+] Done!"
+}
+
+main "${@}"
