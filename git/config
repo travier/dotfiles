@@ -116,3 +116,8 @@
 
 [credential]
 	helper = /usr/libexec/git-core/git-credential-libsecret
+
+[url "https://invent.kde.org/"]
+	insteadOf = kde:
+[url "ssh://git@invent.kde.org/"]
+	pushInsteadOf = kde:
