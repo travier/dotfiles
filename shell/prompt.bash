@@ -25,6 +25,7 @@ function __git_status {
 	fi
 }
 
+# Start from scratch
 PS1=""
 
 if [[ -n "${SSH_CLIENT}" ]]; then

@@ -24,9 +24,9 @@ function __git_ps1 {
 }
 
 function __git_status {
-	local GITSTATUS="$(__git_ps1 %s)"
-	if [[ -n "${GITSTATUS}" ]]; then
-		echo "${__GREEN}${GITSTATUS}${__OFF}|"
+	local status="$(__git_ps1 %s)"
+	if [[ -n "${status}" ]]; then
+		echo "${__GREEN}${status}${__OFF}|"
 	fi
 }
 
@@ -38,6 +38,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+# Start from scratch
 PROMPT=""
 
 if [[ -n "${SSH_CLIENT}" ]]; then
