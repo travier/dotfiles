@@ -11,7 +11,6 @@ __VIMMODE="\$"
 
 function __exit_status {
 	local EXITSTATUS="${?}"
-
 	if [[ "${EXITSTATUS}" -ne "0" ]]; then
 		echo "${__RED}%?${__OFF}|"
 	fi
@@ -26,7 +25,6 @@ function __git_ps1 {
 
 function __git_status {
 	local GITSTATUS="$(__git_ps1 %s)"
-
 	if [[ -n "${GITSTATUS}" ]]; then
 		echo "${__GREEN}${GITSTATUS}${__OFF}|"
 	fi
@@ -46,7 +44,7 @@ if [[ -n "${SSH_CLIENT}" ]]; then
 	PROMPT='%n@%M:'
 fi
 
-if [[ "${HOSTNAME}" == 'toolbox' ]]; then
+if [[ "$(cat /etc/hostname)" == 'toolbox' ]]; then
 	PROMPT="📦${PROMPT}"
 fi
 

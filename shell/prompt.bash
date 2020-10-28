@@ -4,24 +4,24 @@ OFF="\e[0m"
 
 function __exit_status {
 	local EXITSTATUS="${?}"
-
 	if [[ "${EXITSTATUS}" -ne "0" ]]; then
 		echo -e "|${RED}${EXITSTATUS}${OFF}\$ "
 	fi
 }
 
 function __git_ps1 {
-	local b="$(git symbolic-ref HEAD 2>/dev/null)";
+	local b
+	b="$(git symbolic-ref HEAD 2>/dev/null)";
 	if [[ -n "${b}" ]]; then
 		printf "%s" "${b##refs/heads/}";
 	fi
 }
 
 function __git_status {
-	local GIT_STATUS="$(__git_ps1 %s)"
-
-	if [[ -n "${GIT_STATUS}" ]]; then
-		echo -e "${GREEN}@${GIT_STATUS}${OFF}"
+	local status
+	status="$(__git_ps1 %s)"
+	if [[ -n "${status}" ]]; then
+		echo -e "${GREEN}@${status}${OFF}"
 	fi
 }
 
@@ -31,7 +31,7 @@ if [[ -n "${SSH_CLIENT}" ]]; then
 	PS1='\u@\H:'
 fi
 
-if [[ "${HOSTNAME}" == 'toolbox' ]]; then
+if [[ "$(cat /etc/hostname)" == 'toolbox' ]]; then
 	PS1="📦${PS1}"
 fi
 
