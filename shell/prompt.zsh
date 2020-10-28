@@ -24,9 +24,9 @@ function __git_ps1 {
 }
 
 function __git_status {
-	local status="$(__git_ps1 %s)"
-	if [[ -n "${status}" ]]; then
-		echo "${__GREEN}${status}${__OFF}|"
+	local git_status="$(__git_ps1 %s)"
+	if [[ -n "${git_status}" ]]; then
+		echo "${__GREEN}${git_status}${__OFF}|"
 	fi
 }
 
