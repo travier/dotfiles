@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+main() {
+	local -r release="33"
+	local -r toolbox="fedora-toolbox-${release}"
+
+	if [[ ! -f "/run/ostree-booted" ]]; then
+		if [[ -z "${TMUX+x}" ]]; then
+			tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update
+			exit 0
+		fi
+	fi
+
+	if [[ ! -f "/run/ostree-booted" ]]; then
+		sudo dnf update --refresh
+	fi
+
+	toolbox run --container "${toolbox}" sudo dnf distro-sync -y
+	flatpak --system update --assumeyes
+	rustup update
+
+	if [[ ! -f "/run/ostree-booted" ]]; then
+		cargo install-update -a
+		cargo cache -a
+	else
+		toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
+		toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
+	fi
+	exec "${SHELL}"
+}
+
+main
