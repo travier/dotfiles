@@ -4,29 +4,41 @@ main() {
 	local -r release="33"
 	local -r toolbox="fedora-toolbox-${release}"
 
-	if [[ ! -f "/run/ostree-booted" ]]; then
-		if [[ -z "${TMUX+x}" ]]; then
-			tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update
-			exit 0
+	local SYSTEM=false
+	if [[ "${#}" -gt 0 ]]; then
+		if [[ "${1}" == "system" ]]; then
+			SYSTEM=true
 		fi
 	fi
 
-	if [[ ! -f "/run/ostree-booted" ]]; then
-		sudo dnf update --refresh
+	local OSTREE=false
+	if [[ -f "/run/ostree-booted" ]]; then
+		OSTREE=true
+	fi
+
+	if [[ "${SYSTEM}" == true ]]; then
+		if [[ "${OSTREE}" == true ]]; then
+			rpm-ostree update
+		else
+			if [[ -z "${TMUX+x}" ]]; then
+				tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update
+				exit 0
+			fi
+			sudo dnf update --refresh
+		fi
 	fi
 
 	toolbox run --container "${toolbox}" sudo dnf distro-sync -y
-	flatpak --system update --assumeyes
-	rustup update
 
-	if [[ ! -f "/run/ostree-booted" ]]; then
-		cargo install-update -a
-		cargo cache -a
-	else
-		toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
-		toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
+	flatpak --system update --assumeyes
+
+	rustup update
+	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
+	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
+
+	if [[ -n "${TMUX+x}" ]]; then
+		exec "${SHELL}"
 	fi
-	exec "${SHELL}"
 }
 
-main
+main "${@}"
