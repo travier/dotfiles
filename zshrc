@@ -60,19 +60,17 @@ if [[ -n "$(command -v zoxide)" ]]; then
   eval "$(zoxide init zsh)"
 fi
 
-# kubectl completion
+# Additional completions
 source <(~/.local/bin/kubectl completion zsh)
 source <(~/.local/bin/oc completion zsh)
+source <(~/.local/bin/gh completion -s zsh)
 
 autoload -U +X bashcompinit && bashcompinit
-
 complete -o nospace -C /home/tim/projects/bin/terraform terraform
 
 # kdesrc-build ##################################################
-
 ## Add kdesrc-build to PATH
 export PATH="$HOME/projects/kde/src/kdesrc-build:$PATH"
-
 ## Run projects built with kdesrc-build
 function kdesrc-run
 {
