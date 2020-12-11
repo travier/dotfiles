@@ -21,24 +21,30 @@ main() {
 
 	if [[ "${SYSTEM}" == true ]]; then
 		if [[ "${OSTREE}" == true ]]; then
+			echo "[+] Updating system (rpm-ostree)..."
 			rpm-ostree update
 		else
 			if [[ -z "${TMUX+x}" ]]; then
 				tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update system
 				exit 0
 			fi
+			echo "[+] Updating system (dnf)..."
 			sudo dnf update --refresh
 		fi
 	fi
 
+	echo "[+] Updating toolbox (${toolbox})..."
 	toolbox run --container "${toolbox}" sudo dnf distro-sync -y
 
+	echo "[+] Updating system Flatpaks..."
 	flatpak --system update --assumeyes
 
+	echo "[+] Updating Rust crates..."
 	rustup update
 	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
 	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
 
+	echo "[+] Done!"
 	if [[ -n "${TMUX+x}" ]]; then
 		exec "${SHELL}"
 	fi
