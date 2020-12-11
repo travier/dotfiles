@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -eu -o pipefail
+# set -x
+
 main() {
 	local -r release="33"
 	local -r toolbox="fedora-toolbox-${release}"
@@ -21,7 +24,7 @@ main() {
 			rpm-ostree update
 		else
 			if [[ -z "${TMUX+x}" ]]; then
-				tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update
+				tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update system
 				exit 0
 			fi
 			sudo dnf update --refresh
