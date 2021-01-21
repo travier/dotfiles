@@ -187,6 +187,7 @@ __path_post() {
 }
 
 __path_pre  "${HOME}/.cargo/bin"
+__path_pre  "${HOME}/.local/bin"
 __path_post "${HOME}/go/bin"
 
 unset -f __path_pre
