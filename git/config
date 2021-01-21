@@ -17,6 +17,20 @@
 
 [core]
 	editor = vim
+	pager = delta
+
+[delta]
+	features = decorations
+	syntax-theme = "Monokai Extended Bright"
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-decoration-style = none
+
+[interactive]
+	diffFilter = delta --color-only
 
 [init]
 	defaultBranch = main
