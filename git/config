@@ -18,6 +18,9 @@
 [core]
 	editor = vim
 
+[init]
+	defaultBranch = main
+
 [log]
 	abbrevCommit = true
 	date = auto:human
