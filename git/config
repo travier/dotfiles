@@ -89,7 +89,7 @@
 	dc = diff --no-prefix --cached
 	ds = diff --no-prefix --stat
 	f = fetch
-	fpush = push --force
+	fpush = push --force-with-lease
 	fa = fetch --all --prune
 	fagc = fetch --all --prune --auto-gc
 	g = grep -ni
@@ -110,7 +110,7 @@
 	pl = pull --ff-only
 	pr = pull --rebase
 	pull = pull --ff-only
-	pushforce = push --force
+	pushforce = push --force-with-lease
 	r = reset
 	ra = rebase --abort
 	rb = rebase
