@@ -52,7 +52,7 @@ dotctl_install() {
 	curl -Sso 'dircolors.256dark' \
 		'https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark'
 	if [[ ! -d 'zsh-syntax-highlighting' ]]; then
-		git clone 'git://github.com/zsh-users/zsh-syntax-highlighting.git'
+		git clone 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
 	fi
 	popd > /dev/null
 
