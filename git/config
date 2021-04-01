@@ -121,7 +121,6 @@
 	sh = show
 	shs = show --stat
 	smi = submodule update --init
-	smu = submodule foreach git pull origin master
 	sp = stash --patch
 	st = status --long
 	stash-all = stash save --included-untracked
