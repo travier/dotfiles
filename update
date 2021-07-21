@@ -6,9 +6,6 @@ set -u -o pipefail
 # set -x
 
 main() {
-	local -r release="33"
-	local -r toolbox="fedora-toolbox-${release}"
-
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
 		case "${1}" in
@@ -37,16 +34,30 @@ main() {
 		fi
 	fi
 
-	echo "[+] Updating toolbox (${toolbox})..."
-	toolbox run --container "${toolbox}" sudo dnf distro-sync -y
+	# local -r release="34"
+	# local -r toolbox="fedora-toolbox-${release}"
+	# TODO: Update for Quay.io based toolbox
+	# toolbox run --container "${toolbox}" sudo dnf distro-sync -y
+
+	echo "[+] Updating toolbox..."
+	# 'quay.io/travier/toolbox-texlive:latest'
+	images=(
+		'quay.io/travier/toolbox:latest'
+	)
+	for img in "${images[@]}"; do
+		podman pull "${img}"
+		local tbx="toolbox" # TODO: keep only image name
+		toolbox rm --force "${tbx}"
+		toolbox create --image "${img}" "${tbx}"
+	done
 
 	echo "[+] Updating system Flatpaks..."
 	flatpak --system update --assumeyes
 
 	echo "[+] Updating Rust crates..."
 	rustup update
-	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
-	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
+	toolbox run --container 'toolbox' ~/.cargo/bin/cargo install-update -a
+	toolbox run --container 'toolbox' ~/.cargo/bin/cargo cache -a
 
 	echo "[+] Done!"
 	if [[ -n "${TMUX+x}" ]]; then
