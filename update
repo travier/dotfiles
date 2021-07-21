@@ -86,6 +86,10 @@ main() {
 	toolbox run --container 'toolbox' ~/.cargo/bin/cargo install-update -a
 	toolbox run --container 'toolbox' ~/.cargo/bin/cargo cache -a
 
+	echo "[+] Updating firmwares..."
+	sudo fwupdmgr refresh
+	sudo fwupdmgr update
+
 	echo "[+] Done!"
 	if [[ -n "${TMUX+x}" ]]; then
 		exec "${SHELL}"
