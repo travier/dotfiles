@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -eu -o pipefail
+set -u -o pipefail
+# Do not exit if one command failed
+# set -e
 # set -x
 
 main() {
