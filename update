@@ -53,6 +53,7 @@ main() {
 
 	echo "[+] Updating system Flatpaks..."
 	flatpak --system update --assumeyes
+	flatpak --system remove --unused --assumeyes
 
 	echo "[+] Updating Rust crates..."
 	rustup update
