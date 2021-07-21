@@ -161,10 +161,10 @@ alias ignition-validate='podman run --rm --tty --interactive     \
                              --volume ${PWD}:/pwd --workdir /pwd \
                              quay.io/coreos/ignition-validate:release'
 
-alias fcct='podman run --rm --tty --interactive     \
+alias butane='podman run --rm --tty --interactive     \
                 --security-opt label=disable        \
                 --volume ${PWD}:/pwd --workdir /pwd \
-                quay.io/coreos/fcct:release'
+                quay.io/coreos/butane:release'
 
 urldecode() {
 	python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))" "${@}"
