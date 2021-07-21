@@ -11,9 +11,11 @@ main() {
 
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
-		if [[ "${1}" == "system" ]]; then
-			SYSTEM=true
-		fi
+		case "${1}" in
+			"s"|"sy"|"sys"|"syst"|"syste"|"system")
+				SYSTEM=true
+				;;
+		esac
 	fi
 
 	local OSTREE=false
