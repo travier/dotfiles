@@ -35,11 +35,6 @@ main() {
 		fi
 	fi
 
-	# local -r release="34"
-	# local -r toolbox="fedora-toolbox-${release}"
-	# TODO: Update for Quay.io based toolbox
-	# toolbox run --container "${toolbox}" sudo dnf distro-sync -y
-
 	echo "[+] Updating toolbox..."
 	# 'quay.io/travier/toolbox-texlive:latest'
 	images=(
