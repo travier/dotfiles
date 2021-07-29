@@ -20,15 +20,16 @@ main() {
 		OSTREE=true
 	fi
 
+	if [[ "${SYSTEM}" == true ]] && [[ "${OSTREE}" == false ]] && [[ -z "${TMUX+x}" ]]; then
+		tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update system
+		exit 0
+	fi
+
 	if [[ "${SYSTEM}" == true ]]; then
 		if [[ "${OSTREE}" == true ]]; then
 			echo "[+] Updating system (rpm-ostree)..."
 			rpm-ostree update
 		else
-			if [[ -z "${TMUX+x}" ]]; then
-				tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update system
-				exit 0
-			fi
 			echo "[+] Updating system (dnf)..."
 			sudo dnf update --refresh
 		fi
