@@ -5,12 +5,42 @@ set -u -o pipefail
 # set -e
 # set -x
 
+update_container_images() {
+	images=(
+		'quay.io/coreos/ignition-validate:release'
+		'registry.fedoraproject.org/fedora:latest'
+		'registry.fedoraproject.org/fedora:34'
+		'quay.io/coreos/butane:release'
+		'quay.io/coreos/coreos-installer:release'
+		'registry.access.redhat.com/ubi8/ubi:latest'
+		'registry.access.redhat.com/ubi8/ubi:8.4'
+		'docker.io/digitalocean/doctl:latest'
+		'docker.io/antora/antora:latest'
+		'quay.io/coreos-assembler/coreos-assembler:latest'
+		'quay.io/coreos-assembler/coreos-assembler:rhcos-4.8'
+		'quay.io/coreos-assembler/coreos-assembler:rhcos-4.7'
+		'quay.io/coreos-assembler/coreos-assembler:rhcos-4.6'
+	)
+	for img in "${images[@]}"; do
+		podman pull "${img}"
+	done
+	for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
+		podman rmi "${img}"
+	done
+}
+
 main() {
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
 		case "${1}" in
 			"s"|"sy"|"sys"|"syst"|"syste"|"system")
 				SYSTEM=true
+				;;
+		esac
+		case "${1}" in
+			"c"|"co"|"con"|"cont"|"conta"|"contai"|"contain"|"containe"|"container")
+				update_container_images
+				exit 0
 				;;
 		esac
 	fi
