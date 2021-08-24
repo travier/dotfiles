@@ -31,6 +31,13 @@ update_container_images() {
 	echo "[+] Done"
 }
 
+update_firmwares() {
+	echo "[+] Updating firmwares..."
+	sudo fwupdmgr refresh
+	sudo fwupdmgr update
+	echo "[+] Done"
+}
+
 main() {
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
@@ -42,6 +49,12 @@ main() {
 		case "${1}" in
 			"c"|"co"|"con"|"cont"|"conta"|"contai"|"contain"|"containe"|"container")
 				update_container_images
+				exit 0
+				;;
+		esac
+		case "${1}" in
+			"f"|"fi"|"fir"|"firm"|"firmw"|"firmwa"|"firmwar"|"firmware")
+				update_firmwares
 				exit 0
 				;;
 		esac
@@ -87,10 +100,6 @@ main() {
 	rustup update
 	toolbox run --container 'toolbox' ~/.cargo/bin/cargo install-update -a
 	toolbox run --container 'toolbox' ~/.cargo/bin/cargo cache -a
-
-	echo "[+] Updating firmwares..."
-	sudo fwupdmgr refresh
-	sudo fwupdmgr update
 
 	echo "[+] Done"
 	if [[ -n "${TMUX+x}" ]]; then
