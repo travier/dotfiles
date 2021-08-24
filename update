@@ -6,6 +6,7 @@ set -u -o pipefail
 # set -x
 
 update_container_images() {
+	echo "[+] Updating container images..."
 	images=(
 		'quay.io/coreos/ignition-validate:release'
 		'registry.fedoraproject.org/fedora:latest'
@@ -27,6 +28,7 @@ update_container_images() {
 	for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
 		podman rmi "${img}"
 	done
+	echo "[+] Done"
 }
 
 main() {
@@ -90,7 +92,7 @@ main() {
 	sudo fwupdmgr refresh
 	sudo fwupdmgr update
 
-	echo "[+] Done!"
+	echo "[+] Done"
 	if [[ -n "${TMUX+x}" ]]; then
 		exec "${SHELL}"
 	fi
