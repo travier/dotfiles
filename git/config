@@ -67,9 +67,6 @@
 [rebase]
 	autosquash = true
 
-; [commit]
-; 	gpgSign = true
-
 [alias]
 	a = add
 	ap = add --patch
