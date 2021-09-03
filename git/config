@@ -1,8 +1,6 @@
 [user]
 	name = ""
-	useConfigOnly = true
-	# email = ""
-	# signingKey = "0x"
+	email = ""
 
 [advice]
 	pushNonFastForward = false
