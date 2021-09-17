@@ -80,6 +80,7 @@
 	cp = checkout --patch
 	cs = commit --squash
 	ct = checkout --track
+	cx = cherry-pick -x
 	d =  diff --no-prefix
 	dc = diff --no-prefix --cached
 	ds = diff --no-prefix --stat
