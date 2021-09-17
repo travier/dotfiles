@@ -178,6 +178,11 @@ urlencode() {
 	python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))" "${@}"
 }
 
+# Default tooblox while we wait for config file support in a toolbox
+tb() {
+	toolbox enter toolbox "${@}"
+}
+
 # PATH setup
 __path_pre() {
     if [[ -d "${1}" ]] && [[ ":${PATH}:" != *":${1}:"* ]]; then
