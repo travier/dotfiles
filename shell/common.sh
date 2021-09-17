@@ -132,7 +132,11 @@ fpb() {
 	flatpak-builder --ccache --repo=repo --jobs=12 --subject="wip" --force-clean app *.json
 }
 fpr() {
-	flatpak-builder --run app *.json $(basename $(pwd))
+	if [[ "${#}" -gt 0 ]]; then
+		flatpak-builder --run app *.json $@
+	else
+		flatpak-builder --run app *.json $(basename $(pwd))
+	fi
 }
 
 # CoreOS assembler
