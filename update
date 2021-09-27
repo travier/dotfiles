@@ -80,6 +80,10 @@ main() {
 		fi
 	fi
 
+	echo "[+] Updating system Flatpaks..."
+	flatpak --system update --assumeyes
+	flatpak --system remove --unused --assumeyes
+
 	echo "[+] Updating toolbox..."
 	# 'quay.io/travier/toolbox-texlive:latest'
 	images=(
@@ -91,10 +95,6 @@ main() {
 		toolbox rm --force "${tbx}"
 		toolbox create --image "${img}" "${tbx}"
 	done
-
-	echo "[+] Updating system Flatpaks..."
-	flatpak --system update --assumeyes
-	flatpak --system remove --unused --assumeyes
 
 	echo "[+] Updating Rust crates..."
 	rustup update
