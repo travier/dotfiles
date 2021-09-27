@@ -84,16 +84,18 @@ main() {
 	flatpak --system update --assumeyes
 	flatpak --system remove --unused --assumeyes
 
-	echo "[+] Updating toolbox..."
+	echo "[+] Updating toolboxes..."
 	# 'quay.io/travier/toolbox-texlive:latest'
 	images=(
 		'quay.io/travier/toolbox:latest'
+		'quay.io/travier/toolbox-kdedev:latest'
 	)
 	for img in "${images[@]}"; do
 		podman pull "${img}"
-		local tbx="toolbox" # TODO: keep only image name
-		toolbox rm --force "${tbx}"
-		toolbox create --image "${img}" "${tbx}"
+		local name="${img%:*}"
+		name="${name##*/}"
+		toolbox rm --force "${name}"
+		toolbox create --image "${img}" "${name}"
 	done
 
 	echo "[+] Updating Rust crates..."
