@@ -50,6 +50,9 @@
 [pull]
 	ff = only
 
+[checkout]
+	defaultRemote = origin
+
 [protocol "http"]
 	allow = never
 [protocol "git"]
