@@ -7,20 +7,22 @@ set -u -o pipefail
 
 update_container_images() {
 	echo "[+] Updating container images..."
+	# docker.io/digitalocean/doctl:latest
+	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.6
+	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.7
+	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.8
+	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.9
+	# quay.io/coreos/ignition-validate:release
+	# registry.access.redhat.com/ubi8/ubi:8.4
+	# registry.access.redhat.com/ubi8/ubi:latest
+	# registry.fedoraproject.org/fedora:34
+	# registry.fedoraproject.org/fedora:35
 	images=(
-		'quay.io/coreos/ignition-validate:release'
 		'registry.fedoraproject.org/fedora:latest'
-		'registry.fedoraproject.org/fedora:34'
 		'quay.io/coreos/butane:release'
 		'quay.io/coreos/coreos-installer:release'
-		'registry.access.redhat.com/ubi8/ubi:latest'
-		'registry.access.redhat.com/ubi8/ubi:8.4'
-		'docker.io/digitalocean/doctl:latest'
 		'docker.io/antora/antora:latest'
 		'quay.io/coreos-assembler/coreos-assembler:latest'
-		'quay.io/coreos-assembler/coreos-assembler:rhcos-4.8'
-		'quay.io/coreos-assembler/coreos-assembler:rhcos-4.7'
-		'quay.io/coreos-assembler/coreos-assembler:rhcos-4.6'
 	)
 	for img in "${images[@]}"; do
 		podman pull "${img}"
@@ -85,10 +87,10 @@ main() {
 	flatpak --system remove --unused --assumeyes
 
 	echo "[+] Updating toolboxes..."
+	# 'quay.io/travier/toolbox-kdedev:latest'
 	# 'quay.io/travier/toolbox-texlive:latest'
 	images=(
 		'quay.io/travier/toolbox:latest'
-		'quay.io/travier/toolbox-kdedev:latest'
 	)
 	for img in "${images[@]}"; do
 		podman pull "${img}"
