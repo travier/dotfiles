@@ -2,72 +2,6 @@
 	name = ""
 	email = ""
 
-[advice]
-	pushNonFastForward = false
-	statusHints = false
-	commitBeforeMerge = false
-
-[color]
-	ui = true
-
-[column]
-	ui = auto
-
-[core]
-	editor = vim
-	pager = delta
-
-[delta]
-	features = decorations
-	syntax-theme = "Monokai Extended Bright"
-
-[delta "decorations"]
-	commit-decoration-style = bold yellow
-	file-style = bold yellow ul
-	file-decoration-style = none
-	hunk-header-decoration-style = none
-
-[interactive]
-	diffFilter = delta --color-only
-
-[init]
-	defaultBranch = main
-
-[log]
-	abbrevCommit = true
-	date = auto:human
-	follow = true
-
-[merge]
-	tool = vimdiff
-	ff = only
-	conflictstyle = diff3
-
-[push]
-	default = simple
-	followTags = false
-
-[pull]
-	ff = only
-
-[checkout]
-	defaultRemote = origin
-
-[protocol "http"]
-	allow = never
-[protocol "git"]
-	allow = never
-
-[transfer]
-	fsckObjects = true
-[fetch]
-	fsckObjects = true
-[receive]
-	fsckObjects = true
-
-[rebase]
-	autosquash = true
-
 [alias]
 	a = add
 	ap = add --patch
@@ -127,6 +61,63 @@
 	up = remote update
 	vc = verify-commit
 	vch = verify-commit HEAD
+
+[color]
+	ui = true
+[column]
+	ui = auto
+[log]
+	abbrevCommit = true
+	date = auto:human
+	follow = true
+[advice]
+	pushNonFastForward = false
+	statusHints = false
+	commitBeforeMerge = false
+[diff]
+	algorithm = histogram
+[init]
+	defaultBranch = main
+
+[core]
+	editor = vim
+	pager = delta
+[delta]
+	features = decorations
+	syntax-theme = "Monokai Extended Bright"
+[delta "decorations"]
+	commit-decoration-style = bold yellow
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-decoration-style = none
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	tool = vimdiff
+	ff = only
+	conflictstyle = diff3
+[push]
+	default = simple
+	followTags = false
+[pull]
+	ff = only
+[rebase]
+	autosquash = true
+[checkout]
+	defaultRemote = origin
+
+[transfer]
+	fsckObjects = true
+[fetch]
+	fsckObjects = true
+[receive]
+	fsckObjects = true
+
+[protocol "http"]
+	allow = never
+[protocol "git"]
+	allow = never
 
 [credential]
 	helper = /usr/libexec/git-core/git-credential-libsecret
