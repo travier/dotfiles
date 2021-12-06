@@ -168,17 +168,17 @@ cosa() {
 }
 
 alias coreos-installer='podman run --pull=always                \
-                            --rm --tty --interactive            \
+                            --rm --interactive --tty            \
                             --security-opt label=disable        \
                             --volume ${PWD}:/pwd --workdir /pwd \
                             quay.io/coreos/coreos-installer:release'
 
-alias ignition-validate='podman run --rm --tty --interactive     \
+alias ignition-validate='podman run --rm --interactive           \
                              --security-opt label=disable        \
                              --volume ${PWD}:/pwd --workdir /pwd \
                              quay.io/coreos/ignition-validate:release'
 
-alias butane='podman run --rm --tty --interactive     \
+alias butane='podman run --rm --interactive         \
                 --security-opt label=disable        \
                 --volume ${PWD}:/pwd --workdir /pwd \
                 quay.io/coreos/butane:release'
