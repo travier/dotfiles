@@ -41,6 +41,14 @@ update_firmwares() {
 }
 
 main() {
+	(
+		source /etc/os-release;
+		if [[ "${VARIANT_ID}" == "container" ]]; then
+			echo "You should run this script outside of a container";
+			exit 1;
+		fi
+	) || exit 1
+
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
 		case "${1}" in
