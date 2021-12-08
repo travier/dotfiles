@@ -22,7 +22,7 @@ dotctl_vimdiff() {
 }
 
 dotctl_diff() {
-	for f in 'bashrc' 'zshrc' 'tmux.conf' 'vimrc' 'colordiffrc'; do
+	for f in 'bashrc' 'zshrc' 'tmux.conf' 'vimrc' 'colordiffrc' 'digrc'; do
 		dotctl_vimdiff "${HOME}/.${f}" "${f}"
 	done
 
