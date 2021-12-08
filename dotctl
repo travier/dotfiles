@@ -3,6 +3,9 @@
 set -eu
 set -o pipefail
 
+# Copy a file if it does not exist
+# Skip if the diff is empty
+# Interactively resolve the diff if needed
 dotctl_vimdiff() {
 	if [[ "${#}" -ne 2 ]]; then
 		exit 1
@@ -21,20 +24,25 @@ dotctl_vimdiff() {
 	fi
 }
 
+# Diff files from this repo with the ones in $HOME
 dotctl_diff() {
+	# Diff configuration files prefixed by a '.' in $HOME
 	for f in 'bashrc' 'zshrc' 'tmux.conf' 'vimrc' 'colordiffrc' 'digrc'; do
 		dotctl_vimdiff "${HOME}/.${f}" "${f}"
 	done
 
+	# Diff configuration files in $HOME/.shell/
 	for f in 'shell/'*.{sh,bash,zsh}; do
 		dotctl_vimdiff "${HOME}/.shell/$(basename "${f}")" "${f}"
 	done
 
+	# Diff configuration files in $HOME/.config directories
 	for f in 'git/'*; do
 		dotctl_vimdiff "${HOME}/.config/git/$(basename "${f}")" "${f}"
 	done
 }
 
+# Initial installation on a fresh system
 dotctl_install() {
 	# Use any argument to bypass this check
 	if [[ "${#}" -ne 1 ]]; then
@@ -111,6 +119,7 @@ dotctl_install() {
 	dotctl_diff
 }
 
+# Update all Git clone plugins and additions then diff config files
 dotctl_update() {
 	pushd "${HOME}/.vim/bundle" > /dev/null
 	for b in *; do
