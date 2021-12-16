@@ -45,7 +45,7 @@ if [[ -n "${SSH_CLIENT}" ]]; then
 	PROMPT='%n@%M:'
 fi
 
-if [[ "$(cat /etc/hostname)" == 'toolbox' ]]; then
+if [[ -f "/run/.toolboxenv" ]] || [[ -f "/run/.containerenv" ]]; then
 	PROMPT="📦${PROMPT}"
 fi
 

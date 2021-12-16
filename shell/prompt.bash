@@ -32,7 +32,7 @@ if [[ -n "${SSH_CLIENT}" ]]; then
 	PS1='\u@\H:'
 fi
 
-if [[ "$(cat /etc/hostname)" == 'toolbox' ]]; then
+if [[ -f "/run/.toolboxenv" ]] || [[ -f "/run/.containerenv" ]]; then
 	PS1="📦${PS1}"
 fi
 
