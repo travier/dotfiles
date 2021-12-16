@@ -167,11 +167,18 @@ cosa() {
    rc=$?; set +x; return $rc
 }
 
-alias coreos-installer='podman run --pull=always                \
-                            --rm --interactive --tty            \
-                            --security-opt label=disable        \
-                            --volume ${PWD}:/pwd --workdir /pwd \
-                            quay.io/coreos/coreos-installer:release'
+coreos-installer() {
+    local TTY=""
+    if tty -s; then
+        TTY="--tty"
+    fi
+    podman run --pull=always                    \
+        --rm --interactive ${TTY}               \
+        --security-opt label=disable            \
+        --volume "${PWD}":/pwd --workdir /pwd   \
+        quay.io/coreos/coreos-installer:release \
+        "${@}"
+}
 
 alias ignition-validate='podman run --rm --interactive           \
                              --security-opt label=disable        \
