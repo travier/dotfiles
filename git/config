@@ -11,6 +11,17 @@
 	br = branch --all
 	c = commit
 	ca = commit --amend
+	caf = "!f() { \
+		if [[ ${#} -ne 2 ]]; then \
+			>&2 echo \"Missing arguments, need origin URL & fork URL\"; \
+		fi; \
+		git clone $1; \
+		local -r repo=$(basename $1); \
+		pushd ${repo%.git} > /dev/null; \
+		git remote add travier $2; \
+		git fetch --all; \
+		popd > /dev/null; \
+	}; f"
 	cb = checkout -b
 	cf = commit --fixup
 	co = checkout
