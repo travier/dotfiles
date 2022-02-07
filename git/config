@@ -87,6 +87,7 @@
 	commitBeforeMerge = false
 [diff]
 	algorithm = histogram
+	renameLimit = 2000
 [init]
 	defaultBranch = main
 
