@@ -112,6 +112,10 @@ shac() {
     sha256sum -c --ignore-missing "${@}"
 }
 
+find_whitespace() {
+    find . -type f -exec egrep -l " +$" {} \;
+}
+
 +podman_run_cwd() {
 	local cmd=""
 	if [[ ${#} -eq 1 ]]; then
