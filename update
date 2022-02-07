@@ -111,7 +111,7 @@ main() {
 	echo "[+] Updating Rust crates..."
 	rustup update
 	toolbox run --container 'toolbox' ~/.cargo/bin/cargo install-update -a
-	toolbox run --container 'toolbox' ~/.cargo/bin/cargo cache -a
+	# toolbox run --container 'toolbox' ~/.cargo/bin/cargo cache -a
 
 	echo "[+] Done"
 	if [[ -n "${TMUX+x}" ]]; then
