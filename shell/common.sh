@@ -225,6 +225,8 @@ __path_post() {
 __path_pre  "${HOME}/.cargo/bin"
 __path_pre  "${HOME}/.local/bin"
 __path_post "${HOME}/go/bin"
+# Add kdesrc-build to PATH
+__path_post "${HOME}/projects/kde/src/kdesrc-build"
 
 unset -f __path_pre
 unset -f __path_post
