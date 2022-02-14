@@ -40,6 +40,29 @@ update_firmwares() {
 	echo "[+] Done"
 }
 
+update_toolboxes() {
+    echo "[+] Updating toolboxes..."
+    declare -a images=()
+    if [[ "$(podman images -n --format "{{.Repository}}" | grep -c "quay.io/travier/toolbox")" == "0" ]]; then
+        images+=('quay.io/travier/toolbox:latest')
+    else
+        for img in $(podman images -n --format "{{.Repository}}" | grep "quay.io/travier/toolbox"); do
+            images+=("${img}:latest")
+        done
+    fi
+    for img in "${images[@]}"; do
+        podman pull "${img}"
+        local name="${img%:*}"
+        name="${name##*/}"
+        # name="${name#toolbox-}"
+        # if [[ "${name}" == "" ]]; then
+        #     name="main"
+        # fi
+        toolbox rm --force "${name}" || true
+        toolbox create --image "${img}" "${name}"
+    done
+}
+
 main() {
 	(
 		source /etc/os-release;
@@ -68,6 +91,12 @@ main() {
 				exit 0
 				;;
 		esac
+		case "${1}" in
+			"t"|"tb"|"tbx"|"toolbox")
+				update_toolboxes
+				exit 0
+				;;
+		esac
 	fi
 
 	local OSTREE=false
@@ -93,20 +122,6 @@ main() {
 	echo "[+] Updating system Flatpaks..."
 	flatpak --system update --assumeyes
 	flatpak --system remove --unused --assumeyes
-
-	echo "[+] Updating toolboxes..."
-	# 'quay.io/travier/toolbox-kdedev:latest'
-	# 'quay.io/travier/toolbox-texlive:latest'
-	images=(
-		'quay.io/travier/toolbox:latest'
-	)
-	for img in "${images[@]}"; do
-		podman pull "${img}"
-		local name="${img%:*}"
-		name="${name##*/}"
-		toolbox rm --force "${name}"
-		toolbox create --image "${img}" "${name}"
-	done
 
 	echo "[+] Updating Rust crates..."
 	rustup update
