@@ -202,9 +202,12 @@ urlencode() {
 	python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))" "${@}"
 }
 
-# Default tooblox while we wait for config file support in a toolbox
+# Toolbx aliases
 tb() {
 	toolbox enter toolbox "${@}"
+}
+kdedev() {
+	toolbox enter toolbox-kdedev "${@}"
 }
 
 # PATH setup
