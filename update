@@ -75,18 +75,18 @@ main() {
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
 		case "${1}" in
-			"s"|"sy"|"sys"|"syst"|"syste"|"system")
+			"s"|"sys"|"system")
 				SYSTEM=true
 				;;
 		esac
 		case "${1}" in
-			"c"|"co"|"con"|"cont"|"conta"|"contai"|"contain"|"containe"|"container")
+			"c"|"cont"|"container")
 				update_container_images
 				exit 0
 				;;
 		esac
 		case "${1}" in
-			"f"|"fi"|"fir"|"firm"|"firmw"|"firmwa"|"firmwar"|"firmware")
+			"f"|"firm"|"firmware")
 				update_firmwares
 				exit 0
 				;;
