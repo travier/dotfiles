@@ -222,8 +222,11 @@ __path_post() {
     fi
 }
 
+# Make sure that Rust and Cargo from rustup are used first
 __path_pre  "${HOME}/.cargo/bin"
+# Make sure that local binaries are used first
 __path_pre  "${HOME}/.local/bin"
+# Add Go binaries to PATH
 __path_post "${HOME}/go/bin"
 # Add kdesrc-build to PATH
 __path_post "${HOME}/projects/kde/src/kdesrc-build"
