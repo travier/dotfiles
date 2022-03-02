@@ -184,6 +184,24 @@ coreos-installer() {
         "${@}"
 }
 
+vagrant() {
+  podman run -it --rm \
+    -e LIBVIRT_DEFAULT_URI \
+    -e LIBGUESTFS_BACKEND=direct \
+    -v /run/libvirt/:/run/libvirt/ \
+    -v /var/lib/libvirt/images:/var/lib/libvirt/images/ \
+    -v ~/.vagrant.d/boxes:/vagrant/boxes \
+    -v ~/.vagrant.d/data:/vagrant/data \
+    -v ~/.vagrant.d/tmp:/vagrant/tmp \
+    -v $(realpath "${PWD}"):${PWD} \
+    -w $(realpath "${PWD}") \
+    --network host \
+    --entrypoint /bin/bash \
+    --security-opt label=disable \
+    localhost/vagrant:latest \
+      vagrant $@
+}
+
 alias ignition-validate='podman run --rm --interactive           \
                              --security-opt label=disable        \
                              --volume ${PWD}:/pwd --workdir /pwd \
