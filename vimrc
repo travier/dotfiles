@@ -234,6 +234,7 @@ cmap w!! w !sudo tee % >/dev/null
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Custom configuration for various languages
+autocmd FileType asciidoc   set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType sh         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType css        set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType html       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
