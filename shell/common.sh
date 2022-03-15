@@ -133,13 +133,29 @@ find_whitespace() {
 
 # Flatpak
 fpb() {
-	flatpak-builder --ccache --repo=repo --jobs=12 --subject="wip" --force-clean app *.json
+	manifest=""
+	if [[ -f "$(basename $(pwd)).yml" ]]; then
+		manifest="$(basename $(pwd)).yml"
+	elif [[ -f "$(basename $(pwd)).yaml" ]]; then
+		manifest="$(basename $(pwd)).yaml"
+	elif [[ -f "$(basename $(pwd)).json" ]]; then
+		manifest="$(basename $(pwd)).json"
+	fi
+	flatpak-builder --ccache --repo=repo --jobs=12 --subject="wip" --force-clean app "${manifest}"
 }
 fpr() {
+	manifest=""
+	if [[ -f "$(basename $(pwd)).yml" ]]; then
+		manifest="$(basename $(pwd)).yml"
+	elif [[ -f "$(basename $(pwd)).yaml" ]]; then
+		manifest="$(basename $(pwd)).yaml"
+	elif [[ -f "$(basename $(pwd)).json" ]]; then
+		manifest="$(basename $(pwd)).json"
+	fi
 	if [[ "${#}" -gt 0 ]]; then
-		flatpak-builder --run app *.json $@
+		flatpak-builder --run app "${manifest}" $@
 	else
-		flatpak-builder --run app *.json $(basename $(pwd))
+		flatpak-builder --run app "${manifest}" $(basename $(pwd))
 	fi
 }
 
