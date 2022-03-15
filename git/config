@@ -65,6 +65,7 @@
 	sh = show
 	shs = show --stat
 	smi = submodule update --init
+	smr = submodule update --rebase
 	sp = stash --patch
 	st = status --long
 	stash-all = stash save --included-untracked
