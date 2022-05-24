@@ -50,13 +50,10 @@ update_toolboxes() {
 }
 
 main() {
-	(
-		source /etc/os-release;
-		if [[ "${VARIANT_ID}" == "container" ]]; then
-			echo "You should run this script outside of a container";
-			exit 1;
-		fi
-	) || exit 1
+    if [[ -e "/run/.containerenv" ]] || [[ -e "/run/.toolboxenv" ]]; then
+        echo "You should run this script outside of a container";
+        exit 1;
+    fi
 
 	local SYSTEM=false
 	if [[ "${#}" -gt 0 ]]; then
