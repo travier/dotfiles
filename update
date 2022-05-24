@@ -43,14 +43,8 @@ update_firmwares() {
 update_toolboxes() {
     echo "[+] Updating toolboxes..."
     declare -a images=()
-    if [[ "$(podman images -n --format "{{.Repository}}" | grep -c "quay.io/travier/toolbox")" == "0" ]]; then
-        images+=('quay.io/travier/toolbox:latest')
-    else
-        for img in $(podman images -n --format "{{.Repository}}" | grep "quay.io/travier/toolbox"); do
-            images+=("${img}:latest")
-        done
-    fi
-    for img in "${images[@]}"; do
+    # Only update toolbox images currently in use
+    for img in $(podman images -n --format "{{.Repository}}" | grep "quay.io/travier/toolbox"); do
         podman pull "${img}"
         local name="${img%:*}"
         name="${name##*/}"
