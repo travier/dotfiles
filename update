@@ -8,15 +8,11 @@ set -u -o pipefail
 update_container_images() {
 	echo "[+] Updating container images..."
 	# docker.io/digitalocean/doctl:latest
-	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.6
-	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.7
-	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.8
-	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.9
+	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.10
 	# quay.io/coreos/ignition-validate:release
-	# registry.access.redhat.com/ubi8/ubi:8.4
+	# registry.access.redhat.com/ubi8/ubi:8.6
 	# registry.access.redhat.com/ubi8/ubi:latest
-	# registry.fedoraproject.org/fedora:34
-	# registry.fedoraproject.org/fedora:35
+	# registry.fedoraproject.org/fedora:36
 	images=(
 		'registry.fedoraproject.org/fedora:latest'
 		'quay.io/coreos/butane:release'
@@ -48,10 +44,6 @@ update_toolboxes() {
         podman pull "${img}"
         local name="${img%:*}"
         name="${name##*/}"
-        # name="${name#toolbox-}"
-        # if [[ "${name}" == "" ]]; then
-        #     name="main"
-        # fi
         toolbox rm --force "${name}" || true
         toolbox create --image "${img}" "${name}"
     done
