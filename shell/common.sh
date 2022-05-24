@@ -236,9 +236,9 @@ urlencode() {
 	python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))" "${@}"
 }
 
-# Toolbx aliases
+# Specific toolbx aliases
 tb() {
-	toolbox enter toolbox "${@}"
+	toolbox enter
 }
 kdedev() {
 	toolbox enter toolbox-kdedev "${@}"
