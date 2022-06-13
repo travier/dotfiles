@@ -8,6 +8,9 @@ export GREP_COLOR="1;33"
 export EDITOR="/usr/bin/vim"
 export GIT_EDITOR='/usr/bin/vim'
 
+# Use podman for openshift/release
+export CONTAINER_ENGINE=podman
+
 # Longer lines for pdflatex output
 # export max_print_line=1000
 
