@@ -195,7 +195,7 @@ coreos-installer() {
     if tty -s; then
         TTY="--tty"
     fi
-    podman run --pull=always                    \
+    podman run                                  \
         --rm --interactive ${TTY}               \
         --security-opt label=disable            \
         --volume "${PWD}":/pwd --workdir /pwd   \
