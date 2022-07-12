@@ -54,13 +54,6 @@ alias okular='flatpak run org.kde.okular'
 alias vlc='flatpak run org.videolan.VLC'
 
 # "Function" aliases that can not be expressed as regular aliases
-diff() {
-    if [[ -z "$(command -v colordiff)" ]]; then
-        diff "${@}"
-    else
-        colordiff "${@}"
-    fi
-}
 function l() {
     if [[ -z "$(command -v exa)" ]]; then
         ls --color=auto --human-readable "${@}"
