@@ -237,7 +237,7 @@ tb() {
 	toolbox enter
 }
 kdedev() {
-	toolbox enter toolbox-kdedev "${@}"
+	toolbox enter toolbox-kdedev
 }
 
 # PATH setup
