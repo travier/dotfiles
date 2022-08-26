@@ -91,6 +91,8 @@
 	renameLimit = 2000
 [init]
 	defaultBranch = main
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
 
 [core]
 	editor = vim
