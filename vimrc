@@ -237,12 +237,14 @@ cmap w!! w !sudo tee % >/dev/null
 autocmd FileType asciidoc   set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType conf       set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType css        set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType dockerfile set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType html       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType javascript set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType json       set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType markdown   set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType python     set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType ruby       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+autocmd FileType scss       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType sh         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " LaTeX support
