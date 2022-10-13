@@ -234,7 +234,7 @@ urlencode() {
 
 # Specific toolbx aliases
 tb() {
-	toolbox enter
+	toolbox enter fedora-toolbox-36
 }
 kdedev() {
 	toolbox enter toolbox-kdedev
