@@ -120,6 +120,7 @@
 	ff = only
 [rebase]
 	autosquash = true
+	updateRefs = true
 [checkout]
 	defaultRemote = origin
 
