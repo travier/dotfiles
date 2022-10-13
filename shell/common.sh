@@ -137,7 +137,7 @@ fpb() {
 	elif [[ -f "$(basename $(pwd)).json" ]]; then
 		manifest="$(basename $(pwd)).json"
 	fi
-	flatpak-builder --ccache --repo=repo --jobs=12 --subject="wip" --force-clean app "${manifest}"
+	flatpak-builder --ccache --repo=repo --jobs="$(nproc)" --subject="wip" --force-clean app "${manifest}"
 }
 fpr() {
 	manifest=""
