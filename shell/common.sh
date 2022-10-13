@@ -237,7 +237,7 @@ tb() {
 	toolbox enter fedora-toolbox-36
 }
 kdedev() {
-	toolbox enter toolbox-kdedev
+	toolbox enter toolbox-kdedev "${@}"
 }
 
 # PATH setup
