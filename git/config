@@ -86,6 +86,7 @@
 	pushNonFastForward = false
 	statusHints = false
 	commitBeforeMerge = false
+	skippedCherryPicks = false
 [diff]
 	algorithm = histogram
 	renameLimit = 2000
