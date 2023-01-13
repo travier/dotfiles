@@ -176,7 +176,7 @@ set tabstop=4
 " Number of spaces to use for each step of (auto)indent
 set shiftwidth=4
 " Use the appropriate number of spaces to insert a <Tab>
-" set expandtab
+set expandtab
 " Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode. This
 " is a list of items, separated by commas. Each item allows a way to backspace
 " over something.
