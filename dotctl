@@ -125,7 +125,8 @@ dotctl_update() {
 	for b in *; do
 		pushd "${b}" > /dev/null
 		echo "[+] Updating ${b}..."
-		git pull origin
+        # Update failures are not fatal
+        git pull origin || echo "[!] Failed to update ${b}"
 		popd > /dev/null
 	done
 	popd > /dev/null
@@ -135,7 +136,8 @@ dotctl_update() {
 		if [[ -d "${d}" ]]; then
 			pushd "${d}" > /dev/null
 			echo "[+] Updating ${d}..."
-			git pull origin
+            # Update failures are not fatal
+			git pull origin || echo "[!] Failed to update ${d}"
 			popd > /dev/null
 		fi
 	done
