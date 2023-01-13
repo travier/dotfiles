@@ -155,6 +155,10 @@ fpr() {
 	fi
 }
 
+fedc() {
+	podman run --rm --privileged -v "${PWD}":/srv:rw -w /srv -it ghcr.io/flathub/flatpak-external-data-checker --update --edit-only "${@}"
+}
+
 # CoreOS assembler
 cosa() {
    env | grep COREOS_ASSEMBLER
