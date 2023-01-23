@@ -201,6 +201,7 @@ coreos-installer() {
 }
 
 vagrant() {
+  mkdir -p ~/.vagrant.d/boxes ~/.vagrant.d/data ~/.vagrant.d/tmp
   podman run -it --rm \
     -e LIBVIRT_DEFAULT_URI \
     -e LIBGUESTFS_BACKEND=direct \
@@ -214,7 +215,7 @@ vagrant() {
     --network host \
     --entrypoint /bin/bash \
     --security-opt label=disable \
-    localhost/vagrant:latest \
+    quay.io/travier/vagrant:latest \
       vagrant $@
 }
 
