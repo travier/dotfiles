@@ -107,7 +107,7 @@ main() {
 	flatpak --system remove --unused --assumeyes
 
 	# Use a fixed toolbox to avoid issues during a Fedora major version rebase
-	local -r toolbox="fedora-toolbox-36"
+	local -r toolbox="fedora-toolbox-37"
 
 	echo "[+] Updating main toolbox..."
 	toolbox run --container "${toolbox}" sudo dnf update -y
