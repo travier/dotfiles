@@ -112,21 +112,6 @@ find_whitespace() {
     find . -type f -exec egrep -l " +$" {} \;
 }
 
-+podman_run_cwd() {
-	local cmd=""
-	if [[ ${#} -eq 1 ]]; then
-		cmd="bash"
-	fi
-	podman run --rm --tty --interactive \
-		--security-opt label=disable \
-		--volume "${PWD}:/mnt" \
-		--tmpfs '/tmp:exec' \
-		--tmpfs '/var/tmp:exec' \
-		--workdir '/mnt' \
-		"${@}" \
-		bash
-}
-
 # Flatpak
 fpb() {
 	manifest=""
@@ -187,19 +172,6 @@ cosa() {
    rc=$?; set +x; return $rc
 }
 
-coreos-installer() {
-    local TTY=""
-    if tty -s; then
-        TTY="--tty"
-    fi
-    podman run                                  \
-        --rm --interactive ${TTY}               \
-        --security-opt label=disable            \
-        --volume "${PWD}":/pwd --workdir /pwd   \
-        quay.io/coreos/coreos-installer:release \
-        "${@}"
-}
-
 vagrant() {
   mkdir -p ~/.vagrant.d/boxes ~/.vagrant.d/data ~/.vagrant.d/tmp
   podman run -it --rm \
@@ -218,16 +190,6 @@ vagrant() {
     quay.io/travier/vagrant:latest \
       vagrant $@
 }
-
-alias ignition-validate='podman run --rm --interactive           \
-                             --security-opt label=disable        \
-                             --volume ${PWD}:/pwd --workdir /pwd \
-                             quay.io/coreos/ignition-validate:release'
-
-alias butane='podman run --rm --interactive         \
-                --security-opt label=disable        \
-                --volume ${PWD}:/pwd --workdir /pwd \
-                quay.io/coreos/butane:release'
 
 urldecode() {
 	python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))" "${@}"
