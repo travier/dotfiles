@@ -139,6 +139,9 @@
 [credential]
 	helper = /usr/libexec/git-core/git-credential-libsecret
 
+[gpg]
+	format = ssh
+
 [url "https://invent.kde.org/"]
 	insteadOf = kde:
 [url "ssh://git@invent.kde.org/"]
