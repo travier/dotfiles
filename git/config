@@ -97,7 +97,6 @@
 ; 	ignoreRevsFile = .git-blame-ignore-revs
 
 [core]
-	editor = vim
 	pager = delta
 [delta]
 	features = decorations
@@ -111,7 +110,6 @@
 	diffFilter = delta --color-only
 
 [merge]
-	tool = vimdiff
 	ff = only
 	conflictstyle = diff3
 [push]
