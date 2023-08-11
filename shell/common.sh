@@ -4,7 +4,7 @@
 eval $(dircolors -b ~/.shell/dircolors.256dark)
 
 # Environment variables
-export GREP_COLOR="1;33"
+export GREP_COLOR="mt=1;33"
 export EDITOR="vim"
 
 # Use podman for openshift/release
