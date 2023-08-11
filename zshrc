@@ -1,6 +1,10 @@
 # Force SHELL to be zsh
 SHELL=/bin/zsh
 
+if [[ ! -f "/run/.containerenv" ]]; then
+    toolbox enter "fedora-toolbox-38"
+fi
+
 # source /etc/zsh/zprofile
 
 # Source all generic and zsh specific config from ~/.shell
