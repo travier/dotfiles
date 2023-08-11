@@ -163,16 +163,19 @@ cosa() {
        fi
    fi
    set -x
-   podman run --rm -ti --security-opt label=disable --privileged                                    \
-              --uidmap=1000:0:1 --uidmap=0:1:1000 --uidmap 1001:1001:64536                          \
-              -v ${PWD}:/srv/ --device /dev/kvm --device /dev/fuse                                  \
-              --tmpfs /tmp -v /var/tmp:/var/tmp                                                     \
-              ${COREOS_ASSEMBLER_CONFIG_GIT:+-v $COREOS_ASSEMBLER_CONFIG_GIT:/srv/src/config/:ro}   \
-              ${COREOS_ASSEMBLER_GIT:+-v $COREOS_ASSEMBLER_GIT/src/:/usr/lib/coreos-assembler/:ro}  \
-              ${COREOS_ASSEMBLER_CONTAINER_RUNTIME_ARGS}                                            \
+   podman run --rm -ti --security-opt label=disable --privileged                                         \
+              --uidmap=1000:0:1 --uidmap=0:1:1000 --uidmap 1001:1001:64536                               \
+              -v ${PWD}:/srv/ --device /dev/kvm --device /dev/fuse                                       \
+              --tmpfs /tmp -v /var/tmp:/var/tmp                                                          \
+              ${COREOS_ASSEMBLER_CONFIG_GIT:+--volume=$COREOS_ASSEMBLER_CONFIG_GIT:/srv/src/config/:ro}  \
+              ${COREOS_ASSEMBLER_GIT:+--volume=$COREOS_ASSEMBLER_GIT/src/:/usr/lib/coreos-assembler/:ro} \
+              ${COREOS_ASSEMBLER_ADD_CERTS:+--volume=/etc/pki/ca-trust:/etc/pki/ca-trust:ro}             \
+              ${COREOS_ASSEMBLER_CONTAINER_RUNTIME_ARGS}                                                 \
               ${COREOS_ASSEMBLER_CONTAINER:-$COREOS_ASSEMBLER_CONTAINER_LATEST} "$@"
    rc=$?; set +x; return $rc
 }
+# Use certs from host
+export COREOS_ASSEMBLER_ADD_CERTS='y'
 
 urldecode() {
 	python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))" "${@}"
