@@ -47,7 +47,6 @@ alias vi='vim'
 alias xo='xdg-open'
 
 # Flatpak aliases
-alias ark='flatpak run org.kde.ark'
 alias inkscape='flatpak run org.inkscape.Inkscape'
 alias okular='flatpak run org.kde.okular'
 alias vlc='flatpak run org.videolan.VLC'
