@@ -112,15 +112,19 @@ find_whitespace() {
 
 # Flatpak
 fpb() {
-	manifest=""
-	if [[ -f "$(basename $(pwd)).yml" ]]; then
-		manifest="$(basename $(pwd)).yml"
-	elif [[ -f "$(basename $(pwd)).yaml" ]]; then
-		manifest="$(basename $(pwd)).yaml"
-	elif [[ -f "$(basename $(pwd)).json" ]]; then
-		manifest="$(basename $(pwd)).json"
-	fi
-	flatpak-builder --ccache --repo=repo --jobs="$(nproc)" --subject="wip" --force-clean app "${manifest}"
+    manifest=""
+    if [[ -f "$(basename $(pwd)).yml" ]]; then
+        manifest="$(basename $(pwd)).yml"
+    elif [[ -f "$(basename $(pwd)).yaml" ]]; then
+        manifest="$(basename $(pwd)).yaml"
+    elif [[ -f "$(basename $(pwd)).json" ]]; then
+        manifest="$(basename $(pwd)).json"
+    fi
+    args=""
+    if [[ -f "/run/.toolboxenv" ]]; then
+        args="--disable-rofiles-fuse"
+    fi
+    flatpak-builder --ccache --repo=repo --jobs="$(nproc)" --subject="wip" --force-clean ${args} app "${manifest}"
 }
 fpr() {
 	manifest=""
