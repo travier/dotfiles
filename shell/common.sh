@@ -107,7 +107,7 @@ shac() {
 }
 
 find_whitespace() {
-    find . -type f -exec egrep -l " +$" {} \;
+    find . -type f -exec grep -El " +$" {} \;
 }
 
 # Flatpak
