@@ -6,34 +6,34 @@ set -u -o pipefail
 # set -x
 
 update_container_images() {
-	echo "[+] Updating container images..."
-	# docker.io/digitalocean/doctl:latest
-	# quay.io/coreos-assembler/coreos-assembler:rhcos-4.10
-	# quay.io/coreos/ignition-validate:release
-	# registry.access.redhat.com/ubi8/ubi:8.6
-	# registry.access.redhat.com/ubi8/ubi:latest
-	# registry.fedoraproject.org/fedora:36
-	# 'quay.io/coreos/butane:release'
-	# 'quay.io/coreos/coreos-installer:release'
-	images=(
-		'registry.fedoraproject.org/fedora:latest'
-		'docker.io/antora/antora:latest'
-		'quay.io/coreos-assembler/coreos-assembler:latest'
-	)
-	for img in "${images[@]}"; do
-		podman pull "${img}"
-	done
-	for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
-		podman rmi "${img}"
-	done
-	echo "[+] Done"
+    echo "[+] Updating container images..."
+    # docker.io/digitalocean/doctl:latest
+    # quay.io/coreos-assembler/coreos-assembler:rhcos-4.10
+    # quay.io/coreos/ignition-validate:release
+    # registry.access.redhat.com/ubi8/ubi:8.6
+    # registry.access.redhat.com/ubi8/ubi:latest
+    # registry.fedoraproject.org/fedora:36
+    # 'quay.io/coreos/butane:release'
+    # 'quay.io/coreos/coreos-installer:release'
+    images=(
+        'registry.fedoraproject.org/fedora:latest'
+        'docker.io/antora/antora:latest'
+        'quay.io/coreos-assembler/coreos-assembler:latest'
+    )
+    for img in "${images[@]}"; do
+        podman pull "${img}"
+    done
+    for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
+        podman rmi "${img}"
+    done
+    echo "[+] Done"
 }
 
 update_firmwares() {
-	echo "[+] Updating firmwares..."
-	sudo fwupdmgr refresh
-	sudo fwupdmgr update
-	echo "[+] Done"
+    echo "[+] Updating firmwares..."
+    sudo fwupdmgr refresh
+    sudo fwupdmgr update
+    echo "[+] Done"
 }
 
 update_toolboxes() {
@@ -50,77 +50,54 @@ update_toolboxes() {
 }
 
 main() {
-    if [[ -e "/run/.containerenv" ]] || [[ -e "/run/.toolboxenv" ]]; then
-        echo "You should run this script outside of a container";
-        exit 1;
+    local SYSTEM=false
+    if [[ "${#}" -gt 0 ]]; then
+        case "${1}" in
+            "s"|"sys"|"system")
+                SYSTEM=true
+                ;;
+        esac
+        case "${1}" in
+            "c"|"cont"|"container")
+                update_container_images
+                exit 0
+                ;;
+        esac
+        case "${1}" in
+            "f"|"firm"|"firmware")
+                update_firmwares
+                exit 0
+                ;;
+        esac
+        case "${1}" in
+            "t"|"tb"|"tbx"|"toolbox")
+                update_toolboxes
+                exit 0
+                ;;
+        esac
     fi
 
-	local SYSTEM=false
-	if [[ "${#}" -gt 0 ]]; then
-		case "${1}" in
-			"s"|"sys"|"system")
-				SYSTEM=true
-				;;
-		esac
-		case "${1}" in
-			"c"|"cont"|"container")
-				update_container_images
-				exit 0
-				;;
-		esac
-		case "${1}" in
-			"f"|"firm"|"firmware")
-				update_firmwares
-				exit 0
-				;;
-		esac
-		case "${1}" in
-			"t"|"tb"|"tbx"|"toolbox")
-				update_toolboxes
-				exit 0
-				;;
-		esac
-	fi
+    if [[ "${SYSTEM}" == true ]]; then
+        echo "[+] Updating system (rpm-ostree)..."
+        rpm-ostree update
 
-	local OSTREE=false
-	if [[ -f "/run/ostree-booted" ]]; then
-		OSTREE=true
-	fi
+        echo "[+] Updating system Flatpaks..."
+        flatpak --system update --assumeyes
+        flatpak --system remove --unused --assumeyes
+    fi
 
-	if [[ "${SYSTEM}" == true ]] && [[ "${OSTREE}" == false ]] && [[ -z "${TMUX+x}" ]]; then
-		tmux attach-session -t update || tmux new-session -s update -- ~/.local/bin/+update system
-		exit 0
-	fi
+    # Use a fixed toolbox to avoid issues during a Fedora major version rebase
+    local -r toolbox="fedora-toolbox-38"
 
-	if [[ "${SYSTEM}" == true ]]; then
-		if [[ "${OSTREE}" == true ]]; then
-			echo "[+] Updating system (rpm-ostree)..."
-			rpm-ostree update
-		else
-			echo "[+] Updating system (dnf)..."
-			sudo dnf update --refresh
-		fi
-	fi
+    echo "[+] Updating main toolbox..."
+    toolbox run --container "${toolbox}" sudo dnf update -y
 
-	echo "[+] Updating system Flatpaks..."
-	flatpak --system update --assumeyes
-	flatpak --system remove --unused --assumeyes
+    echo "[+] Updating Rust crates..."
+    rustup update
+    toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
+    # toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
 
-	# Use a fixed toolbox to avoid issues during a Fedora major version rebase
-	local -r toolbox="fedora-toolbox-38"
-
-	echo "[+] Updating main toolbox..."
-	toolbox run --container "${toolbox}" sudo dnf update -y
-
-	echo "[+] Updating Rust crates..."
-	rustup update
-	toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
-	# toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
-
-	echo "[+] Done"
-	if [[ -n "${TMUX+x}" ]]; then
-		exec "${SHELL}"
-	fi
+    echo "[+] Done"
 }
 
 main "${@}"
