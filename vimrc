@@ -254,5 +254,6 @@ let g:Tex_MultipleCompileFormats='dvi,pdf'
 autocmd FileType tex set shiftwidth=2 tabstop=2
 "let g:syntastic_tex_checkers = ["chktex"]
 "let g:syntastic_tex_chktex_args='-g'
+let g:syntastic_sh_shellcheck_args="--external-sources"
 
 set complete=.,w,b,u,U,t,i,d
