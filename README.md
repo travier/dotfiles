@@ -1,4 +1,4 @@
-# doctl - Small script to manage dotfiles
+# dotctl - Small script to manage dotfiles
 
 ```
 Install and update dotfiles
