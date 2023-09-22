@@ -23,6 +23,7 @@ fi
 for conf in `ls ~/.shell/*.sh ~/.shell/*.bash`; do
 	source ${conf}
 done
+unset conf
 
 shopt -s autocd
 shopt -s cdspell
