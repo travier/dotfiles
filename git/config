@@ -37,6 +37,8 @@
 	fa = fetch --all --prune
 	fagc = fetch --all --prune --auto-gc
 	g = grep -ni
+	ghpr = !sh -c 'git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1' -
+	ghprf = !sh -c 'git fetch $1 pull/$2/head:pr-$1-$2 && git checkout pr-$1-$2' -
 	l =   log
 	lp =  log --patch
 	ls =  log --stat
@@ -48,6 +50,8 @@
 	los = log --pretty=oneline --max-count=10 --stat
 	lgr = log --graph --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)%Creset'
 	lgrs =  log --graph --simplify-by-decoration --pretty=format:'%d' --all
+	mr = !sh -c 'git fetch origin merge-requests/$1/head:mr-$1 && git checkout mr-$1' -
+	mrf = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
 	p = pull --ff-only
 	pgm = push github master
 	ph = push
