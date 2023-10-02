@@ -40,6 +40,21 @@ update_toolboxes() {
         toolbox rm --force "${name}" || true
         toolbox create --image "${img}" "${name}"
     done
+
+    echo "[+] Updating rootful toolboxes..."
+    if [[ -f "/run/.containerenv" ]]; then
+        echo "[+] Can not (yet) update rootful toolboxes from a rootless container."
+        return
+    fi
+    # Only update toolbox images currently in use
+    # TODO: Force quay.io/travier/toolbox-root
+    for img in $(sudo podman images -n --format "{{.Repository}}" | grep "quay.io/travier/toolbox"); do
+        sudo podman pull "${img}"
+        local name="${img%:*}"
+        name="${name##*/}"
+        sudo toolbox rm --force "${name}" || true
+        sudo toolbox create --image "${img}" "${name}"
+    done
 }
 
 main() {
