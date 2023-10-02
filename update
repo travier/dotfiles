@@ -1,20 +1,14 @@
 #!/usr/bin/env bash
 
 set -u -o pipefail
-# Do not exit if one command failed
-# set -e
-# set -x
+# set -e # Do not exit if one command failed
+# set -x # Only for debugging
 
 update_container_images() {
     echo "[+] Updating container images..."
-    # docker.io/digitalocean/doctl:latest
-    # quay.io/coreos-assembler/coreos-assembler:rhcos-4.10
-    # quay.io/coreos/ignition-validate:release
     # registry.access.redhat.com/ubi8/ubi:8.6
     # registry.access.redhat.com/ubi8/ubi:latest
     # registry.fedoraproject.org/fedora:36
-    # 'quay.io/coreos/butane:release'
-    # 'quay.io/coreos/coreos-installer:release'
     images=(
         'registry.fedoraproject.org/fedora:latest'
         'docker.io/antora/antora:latest'
