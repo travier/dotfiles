@@ -32,7 +32,6 @@ update_firmwares() {
 
 update_toolboxes() {
     echo "[+] Updating toolboxes..."
-    declare -a images=()
     # Only update toolbox images currently in use
     for img in $(podman images -n --format "{{.Repository}}" | grep "quay.io/travier/toolbox"); do
         podman pull "${img}"
