@@ -1,7 +1,7 @@
 # All commands shared by both zsh and bash
 
 # Set solarized colors for ls
-eval $(dircolors -b ~/.shell/dircolors.256dark)
+eval "$(dircolors -b ~/.shell/dircolors.256dark)"
 
 # Environment variables
 export GREP_COLOR="mt=1;33"
@@ -113,12 +113,12 @@ find_whitespace() {
 # Flatpak
 fpb() {
     manifest=""
-    if [[ -f "$(basename $(pwd)).yml" ]]; then
-        manifest="$(basename $(pwd)).yml"
-    elif [[ -f "$(basename $(pwd)).yaml" ]]; then
-        manifest="$(basename $(pwd)).yaml"
-    elif [[ -f "$(basename $(pwd)).json" ]]; then
-        manifest="$(basename $(pwd)).json"
+    if [[ -f "$(basename "$(pwd)").yml" ]]; then
+        manifest="$(basename "$(pwd)").yml"
+    elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
+        manifest="$(basename "$(pwd)").yaml"
+    elif [[ -f "$(basename "$(pwd)").json" ]]; then
+        manifest="$(basename "$(pwd)").json"
     fi
     args=""
     if [[ -f "/run/.toolboxenv" ]]; then
@@ -128,17 +128,17 @@ fpb() {
 }
 fpr() {
 	manifest=""
-	if [[ -f "$(basename $(pwd)).yml" ]]; then
-		manifest="$(basename $(pwd)).yml"
-	elif [[ -f "$(basename $(pwd)).yaml" ]]; then
-		manifest="$(basename $(pwd)).yaml"
-	elif [[ -f "$(basename $(pwd)).json" ]]; then
-		manifest="$(basename $(pwd)).json"
+	if [[ -f "$(basename "$(pwd)").yml" ]]; then
+		manifest="$(basename "$(pwd)").yml"
+	elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
+		manifest="$(basename "$(pwd)").yaml"
+	elif [[ -f "$(basename "$(pwd)").json" ]]; then
+		manifest="$(basename "$(pwd)").json"
 	fi
 	if [[ "${#}" -gt 0 ]]; then
-		flatpak-builder --run app "${manifest}" $@
+		flatpak-builder --run app "${manifest}" "${@}"
 	else
-		flatpak-builder --run app "${manifest}" $(basename $(pwd))
+		flatpak-builder --run app "${manifest}" "$(basename "$(pwd)")"
 	fi
 }
 
