@@ -187,7 +187,7 @@ urlencode() {
 
 # Specific toolbx aliases
 tb() {
-	toolbox enter fedora-toolbox-38
+	toolbox enter toolbox
 }
 kdedev() {
 	toolbox enter toolbox-kdedev "${@}"

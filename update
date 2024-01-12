@@ -101,7 +101,7 @@ main() {
     fi
 
     # Use a fixed toolbox to avoid issues during a Fedora major version rebase
-    local -r toolbox="fedora-toolbox-38"
+    local -r toolbox="toolbox"
 
     echo "[+] Updating main toolbox..."
     toolbox run --container "${toolbox}" sudo dnf update -y
