@@ -1,0 +1,47 @@
+#!/bin/bash
+
+set -euo pipefail
+# set -x
+
+main() {
+    versions=(
+        "38"
+        "39"
+        "rawhide"
+    )
+    variants=(
+        "silverblue"
+        "kinoite"
+        "sericea"
+        "onyx"
+    )
+    arches=(
+        "x86_64"
+        "aarch64"
+        "ppc64le"
+    )
+
+    local -r summary="$(ostree remote summary fedora)"
+
+    for v in "${variants[@]}"; do
+        (
+        printf "%-10s" "${v}"
+        for r in "${versions[@]}"; do
+            echo -n "|$r"
+        done
+        echo ""
+
+        for a in "${arches[@]}"; do
+            echo -n "${a}"
+            for r in "${versions[@]}"; do
+                version="$(echo "$summary" | grep -E "$r/$a/$v$" -A3 --no-group-separator | grep "Version" | awk 'NF>1{print $NF}')" || version=""
+                printf "|%-15s" "${version}"
+            done
+            echo ""
+        done
+        ) | column -t -s "|"
+        echo ""
+    done
+}
+
+main "${@}"
