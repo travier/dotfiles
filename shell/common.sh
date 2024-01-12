@@ -192,6 +192,9 @@ tb() {
 kdedev() {
 	toolbox enter toolbox-kdedev "${@}"
 }
+kdedev6() {
+	toolbox enter toolbox-kdedev6 "${@}"
+}
 
 # PATH setup
 __path_pre() {
