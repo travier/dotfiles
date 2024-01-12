@@ -2,12 +2,6 @@
 [ -z "$PS1" ] && return
 # Or: [[ $- != *i* ]] && return
 
-if [[ ! -f "/run/.containerenv" ]]; then
-    # Set SHELL to Zsh for the toolbox
-    SHELL=/bin/zsh
-    toolbox enter "fedora-toolbox-38"
-fi
-
 # Force SHELL to be bash
 SHELL=/bin/bash
 
