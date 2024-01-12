@@ -196,6 +196,15 @@ kdedev6() {
 	toolbox enter toolbox-kdedev6 "${@}"
 }
 
+# Get an interactive root shell or run a command as root on the host
+sudohost() {
+    if [[ ${#} -eq 0 ]]; then
+        ssh host.local "cd \"${PWD}\"; exec \"${SHELL}\" --login"
+    else
+        ssh host.local "cd \"${PWD}\"; exec \"${@}\""
+    fi
+}
+
 # PATH setup
 __path_pre() {
     if [[ -d "${1}" ]] && [[ ":${PATH}:" != *":${1}:"* ]]; then
