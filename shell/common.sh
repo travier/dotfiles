@@ -199,9 +199,11 @@ kdedev6() {
 # Get an interactive root shell or run a command as root on the host
 sudohost() {
     if [[ ${#} -eq 0 ]]; then
-        ssh host.local "cd \"${PWD}\"; exec \"${SHELL}\" --login"
+        cmd="$(printf "exec \"%s\" --login" "${SHELL}")"
+        ssh host.local "${cmd}"
     else
-        ssh host.local "cd \"${PWD}\"; exec \"${@}\""
+        cmd="$(printf "cd \"%s\"; exec %s" "${PWD}" "$*")"
+        ssh host.local "${cmd}"
     fi
 }
 
