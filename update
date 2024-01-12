@@ -111,6 +111,10 @@ main() {
     toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
     # toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
 
+    update_container_images
+
+    update_toolboxes
+
     echo "[+] Done"
 }
 
