@@ -49,7 +49,3 @@ fi
 # Additional completions
 source <(~/.local/bin/kubectl completion zsh)
 source <(~/.local/bin/oc completion zsh)
-source <(~/.local/bin/gh completion -s zsh)
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/tim/projects/bin/terraform terraform
