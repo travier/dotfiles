@@ -40,6 +40,9 @@ update_toolboxes() {
         toolbox rm --force "${name}" || true
         toolbox create --image "${img}" "${name}"
     done
+    for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
+        podman rmi "${img}"
+    done
 
     echo "[+] Updating rootful toolboxes..."
     if [[ -f "/run/.containerenv" ]]; then
@@ -54,6 +57,9 @@ update_toolboxes() {
         name="${name##*/}"
         sudo toolbox rm --force "${name}" || true
         sudo toolbox create --image "${img}" "${name}"
+    done
+    for img in $(sudo podman images --filter dangling=true --format "{{.ID}}"); do
+        sudo podman rmi "${img}"
     done
 }
 
