@@ -43,7 +43,9 @@ update_toolboxes() {
     for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
         podman rmi "${img}"
     done
+}
 
+update_root_toolboxes() {
     echo "[+] Updating rootful toolboxes..."
     if [[ -f "/run/.containerenv" ]]; then
         echo "[+] Can not (yet) update rootful toolboxes from a rootless container."
