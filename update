@@ -6,16 +6,15 @@ set -u -o pipefail
 
 update_container_images() {
     echo "[+] Updating container images..."
-    # registry.access.redhat.com/ubi8/ubi:8.6
-    # registry.access.redhat.com/ubi8/ubi:latest
-    # registry.fedoraproject.org/fedora:36
     images=(
         'registry.fedoraproject.org/fedora:latest'
         'docker.io/antora/antora:latest'
         'quay.io/coreos-assembler/coreos-assembler:latest'
     )
     for img in "${images[@]}"; do
-        podman pull "${img}"
+        if $(podman image exists "${img}"); then
+            podman pull "${img}"
+        fi
     done
     for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
         podman rmi "${img}"
