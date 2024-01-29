@@ -2,6 +2,11 @@
 [ -z "$PS1" ] && return
 # Or: [[ $- != *i* ]] && return
 
+# If we are connecting via SSH, exec ZSH
+if [[ -z ${SSH_CONNECTION+x} ]]; then
+    exec zsh
+fi
+
 # Force SHELL to be bash
 SHELL=/bin/bash
 
