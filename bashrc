@@ -4,7 +4,7 @@
 # Or: [[ $- != *i* ]] && return
 
 # If we are connecting via SSH, exec ZSH
-if [[ -z ${SSH_CONNECTION+x} && -x "/usr/bin/zsh" ]]; then
+if [[ -n ${SSH_CONNECTION+x} && -x "/usr/bin/zsh" ]]; then
     exec zsh
 fi
 
