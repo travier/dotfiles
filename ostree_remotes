@@ -7,6 +7,7 @@ main() {
     versions=(
         "38"
         "39"
+        "40"
         "rawhide"
     )
     variants=(
@@ -32,12 +33,17 @@ main() {
         echo ""
 
         for a in "${arches[@]}"; do
-            echo -n "${a}"
+            if [[ "${v}" == "sericea" && "${a}" == "ppc64le" ]]; then
+                continue
+            fi
+            buf=""
             for r in "${versions[@]}"; do
                 version="$(echo "$summary" | grep -E "$r/$a/$v$" -A3 --no-group-separator | grep "Version" | awk 'NF>1{print $NF}')" || version=""
-                printf "|%-15s" "${version}"
+                buf+="$(printf "|%-15s" "${version}")"
             done
-            echo ""
+            if [[ "$(echo "${buf}" | tr -d ' ')" != "||||" ]]; then
+                echo "${a}${buf}"
+            fi
         done
         ) | column -t -s "|"
         echo ""
