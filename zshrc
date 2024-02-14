@@ -47,5 +47,15 @@ if [[ -n "$(command -v zoxide)" ]]; then
 fi
 
 # Additional completions
-source <(~/.local/bin/kubectl completion zsh)
-source <(~/.local/bin/oc completion zsh)
+if [[ -f "${HOME}/.local/bin/kubectl" ]]; then
+    source <(~/.local/bin/kubectl completion zsh)
+fi
+if [[ -f "${HOME}/.local/bin/oc" ]]; then
+    source <(~/.local/bin/oc completion zsh)
+fi
+
+# Enable Bash autocompletion
+autoload -U +X bashcompinit && bashcompinit
+if [[ -f "/usr/bin/az" ]]; then
+    source "/usr/share/bash-completion/completions/azure-cli"
+fi
