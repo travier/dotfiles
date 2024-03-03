@@ -119,6 +119,9 @@ fpb() {
         manifest="$(basename "$(pwd)").yaml"
     elif [[ -f "$(basename "$(pwd)").json" ]]; then
         manifest="$(basename "$(pwd)").json"
+    else
+        echo "Manifest not found"
+        return 1
     fi
     args=""
     if [[ -f "/run/.toolboxenv" ]]; then
@@ -127,23 +130,51 @@ fpb() {
     flatpak-builder --ccache --repo=repo --jobs="$(nproc)" --subject="wip" --force-clean ${args} app "${manifest}"
 }
 fpr() {
-	manifest=""
-	if [[ -f "$(basename "$(pwd)").yml" ]]; then
-		manifest="$(basename "$(pwd)").yml"
-	elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
-		manifest="$(basename "$(pwd)").yaml"
-	elif [[ -f "$(basename "$(pwd)").json" ]]; then
-		manifest="$(basename "$(pwd)").json"
-	fi
-	if [[ "${#}" -gt 0 ]]; then
-		flatpak-builder --run app "${manifest}" "${@}"
-	else
-		flatpak-builder --run app "${manifest}" "$(basename "$(pwd)")"
-	fi
+    manifest=""
+    if [[ -f "$(basename "$(pwd)").yml" ]]; then
+        manifest="$(basename "$(pwd)").yml"
+    elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
+        manifest="$(basename "$(pwd)").yaml"
+    elif [[ -f "$(basename "$(pwd)").json" ]]; then
+        manifest="$(basename "$(pwd)").json"
+    else
+        echo "Manifest not found"
+        return 1
+    fi
+    if [[ "${#}" -gt 0 ]]; then
+        flatpak-builder --run app "${manifest}" "${@}"
+    else
+        flatpak-builder --run app "${manifest}" "$(basename "$(pwd)")"
+    fi
+}
+fpi() {
+    manifest=""
+    if [[ -f "$(basename "$(pwd)").yml" ]]; then
+        manifest="$(basename "$(pwd)").yml"
+    elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
+        manifest="$(basename "$(pwd)").yaml"
+    elif [[ -f "$(basename "$(pwd)").json" ]]; then
+        manifest="$(basename "$(pwd)").json"
+    else
+        echo "Manifest not found"
+        return 1
+    fi
+    flatpak-builder --user --install --force-clean app/ "${manifest}"
 }
 
 fedc() {
-	podman run --rm --privileged -v "${PWD}":/srv:rw -w /srv -it ghcr.io/flathub/flatpak-external-data-checker --update --edit-only "${@}"
+    manifest=""
+    if [[ -f "$(basename "$(pwd)").yml" ]]; then
+        manifest="$(basename "$(pwd)").yml"
+    elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
+        manifest="$(basename "$(pwd)").yaml"
+    elif [[ -f "$(basename "$(pwd)").json" ]]; then
+        manifest="$(basename "$(pwd)").json"
+    else
+        echo "Manifest not found"
+        return 1
+    fi
+    podman run --rm --privileged -v "${PWD}":/srv:rw -w /srv -it ghcr.io/flathub/flatpak-external-data-checker --update --edit-only "${manifest}"
 }
 
 # CoreOS assembler
