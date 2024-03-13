@@ -58,8 +58,6 @@ zstyle ':completion:*:complete:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' use-ip true
 
 # Custom completion for some tools
-zstyle ':completion:*:*:zless:*' file-patterns \
-	'*(-/):directories *.gz:all-files'
 zstyle ':completion:*:*:vim:*' ignored-patterns \
 	'*.(aux|bbl|blg|brf|cb|dvi|gif|idx|ilg|inx|jpeg|jpg|o|out|pdf|png|pyc|pyo|swo|swp|toc)'
 zstyle ':completion:*:*:less*:*' ignored-patterns \
@@ -77,7 +75,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # Ignore completion option already mentioned on a line
-zstyle ':completion:*:(diff|kill|ln|ls|pacman|rm|vim):*' ignore-line other
+zstyle ':completion:*:(diff|kill|ln|ls|dnf|rm|vim):*' ignore-line other
 
 # Set the maximum errors allowed to be corrected during completion
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
@@ -98,5 +96,5 @@ zstyle ':completion:::::' completer _force_rehash _complete _match _approximate
 # cd ../^D will never suggest foo
 zstyle ':completion:*:(cd|ls|mv|cp|rsync|rm):*' ignore-parents parent pwd
 
-# Ignore some patterns
-#zstyle ':completion:*:complete:-command-::commands' ignored-patterns 'chmorph|mkdiskimage|mkdosfs|iptab'
+# Ignore some commands
+zstyle ':completion:*:complete:-command-::commands' ignored-patterns 'pod2man|pod2text|pod2usage|os-prober|osage|mkdict|mkdosfs|vimdot'
