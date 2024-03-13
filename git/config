@@ -26,6 +26,18 @@
 		git fetch --all; \
 	}; f"
 	cb = checkout -b
+	cd = "!f() { \
+		if [[ ${#} -ne 1 ]]; then \
+			>&2 printf \"Usage : git cd <url>\n\"; \
+		fi; \
+		local -r dir=\"$(basename \"$1\" .git)\"; \
+		if [[ -d "${dir}" ]]; then \
+			printf "%s already exists. Going there..." "${dir}"; \
+		else \
+			git clone $1; \
+		fi \
+		cd "${dir}"; \
+	}; f"
 	cf = commit --fixup
 	co = checkout
 	cp = checkout --patch
