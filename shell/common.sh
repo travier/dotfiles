@@ -98,6 +98,25 @@ restore() {
     cp -- "${1}"{.bak,}
 }
 
+# Git clone & cd into the resulting directory, optionnaly adding a remote
+# Can not be a git alias as it changes the current directory
+gcd() {
+    if [[ ${#} -lt 1 ]] || [[ ${#} -gt 2 ]]; then
+        printf "Usage : %s <origin-url> [<fork-url>]\n" "${0}"
+        return
+    fi
+    local -r dir="$(basename "${1}" .git)"
+    if [[ -d "${dir}" ]]; then
+        printf "%s already exists. Going there...\n" "${dir}"
+        cd "${dir}"
+    else
+        git clone "${1}" "${dir}" && cd "$(basename "$_" .git)"
+    fi
+    if [[ ${#} -eq 2 ]]; then
+        git remote add travier "${2}" && git fetch --all
+    fi
+}
+
 sshl() {
     ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${@}"
 }
