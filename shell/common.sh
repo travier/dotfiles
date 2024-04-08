@@ -189,6 +189,8 @@ fedc() {
         manifest="$(basename "$(pwd)").yaml"
     elif [[ -f "$(basename "$(pwd)").json" ]]; then
         manifest="$(basename "$(pwd)").json"
+    elif [[ ${#} -eq 1 ]]; then
+        manifest="${1}"
     else
         echo "Manifest not found"
         return 1
