@@ -244,9 +244,6 @@ tb() {
 kdedev() {
 	toolbox enter toolbox-kdedev "${@}"
 }
-kdedev6() {
-	toolbox enter toolbox-kdedev6 "${@}"
-}
 
 # Get an interactive root shell or run a command as root on the host
 sudohost() {
