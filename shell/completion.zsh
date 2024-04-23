@@ -97,4 +97,4 @@ zstyle ':completion:::::' completer _force_rehash _complete _match _approximate
 zstyle ':completion:*:(cd|ls|mv|cp|rsync|rm):*' ignore-parents parent pwd
 
 # Ignore some commands
-zstyle ':completion:*:complete:-command-::commands' ignored-patterns 'pod2man|pod2text|pod2usage|os-prober|osage|mkdict|mkdosfs|vimdot|podselect'
+zstyle ':completion:*:complete:-command-::commands' ignored-patterns 'pod2man|pod2text|pod2usage|os-prober|osage|mkdict|mkdosfs|vimdot|podselect|vimtutor'
