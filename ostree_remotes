@@ -4,6 +4,14 @@ set -euo pipefail
 # set -x
 
 main() {
+    local sub
+
+    if [[ "${#}" -eq 1 ]]; then
+        sub="/${1}"
+    else
+        sub=""
+    fi
+
     versions=(
         "38"
         "39"
@@ -38,7 +46,7 @@ main() {
             fi
             buf=""
             for r in "${versions[@]}"; do
-                version="$(echo "$summary" | grep -E "$r/$a/$v$" -A3 --no-group-separator | grep "Version" | awk 'NF>1{print $NF}')" || version=""
+                version="$(echo "$summary" | grep -E "$r/$a$sub/$v$" -A3 --no-group-separator | grep "Version" | awk 'NF>1{print $NF}')" || version=""
                 buf+="$(printf "|%-15s" "${version}")"
             done
             if [[ "$(echo "${buf}" | tr -d ' ')" != "||||" ]]; then
