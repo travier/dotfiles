@@ -62,7 +62,8 @@ main() {
                         | awk 'NF>1{print $NF}')" \
                         || version=""
 
-                if [[ "${version}" != "${release}.${date}.0" ]] && [[ "${version}" != "${release}.${date}.n.0" ]]; then
+                mainver="${version%.*}"
+                if [[ "${mainver}" != "${release}.${date}" ]] && [[ "${mainver}" != "${release}.${date}.n" ]]; then
                     buf+="$(printf "|${red}%-15s${end}" "${version}")"
                 else
                     buf+="$(printf "|${blue}%-15s${end}" "${version}")"
