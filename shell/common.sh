@@ -211,7 +211,6 @@ cosa() {
          echo "You should pull the latest version with:" >&2
          echo "podman pull ${COREOS_ASSEMBLER_CONTAINER_LATEST}" >&2
          echo -e "----\e[0m" >&2
-         sleep 2
        fi
    fi
    set -x
