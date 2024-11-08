@@ -133,3 +133,12 @@
 	insteadOf = kde:
 [url "ssh://git@invent.kde.org/"]
 	pushInsteadOf = kde:
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/tim/.local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/tim/.local/bin/gh auth git-credential
+[credential]
+	helper = libsecret
