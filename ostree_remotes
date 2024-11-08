@@ -7,7 +7,6 @@ main() {
     versions=(
         "39"
         "40"
-        "40-updates"
         "40-testing"
         "41"
         "41-testing"
