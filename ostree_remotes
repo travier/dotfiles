@@ -24,7 +24,12 @@ main() {
         "ppc64le"
     )
 
-    local -r date="$(date "+%Y%m%d")"
+    local date=""
+    if [[ ${DATE+x} == "x" ]]; then
+        date="${DATE}"
+    else
+        date="$(date "+%Y%m%d")"
+    fi
     local -r summary="$(ostree remote summary fedora)"
 
     local -r red="\e[31m"
