@@ -73,7 +73,6 @@
 	ui = auto
 [log]
 	abbrevCommit = true
-	date = auto:human
 	follow = true
 [advice]
 	pushNonFastForward = false
