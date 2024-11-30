@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Documentation: https://restic.readthedocs.io/en/stable/
+
+# Frequent restic commands:
+# - export RESTIC_REPOSITORY_FILE="${HOME}/.config/restic/....repo"
+# - export RESTIC_PASSWORD_FILE="${HOME}/.config/restic/password"
+# - Creating a new repo for backup: restic init
+# - Listing keys added to a repo:   restic key list
+# - Adding a key for a repo:        restic key add
+# - List snapshots:                 restic snapshots
+
+set -euo pipefail
+# set -x
+
+main() {
+    echo "Starting backups..."
+    echo ""
+    for repo in "${HOME}/.config/restic/"*".repo"; do
+        restic backup \
+            --repository-file "${repo}" \
+            --password-file "${HOME}/.config/restic/password" \
+            "${HOME}/Personal"
+        echo ""
+    done
+    echo "Done!"
+}
+
+main "${@}"
