@@ -21,7 +21,13 @@ update_rust_crates() {
 
     echo "[+] Updating Rust crates..."
     rustup update
+    if [[ ! -f "${HOME}/.cargo/bin/cargo-install-update" ]]; then
+        toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install cargo-update
+    fi
     toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
+    if [[ ! -f "${HOME}/.cargo/bin/cargo-cache" ]]; then
+        toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install cargo-cache
+    fi
     toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
 }
 
