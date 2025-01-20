@@ -4,8 +4,30 @@ set -u -o pipefail
 # set -e # Do not exit if one command failed
 # set -x # Only for debugging
 
+update_system() {
+    echo "[+] Updating system (rpm-ostree)..."
+    rpm-ostree update
+}
+
+update_flatpaks() {
+    echo "[+] Updating system Flatpaks..."
+    flatpak --system update --assumeyes
+    flatpak --system remove --unused --assumeyes
+}
+
+update_rust_crates() {
+    # Use a fixed toolbox to avoid issues during a Fedora major version rebase
+    local -r toolbox="toolbox"
+
+    echo "[+] Updating Rust crates..."
+    rustup update
+    toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
+    toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
+}
+
 update_container_images() {
     echo "[+] Updating container images..."
+    # Only update selected container images
     images=(
         'registry.fedoraproject.org/fedora:latest'
         'docker.io/antora/antora:latest'
@@ -19,13 +41,6 @@ update_container_images() {
     for img in $(podman images --filter dangling=true --format "{{.ID}}"); do
         podman rmi "${img}"
     done
-    echo "[+] Done"
-}
-
-update_firmwares() {
-    echo "[+] Updating firmwares..."
-    sudo fwupdmgr refresh
-    sudo fwupdmgr update
     echo "[+] Done"
 }
 
@@ -44,24 +59,21 @@ update_toolboxes() {
     done
 }
 
-update_root_toolboxes() {
-    echo "[+] Updating rootful toolboxes..."
+update_sysexts() {
+    echo "[+] Updating systemd system extensions..."
     if [[ -f "/run/.containerenv" ]]; then
-        echo "[+] Can not (yet) update rootful toolboxes from a rootless container."
+        echo "[+] Can not (yet) update sysexts from a rootless container."
         return
     fi
-    # Only update toolbox images currently in use
-    # TODO: Force quay.io/travier/toolbox-root
-    for img in $(sudo podman images -n --format "{{.Repository}}" | grep "quay.io/travier/toolbox"); do
-        sudo podman pull "${img}"
-        local name="${img%:*}"
-        name="${name##*/}"
-        sudo toolbox rm --force "${name}" || true
-        sudo toolbox create --image "${img}" "${name}"
-    done
-    for img in $(sudo podman images --filter dangling=true --format "{{.ID}}"); do
-        sudo podman rmi "${img}"
-    done
+    sudo /usr/lib/systemd/systemd-sysupdate update
+
+}
+
+update_firmwares() {
+    echo "[+] Updating firmwares..."
+    sudo fwupdmgr refresh
+    sudo fwupdmgr update
+    echo "[+] Done"
 }
 
 main() {
@@ -93,28 +105,13 @@ main() {
     fi
 
     if [[ "${SYSTEM}" == true ]]; then
-        echo "[+] Updating system (rpm-ostree)..."
-        rpm-ostree update
-
-        echo "[+] Updating system Flatpaks..."
-        flatpak --system update --assumeyes
-        flatpak --system remove --unused --assumeyes
+        update_system
+        update_flatpaks
     fi
-
-    # Use a fixed toolbox to avoid issues during a Fedora major version rebase
-    local -r toolbox="toolbox"
-
-    # echo "[+] Updating main toolbox..."
-    # toolbox run --container "${toolbox}" sudo dnf update -y
-
-    echo "[+] Updating Rust crates..."
-    rustup update
-    toolbox run --container "${toolbox}" ~/.cargo/bin/cargo install-update -a
-    # toolbox run --container "${toolbox}" ~/.cargo/bin/cargo cache -a
-
+    update_rust_crates
     update_container_images
-
     update_toolboxes
+    update_sysexts
 
     echo "[+] Done"
 }
