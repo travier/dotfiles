@@ -5,10 +5,11 @@ set -euo pipefail
 
 main() {
     versions=(
-        "40"
-        "40-testing"
         "41"
         "41-testing"
+        "42"
+        "42-updates"
+        "42-testing"
         "Rawhide"
     )
     variants=(
