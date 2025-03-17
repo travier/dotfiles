@@ -16,6 +16,7 @@ main() {
         "Kinoite"
         "Sericea"
         "Onyx"
+        "COSMIC-Atomic"
     )
     arches=(
         "x86_64"
@@ -36,7 +37,7 @@ main() {
 
     for variant in "${variants[@]}"; do
         (
-        printf "%-10s" "${variant}"
+        printf "%-13s" "${variant}"
         for r in "${versions[@]}"; do
             echo -n "|$r"
         done
