@@ -157,9 +157,9 @@ fpr() {
         return 1
     fi
     if [[ "${#}" -gt 0 ]]; then
-        flatpak-builder --run app "${manifest}" "${@}"
+        flatpak-builder --run app --disable-rofiles-fuse "${manifest}" "${@}"
     else
-        flatpak-builder --run app "${manifest}" "$(basename "$(pwd)")"
+        flatpak-builder --run app --disable-rofiles-fuse "${manifest}" "$(basename "$(pwd)")"
     fi
 }
 fpi() {
@@ -174,7 +174,7 @@ fpi() {
         echo "Manifest not found"
         return 1
     fi
-    flatpak-builder --user --install --force-clean app/ "${manifest}"
+    flatpak-builder --disable-rofiles-fuse --user --install --force-clean app/ "${manifest}"
 }
 
 fedc() {
