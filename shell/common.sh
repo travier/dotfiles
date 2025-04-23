@@ -117,10 +117,6 @@ gcd() {
     fi
 }
 
-sshl() {
-    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${@}"
-}
-
 shac() {
     sha256sum -c --ignore-missing "${@}"
 }
