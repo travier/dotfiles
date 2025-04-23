@@ -4,11 +4,6 @@ set -u -o pipefail
 # set -e # Do not exit if one command failed
 # set -x # Only for debugging
 
-update_system() {
-    echo "[+] Updating system (rpm-ostree)..."
-    rpm-ostree update
-}
-
 update_flatpaks() {
     echo "[+] Updating system Flatpaks..."
     flatpak --system update --assumeyes
@@ -71,7 +66,9 @@ update_sysexts() {
         echo "[+] Can not (yet) update sysexts from a rootless container."
         return
     fi
-    sudo /usr/lib/systemd/systemd-sysupdate update
+    for s in $(/usr/lib/systemd/systemd-sysupdate components --json=short | jq --raw-output '.components[]'); do
+        sudo /usr/lib/systemd/systemd-sysupdate update --component "${s}"
+    done
 
 }
 
@@ -83,13 +80,7 @@ update_firmwares() {
 }
 
 main() {
-    local SYSTEM=false
     if [[ "${#}" -gt 0 ]]; then
-        case "${1}" in
-            "s"|"sys"|"system")
-                SYSTEM=true
-                ;;
-        esac
         case "${1}" in
             "c"|"cont"|"container")
                 update_container_images
@@ -103,17 +94,25 @@ main() {
                 ;;
         esac
         case "${1}" in
+            "flatpak"|"flatpaks")
+                update_flatpaks
+                exit 0
+                ;;
+        esac
+        case "${1}" in
             "t"|"tb"|"tbx"|"toolbox")
                 update_toolboxes
                 exit 0
                 ;;
         esac
+        case "${1}" in
+            "s"|"sys"|"sysexts")
+                update_sysexts
+                exit 0
+                ;;
+        esac
     fi
 
-    if [[ "${SYSTEM}" == true ]]; then
-        update_system
-        update_flatpaks
-    fi
     update_rust_crates
     update_container_images
     update_toolboxes
