@@ -209,7 +209,7 @@ cosa() {
          echo -e "----\e[0m" >&2
        fi
    fi
-   set -x
+   # set -x
    podman run --rm -ti --security-opt label=disable --privileged                                         \
               --uidmap=1000:0:1 --uidmap=0:1:1000 --uidmap 1001:1001:64536                               \
               -v ${PWD}:/srv/ --device /dev/kvm --device /dev/fuse                                       \
@@ -219,7 +219,9 @@ cosa() {
               ${COREOS_ASSEMBLER_ADD_CERTS:+--volume=/etc/pki/ca-trust:/etc/pki/ca-trust:ro}             \
               ${COREOS_ASSEMBLER_CONTAINER_RUNTIME_ARGS}                                                 \
               ${COREOS_ASSEMBLER_CONTAINER:-$COREOS_ASSEMBLER_CONTAINER_LATEST} "$@"
-   rc=$?; set +x; return $rc
+   rc=$?
+   # set +x
+   return $rc
 }
 # Use certs from host
 export COREOS_ASSEMBLER_ADD_CERTS='y'
