@@ -247,6 +247,7 @@ autocmd FileType python     set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType ruby       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType scss       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType sh         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
+autocmd FileType xml        set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
 " LaTeX support
 let g:tex_flavor='latex'
