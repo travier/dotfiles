@@ -6,10 +6,11 @@ set -euo pipefail
 main() {
     versions=(
         "41"
-        "41-testing"
         "42"
-        "42-updates"
         "42-testing"
+        "43"
+        "43-updates"
+        "43-testing"
         "Rawhide"
     )
     variants=(
@@ -45,9 +46,6 @@ main() {
         echo ""
 
         for arch in "${arches[@]}"; do
-            if [[ "${variant}" == "Sericea" && "${arch}" == "ppc64le" ]]; then
-                continue
-            fi
             if [[ "${variant}" == "Onyx" && "${arch}" != "x86_64" ]]; then
                 continue
             fi
