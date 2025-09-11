@@ -161,19 +161,19 @@ fpi() {
 
 fedc() {
     manifest=""
-    if [[ -f "$(basename "$(pwd)").yml" ]]; then
+    if [[ ${#} -eq 1 ]]; then
+        manifest="${1}"
+    elif [[ -f "$(basename "$(pwd)").yml" ]]; then
         manifest="$(basename "$(pwd)").yml"
     elif [[ -f "$(basename "$(pwd)").yaml" ]]; then
         manifest="$(basename "$(pwd)").yaml"
     elif [[ -f "$(basename "$(pwd)").json" ]]; then
         manifest="$(basename "$(pwd)").json"
-    elif [[ ${#} -eq 1 ]]; then
-        manifest="${1}"
     else
         echo "Manifest not found"
         return 1
     fi
-    podman run --rm --privileged -v "${PWD}":/srv:rw -w /srv -it ghcr.io/flathub/flatpak-external-data-checker --update --edit-only "${manifest}"
+    flatpak run org.flathub.flatpak-external-data-checker --max-manifest-size 200000 --update --edit-only "${manifest}"
 }
 
 # CoreOS assembler
