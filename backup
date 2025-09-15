@@ -14,10 +14,24 @@ set -euo pipefail
 # set -x
 
 main() {
+    # Use a fixed toolbox to avoid issues during a Fedora major version rebase
+    local -r toolbox="toolbox"
+
+    restic=('restic')
+    if [[ ! -f "/run/.containerenv" ]]; then
+        restic=(
+            'toolbox'
+            'run'
+            '--container'
+            "${toolbox}"
+            'restic'
+        )
+    fi
+
     echo "Starting backups..."
     echo ""
     for repo in "${HOME}/.config/restic/"*".repo"; do
-        restic backup \
+        "${restic[@]}" backup \
             --repository-file "${repo}" \
             --password-file "${HOME}/.config/restic/password" \
             "${HOME}/Personal"
