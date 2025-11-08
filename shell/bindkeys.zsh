@@ -127,19 +127,6 @@ case ${TERM} in
 		bindkey '^[[1;5A' +_dirname-previous-word
 		bindkey '^[[1;5B' +_basename-previous-word
 	;;
-	# tmux bindings
-	screen-256color)
-		bindkey '^[[1~' beginning-of-line
-		bindkey '^[[4~' end-of-line
-		bindkey '^[[2~' overwrite-mode
-		bindkey '^[[3~' delete-char
-		bindkey '^[[5~' up-line-or-history
-		bindkey '^[[6~' down-line-or-history
-		bindkey '^[OD' emacs-backward-word
-		bindkey '^[OC' emacs-forward-word
-		bindkey '^[OA' +_dirname-previous-word
-		bindkey '^[OB' +_basename-previous-word
-	;;
 	# Linux VT bindings
 	linux)
 		bindkey '^[[1~' beginning-of-line

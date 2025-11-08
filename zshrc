@@ -39,7 +39,6 @@ compdef g='git'
 compdef gi='git'
 compdef gt='git'
 compdef m='make'
-compdef tm='tmux'
 
 if [[ -n "$(command -v zoxide)" ]]; then
   _ZO_ECHO=1

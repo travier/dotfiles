@@ -27,7 +27,7 @@ dotctl_vimdiff() {
 # Diff files from this repo with the ones in $HOME
 dotctl_diff() {
 	# Diff configuration files prefixed by a '.' in $HOME
-	for f in 'bashrc' 'zshrc' 'tmux.conf' 'vimrc'; do
+	for f in 'bashrc' 'zshrc' 'vimrc'; do
 		dotctl_vimdiff "${HOME}/.${f}" "${f}"
 	done
 
