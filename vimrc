@@ -249,13 +249,4 @@ autocmd FileType scss       set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 autocmd FileType sh         set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 autocmd FileType xml        set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
-" LaTeX support
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='dvi,pdf'
-autocmd FileType tex set shiftwidth=2 tabstop=2
-"let g:syntastic_tex_checkers = ["chktex"]
-"let g:syntastic_tex_chktex_args='-g'
-let g:syntastic_sh_shellcheck_args="--external-sources"
-
 set complete=.,w,b,u,U,t,i,d

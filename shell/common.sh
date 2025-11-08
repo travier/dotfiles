@@ -10,9 +10,6 @@ export EDITOR="vim"
 # Use podman for openshift/release
 export CONTAINER_ENGINE=podman
 
-# Longer lines for pdflatex output
-# export max_print_line=1000
-
 # Aliases
 alias ..='cd ..'
 alias bat='bat --theme TwoDark'
