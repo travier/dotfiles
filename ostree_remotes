@@ -5,7 +5,6 @@ set -euo pipefail
 
 main() {
     versions=(
-        "41"
         "42"
         "42-testing"
         "43"
