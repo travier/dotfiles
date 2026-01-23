@@ -113,10 +113,10 @@ main() {
         esac
     fi
 
+    update_sysexts
     update_rust_crates
     update_container_images
     update_toolboxes
-    update_sysexts
 
     echo "[+] Done"
 }
