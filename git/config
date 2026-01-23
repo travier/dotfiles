@@ -129,6 +129,9 @@
 [gpg]
 	format = ssh
 
+[credential]
+	helper = libsecret
+
 [url "https://invent.kde.org/"]
 	insteadOf = kde:
 [url "ssh://git@invent.kde.org/"]
