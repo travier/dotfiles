@@ -35,12 +35,6 @@ zle -N +_basename-previous-word
 }
 zle -N +_foreground-vim
 
-+_insert-sudo-at-beginning-of-line() {
-	zle beginning-of-line
-	zle -U "sudo "
-}
-zle -N +_insert-sudo-at-beginning-of-line
-
 # # Rewrite multiple dots in a path (... -> ../..)
 # +_rationalise-dot() {
 # 	if [[ $LBUFFER = *.. ]]; then
@@ -94,7 +88,6 @@ bindkey '^?' backward-delete-char
 bindkey '^L' clear-screen
 
 bindkey '^Z' +_foreground-vim
-bindkey '^[s' +_insert-sudo-at-beginning-of-line
 
 bindkey '^[OM' accept-line
 
