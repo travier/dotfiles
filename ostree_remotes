@@ -9,6 +9,9 @@ main() {
         "42-testing"
         "43"
         "43-testing"
+        "44"
+        "44-updates"
+        "44-testing"
         "Rawhide"
     )
     variants=(
